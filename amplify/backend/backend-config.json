@@ -1,6 +1,6 @@
 {
   "auth": {
-    "meruv258de1a01": {
+    "meruv27e3c8504": {
       "service": "Cognito",
       "serviceType": "imported",
       "providerPlugin": "awscloudformation",

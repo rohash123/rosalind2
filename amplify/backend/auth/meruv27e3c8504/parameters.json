@@ -1,6 +1,6 @@
 {
-  "authSelections": "identityPoolAndUserPool",
-  "resourceName": "meruv258de1a01",
+  "authSelections": "userPoolOnly",
+  "resourceName": "meruv27e3c8504",
   "serviceType": "imported",
   "region": "us-west-2",
   "usernameAttributes": [

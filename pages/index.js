@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { AdjustmentsVerticalIcon, ArrowDownRightIcon, PhotoIcon, UserPlusIcon } from '@heroicons/react/24/outline'
+import { AdjustmentsVerticalIcon, ArrowDownRightIcon, PhotoIcon, UserPlusIcon, FlagIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -11,6 +11,12 @@ const navigation = [
 ]
 
 const features = [
+  {
+    name: 'Flag Hallucinations',
+    description:
+      'Our newest endpoint automatically flags GPT-3 hallucinations in the API response, so you can warn your users of mistakes.',
+    icon: FlagIcon,
+  },
   {
     name: 'LLM Prompt Condensation',
     description: 'Meru transforms your prompts so they are shorter, but map to the same GPT-3 outputs. This means you could immediately start saving 10% on your GPT-3 costs, with no change in your current quality',
