@@ -37,7 +37,7 @@ const features = [
   {
     name: 'Teach SD New Concepts',
     description:
-      'Want to generate images of people, products, or styles unknown to standard stable diffusion? Use our managed dreambooth API to teach SD new concepts, for only $1.5 per concpet.',
+      'Want to generate images of people, products, or styles unknown to standard stable diffusion? Use our managed dreambooth API to teach SD new concepts, for only $2.75 per concept.',
     icon: AdjustmentsVerticalIcon,
   },
 ]
@@ -185,7 +185,7 @@ export default function Example() {
                 </p>
                 <div className="mt-8 flex gap-x-4 sm:justify-center">
                   <a
-                    href="#"
+                    href="/develop"
                     className="inline-block rounded-lg bg-pink-400 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-400 hover:bg-pink-600 hover:ring-pink-600"
                   >
                     Get started{' '}
@@ -194,7 +194,7 @@ export default function Example() {
                     </span>
                   </a>
                   <a
-                    href="docs.usemeru.com"
+                    href="https://docs.usemeru.com"
                     className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                   >
                     Read the Docs{' '}
