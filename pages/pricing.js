@@ -18,7 +18,7 @@ const hallucination =[
     name: 'New: Hallucination-Free OpenAI DaVinci',
     href: 'mailto:rohan@usemeru.com',
     priceMonthly: 0.00108,
-    description: 'OpenAIs DaVinci model (powerful language completion), with additional output that lets you detect whether the model is making information up as part of its output. Automatically flag dangerously incorrect outputs for your users, with minimal overhead.',
+    description: 'OpenAIs DaVinci model (powerful language completion), with an response parameters that indicates whether the model is making information up. Automatically flag dangerously incorrect outputs for your users, with minimal overhead.',
     includedFeatures: ['Prompt Completion', 'Auto-flagging of made-up responses', 'Email rohan@usemeru.com for immediate access'],
   },
 ]
