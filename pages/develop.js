@@ -211,7 +211,7 @@ export default  function Develop(){
       }}
     >
       <Authenticator.Provider>
-<Authenticator components={components} socialProviders={['google']}>
+<Authenticator components={components} >
 <div className="flex mx-auto min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 <div className="w-full max-w-md space-y-8">
 </div>
