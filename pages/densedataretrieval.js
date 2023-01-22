@@ -190,11 +190,11 @@ export default function Example() {
           At Meru, we specialize in building infrastructure around LLMs that makes it possible to deploy them in a production environment where accuracy, latency, and experience are of the utmost importance. Today, we are releasing a new API for dense data retrieval.
           </p>
           <p>
-          When a client submits a document to our API, we index the document and store the index on our servers. Clients can then query the index via an LLM, such as GPT-3 and obtain a response. This approach is preferable to simply passing the document as a part of the prompt and highly effective at dissolving some of the issues listed above. Moreover, because you are querying the index, you don’t have to waste tokens on passing the document in as a prompt, and can therefore build much larger and complex queries. Documents larger than 4096 tokens can also be queried effectively. 
+          When a client submits a document to our API, we index the document and store the index on our servers. Clients can then query the index via an LLM, such as GPT-3 and obtain a response. This approach is more robust than passing the document as a part of the prompt and highly effective at reducing hallucinations. Moreover, because you are querying the index, you don’t have to waste tokens on passing the document in as a prompt, and can therefore build much larger and complex queries. Documents larger than 4096 tokens can also be queried effectively. 
           </p>
           
             <p>
-            We’re excited to launch our Dense Data Retrieval API and hope. For more information on how to integrate the API into your application, please view our <a href="https://usemeru.com/docs">docs</a>. 
+            We’re excited to launch our Dense Data Retrieval API and hope it is useful. For more information on how to integrate the API into your application, please view our <a href="https://usemeru.com/docs">docs</a>. 
             </p>
 
             <p>
