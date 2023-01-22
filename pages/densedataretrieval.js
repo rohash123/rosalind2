@@ -194,7 +194,7 @@ export default function Example() {
           </p>
           
             <p>
-            We’re excited to launch our Dense Data Retrieval API and hope it is useful. For more information on how to integrate the API into your application, please view our <a href="https://usemeru.com/docs">docs</a>. 
+            We’re excited to launch our Dense Data Retrieval API and hope it is useful. For more information on how to integrate the API into your application, please view our <a href="https://docs.usemeru.com">docs</a>. 
             </p>
 
             <p>
