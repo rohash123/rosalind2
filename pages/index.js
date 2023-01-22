@@ -13,9 +13,9 @@ const navigation = [
 
 const features = [
   {
-    name: 'Flag Hallucinations',
+    name: 'Dense Data Retrieval',
     description:
-      'Our newest endpoint automatically flags GPT-3 hallucinations in the API response, so you can warn your users of mistakes.',
+      'Our newest endpoint builds on top of GPT-3 to allow you to query large documents without eating up your tokens',
     icon: FlagIcon,
   },
   {
@@ -206,7 +206,7 @@ export default function Example() {
                 </div>
               </div>
               <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-                <svg
+               <svg
                   className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
                   viewBox="0 0 1155 678"
                   fill="none"
@@ -298,7 +298,7 @@ export default function Example() {
             <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
               <img
                 className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg"
+                src="/screenshot.png"
                 alt="Inbox user interface"
               />
             </div>
@@ -307,29 +307,7 @@ export default function Example() {
       </div>
     </div>
       <div className="relative mx-auto max-w-7xl py-24 px-6 sm:py-32 lg:px-8 lg:py-40">
-        <svg
-          className="absolute top-0 left-full -translate-x-1/2 -translate-y-3/4 transform lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4"
-          width={404}
-          height={784}
-          fill="none"
-          viewBox="0 0 404 784"
-          aria-hidden="true"
-        >
-          <defs>
-            <pattern
-              id="8b1b5f72-e944-4457-af67-0c6d15a99f38"
-              x={0}
-              y={0}
-              width={20}
-              height={20}
-              patternUnits="userSpaceOnUse"
-            >
-              <rect x={0} y={0} width={4} height={4} className="text-gray-100" fill="currentColor" />
-            </pattern>
-          </defs>
-          <rect width={404} height={784} fill="url(#8b1b5f72-e944-4457-af67-0c6d15a99f38)" />
-        </svg>
-        
+      
         <div className="relative lg:grid lg:grid-cols-3 lg:gap-x-12 xl:gap-x-16">
           <div className="lg:col-span-1">
             <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">A better way to deploy Generative AI</h2>
