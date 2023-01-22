@@ -25,23 +25,14 @@ const hallucination =[
 ]
 const language = [
   {
-    name: 'OpenAI Ada',
+    name: 'OpenAI DaVinci',
     href: 'https://docs.usemeru.com/models',
-    priceMonthly: 0.00036,
-    description: 'Fastest language completion model. Least complex output.',
-    includedFeatures: ['Prompt Completion',
-    'Text editing',
-     'Fine-tuning (coming-soon)'],
-  },
-  {
-    name: 'OpenAI Babbage',
-    href: 'https://docs.usemeru.com/models',
-    priceMonthly: 0.00045,
-    description: 'Language model. More powerful than Ada.',
+    priceMonthly: 0.018,
+    description: 'Most powerful language model with complex output.',
     includedFeatures: [
-      'Prompt Completion ',
-      'Editing',
-      'Fine-tuning (Coming Soon)',
+      'Prompt Completion',
+      'Text Editing',
+      'Fine-tuning (Coming Soon)'
     ],
   },
   {
@@ -56,15 +47,24 @@ const language = [
     ],
   },
   {
-    name: 'OpenAI DaVinci',
+    name: 'OpenAI Babbage',
     href: 'https://docs.usemeru.com/models',
-    priceMonthly: 0.018,
-    description: 'Most powerful language model with complex output.',
+    priceMonthly: 0.00045,
+    description: 'Language model. More powerful than Ada.',
     includedFeatures: [
-      'Prompt Completion',
-      'Text Editing',
-      'Fine-tuning (Coming Soon)'
+      'Prompt Completion ',
+      'Editing',
+      'Fine-tuning (Coming Soon)',
     ],
+  },
+  {
+    name: 'OpenAI Ada',
+    href: 'https://docs.usemeru.com/models',
+    priceMonthly: 0.00036,
+    description: 'Fastest language completion model. Least complex output.',
+    includedFeatures: ['Prompt Completion',
+    'Text editing',
+     'Fine-tuning (coming-soon)'],
   }
   
 ]
