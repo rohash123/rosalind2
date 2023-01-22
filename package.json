@@ -12,6 +12,7 @@
     "@aws-amplify/ui-react": "^4.3.3",
     "@headlessui/react": "^1.7.7",
     "@heroicons/react": "^2.0.13",
+    "@tailwindcss/typography": "^0.5.9",
     "aws-amplify": "^5.0.10",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",

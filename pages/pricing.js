@@ -11,15 +11,16 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Models & Pricing', href: '/pricing' },
-  { name: 'Docs', href: 'https://docs.usemeru.com/' }
+  { name: 'Docs', href: 'https://docs.usemeru.com' },
+  { name: 'Blog', href: '/blog'}
 ]
 const hallucination =[
   {
-    name: 'New: Hallucination-Free OpenAI DaVinci',
-    href: 'mailto:rohan@usemeru.com',
-    priceMonthly: 0.00108,
-    description: 'OpenAIs DaVinci model (powerful language completion), with an response parameters that indicates whether the model is making information up. Automatically flag dangerously incorrect outputs for your users, with minimal overhead.',
-    includedFeatures: ['Prompt Completion', 'Auto-flagging of made-up responses', 'Email rohan@usemeru.com for immediate access'],
+    name: 'New: Dense Data Retrieval ',
+    href: 'https://docs.usemeru.com/densedata',
+    priceMonthly: 0.04,
+    description: 'OpenAIs DaVinci model on an indexed file to drastically reduce hallucinations, and improve accuracy. TXT, HTML, and JSON formats are supported.', 
+    includedFeatures: ['File indexing', 'Persistent Indexes', 'Queries processed via DaVinci'],
   },
 ]
 const language = [
@@ -214,7 +215,7 @@ export default function Pricing() {
             Access top generative models at scale, with affordable pricing thanks to prompt engineering and other optimizations from Meru. 
           </p>
         </div>
-        <h2 className="text-lg mt-8 font-medium leading-6 text-gray-900">Language Completion</h2>
+        <h2 className="text-lg mt-8 font-medium leading-6 text-gray-900">Language Completion and Data Retrieval</h2>
         <div className="mt-12 space-y-4 sm:mt-8 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:mx-auto lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-3">
           {hallucination.map((image) => (
             <div key={image.name} className="divide-y divide-gray-200 rounded-lg border border-pink-600 shadow-sm">
@@ -229,7 +230,7 @@ export default function Pricing() {
                   href={image.href}
                   className="mt-8 block w-full rounded-md border border-gray-800 bg-gray-800 py-2 text-center text-sm font-semibold text-white hover:bg-gray-900"
                 >
-                  Get Access
+                  View in Docs
                 </a>
               </div>
               <div className="px-6 pt-6 pb-8">

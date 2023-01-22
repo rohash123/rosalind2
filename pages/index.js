@@ -2,12 +2,13 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { AdjustmentsVerticalIcon, ArrowDownRightIcon, PhotoIcon, UserPlusIcon, FlagIcon } from '@heroicons/react/24/outline'
+import { AdjustmentsVerticalIcon, ArrowDownRightIcon, PhotoIcon, UserPlusIcon, FlagIcon, InboxIcon, SparklesIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Models & Pricing', href: '/pricing' },
-  { name: 'Docs', href: 'https://docs.usemeru.com' }
+  { name: 'Docs', href: 'https://docs.usemeru.com' },
+  { name: 'Blog', href: '/blog'}
 ]
 
 const features = [
@@ -235,6 +236,76 @@ export default function Example() {
           </div>
         </div>
         <div className="overflow-hidden bg-white">
+    <div className="relative overflow-hidden bg-white pt-16 pb-32">
+      <div className="relative">
+        <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+          <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
+            <div>
+              <div>
+                <h2 className="text-lg font-semibold text-pink-400">Now Introducing</h2>
+              </div>
+              <div className="mt-6">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900">Add Dense Data Retrieval to Your App</h2>
+                <p className="mt-4 text-lg text-gray-500">
+                Want to your users to be able to ask questions about Documents, HTML Files, JSON files in natural language? Use Meru to index your inputs and ensure they receive factual responses with low-latency. Like prompting GPT-3, but better. 
+                </p>
+                <div className="mt-8 flex gap-x-4 sm:justify-left">
+                  <a
+                    href="/densedataretrieval"
+                    className="inline-block rounded-lg bg-pink-400 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-400 hover:bg-pink-600 hover:ring-pink-600"
+                  >
+                    Announcement{' '}
+                    <span className="text-white" aria-hidden="true">
+                      &rarr;
+                    </span>
+                  </a>
+                  <a
+                    href="https://docs.usemeru.com"
+                    className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
+                  >
+                    Read the Docs{' '}
+                    <span className="text-gray-400" aria-hidden="true">
+                      &rarr;
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* <div className="mt-8 border-t border-gray-200 pt-6">
+              <blockquote>
+                <div>
+                  <p className="text-base text-gray-500">
+                    &ldquo;Cras velit quis eros eget rhoncus lacus ultrices sed diam. Sit orci risus aenean curabitur
+                    donec aliquet. Mi venenatis in euismod ut.&rdquo;
+                  </p>
+                </div>
+                <footer className="mt-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex-shrink-0">
+                      <img
+                        className="h-6 w-6 rounded-full"
+                        src="https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div className="text-base font-medium text-gray-700">Marcia Hill, Digital Marketing Manager</div>
+                  </div>
+                </footer>
+              </blockquote>
+            </div> */}
+          </div>
+          <div className="mt-12 sm:mt-16 lg:mt-0">
+            <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+              <img
+                className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
+                src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg"
+                alt="Inbox user interface"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
       <div className="relative mx-auto max-w-7xl py-24 px-6 sm:py-32 lg:px-8 lg:py-40">
         <svg
           className="absolute top-0 left-full -translate-x-1/2 -translate-y-3/4 transform lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4"
@@ -258,7 +329,7 @@ export default function Example() {
           </defs>
           <rect width={404} height={784} fill="url(#8b1b5f72-e944-4457-af67-0c6d15a99f38)" />
         </svg>
-
+        
         <div className="relative lg:grid lg:grid-cols-3 lg:gap-x-12 xl:gap-x-16">
           <div className="lg:col-span-1">
             <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">A better way to deploy Generative AI</h2>
