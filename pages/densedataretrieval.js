@@ -101,7 +101,7 @@ export default function Example() {
             </Dialog.Panel>
           </Dialog>
         </div>
-    <div className="relative overflow-hidden bg-white py-16">
+    <div className="mt-10 relative overflow-hidden bg-white py-16">
       <div className="hidden lg:absolute lg:inset-y-0 lg:block lg:h-full lg:w-full lg:[overflow-anchor:none]">
         <div className="mt-10 relative mx-auto h-full max-w-prose text-lg" aria-hidden="true">
           <svg
@@ -190,7 +190,7 @@ export default function Example() {
           At Meru, we specialize in building infrastructure around LLMs that makes it possible to deploy them in a production environment where accuracy, latency, and experience are of the utmost importance. Today, we are releasing a new API for dense data retrieval.
           </p>
           <p>
-          When a client submits a document to our API, we index the document and store the index on our servers. Clients can then query the index via an LLM, such as GPT-3 and obtain a response. This approach is more robust than passing the document as a part of the prompt and highly effective at reducing hallucinations. Moreover, because you are querying the index, you don’t have to waste tokens on passing the document in as a prompt, and can therefore build much larger and complex queries. Documents larger than 4096 tokens can also be queried effectively. 
+          When a client submits a document to our API, we index the document and store the index on our servers. Clients can then query the index via an LLM, such as GPT-3 and obtain a response. This approach is more robust than passing the document as a part of the prompt and highly effective at reducing hallu. Moreover, because you are querying the index, you don’t have to waste tokens on passing the document in as a prompt, and can therefore build much larger and complex queries. Documents larger than 4096 tokens can also be queried effectively. 
           </p>
           
             <p>
