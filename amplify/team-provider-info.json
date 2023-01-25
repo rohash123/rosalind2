@@ -13,12 +13,23 @@
     },
     "categories": {
       "auth": {
-        "meruv27e3c8504": {
+        "meruv248e77385": {},
+        "meruv239107b09": {
           "userPoolId": "us-west-2_BBVCXe0Q9",
           "userPoolName": "usemeru38a62832_userpool_38a62832-dev",
           "webClientId": "7mua367nslkdca7iva3va8m9t3",
-          "nativeClientId": "7mua367nslkdca7iva3va8m9t3"
+          "nativeClientId": "7mua367nslkdca7iva3va8m9t3",
+          "identityPoolId": "us-west-2:29708731-e883-4375-9c57-7de62921ba49",
+          "identityPoolName": "usemeru38a62832_identitypool_38a62832__dev",
+          "allowUnauthenticatedIdentities": false,
+          "authRoleArn": "arn:aws:iam::295758170778:role/amplify-usemeru-dev-185146-authRole",
+          "authRoleName": "amplify-usemeru-dev-185146-authRole",
+          "unauthRoleArn": "arn:aws:iam::295758170778:role/amplify-usemeru-dev-185146-unauthRole",
+          "unauthRoleName": "amplify-usemeru-dev-185146-unauthRole"
         }
+      },
+      "storage": {
+        "s307ed987d": {}
       }
     }
   }
