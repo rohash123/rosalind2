@@ -44,22 +44,38 @@ const navigation = [
     }}
   }
   export default  function MyMeru(){
-        
+        const[key, setKey] = useState(null)
         const [file, setFile] = useState(null);
         const [uploadingStatus, setUploadingStatus] = useState(false);
         async function handleChange(event) {
-            Amplify.configure(awsconfig);
-            if (event.target.files && event.target.files[0]) {
+                if (event.target.files && event.target.files[0]) {
+                const t  =  Auth.currentUserInfo().then(async function(data){
+                    let u = data['attributes']['sub']
+                    console.log(u)
+                    let requestOptions = {
+                      method: 'POST',
+                      headers: { 'mysub': u },
+                      body: JSON.stringify({ title: 'API key Retrieval' })
+                  };
+                  console.log(requestOptions)
+                  fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/', requestOptions)
+                      .then(response => response.json())
+                      .then(setKey(data.apikey))
+                 })
                 const file = event.target.files[0];
-                setFile(file)
-                console.log(Storage)
-                try {
-                  await Storage.put('file.txt', 'file', {
-                    bucket: 'meruv22b6021561fbd4beb977103fd2f77ba86111632-dev'
-                  });
-                } catch (error) {
-                  console.log("Error uploading file: ", error);
-                }
+                const url = URL.createObjectURL(file)
+               await fetch('https://api.usemeru.com/refine/v2/files/', {
+                    method: 'POST',
+                    headers : {
+                        'x-api-key' : key,
+                        'Content-Type' : 'application/json'
+                    },
+                    body : {
+                        file: url
+                        
+                    }
+                }).then( res => console.log(res))
+            
           };}
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [hello, setHello] = useState(false);
