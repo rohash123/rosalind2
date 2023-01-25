@@ -12,6 +12,7 @@ import { Hub } from 'aws-amplify';
 import { useEffect } from 'react';
 import { ThemeProvider } from '@aws-amplify/ui-react';
 import { Authenticator } from '@aws-amplify/ui-react';
+import { ConnectContactLens } from 'aws-sdk';
 
 
 const navigation = [
@@ -47,8 +48,39 @@ const navigation = [
         const[key, setKey] = useState(null)
         const [file, setFile] = useState(null);
         const [uploadingStatus, setUploadingStatus] = useState(false);
+        async function index(){
+            console.log(key)
+            const url = URL.createObjectURL(file)
+            console.log(url)
+            let requestOptions = {
+                method: 'POST',
+                headers: { 
+                    'X-Api-Key': 'meru_95d6b5d7338a4200bf0919093ff357650bfc582470a748f58d3614a5c3fbd3d9', 
+                    'Content-Type': 'application/json',
+                },
+                body: '{"file" :' + url + '}'
+            };
+            try{
+                var f = await fetch('https://7pruqaxt6f.execute-api.us-west-2.amazonaws.com/production/refine/v2/files', requestOptions)
+                var q = await f.json()
+                console.log(q)
+            }
+            catch (error){
+                console.log(error)
+                return(error)
+
+            }
+            }
+
         async function handleChange(event) {
-                if (event.target.files && event.target.files[0]) {
+            console.log(key)
+               if (event.target.files && event.target.files[0]) {
+                console.log(key)
+                if(key){
+                    console.log(key)
+                    return(key)
+                }
+                else {
                 const t  =  Auth.currentUserInfo().then(async function(data){
                     let u = data['attributes']['sub']
                     console.log(u)
@@ -57,26 +89,13 @@ const navigation = [
                       headers: { 'mysub': u },
                       body: JSON.stringify({ title: 'API key Retrieval' })
                   };
-                  console.log(requestOptions)
-                  fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/', requestOptions)
-                      .then(response => response.json())
-                      .then(setKey(data.apikey))
-                 })
-                const file = event.target.files[0];
-                const url = URL.createObjectURL(file)
-               await fetch('https://api.usemeru.com/refine/v2/files/', {
-                    method: 'POST',
-                    headers : {
-                        'x-api-key' : key,
-                        'Content-Type' : 'application/json'
-                    },
-                    body : {
-                        file: url
-                        
-                    }
-                }).then( res => console.log(res))
-            
-          };}
+                  var response = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/', requestOptions)
+                  var data = await response.json()
+                  setKey(data.apikey)
+                })}
+                setFile(event.target.files[0])
+            };
+        }
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [hello, setHello] = useState(false);
     Hub.listen('auth', (data) => {
@@ -243,8 +262,8 @@ const navigation = [
                 </div>
             </div>
             <div class="flex justify-center p-2">
-                <button class="w-full px-4 py-2 text-white bg-pink-600 rounded shadow-xl">Begin</button>
-            </div>
+                <button class="w-full px-4 py-2 text-white bg-pink-600 rounded shadow-xl" onClick={index}>Index</button>         
+                 </div>
         </div>
     </div> 
     </div>
