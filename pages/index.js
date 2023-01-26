@@ -171,8 +171,8 @@ export default function Example() {
               <div className="hidden sm:mb-8 sm:flex sm:justify-center">
                 <div className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                   <span className="text-gray-600">
-                    Cut your GPT-3 Costs by 10% or more{' '}
-                    <a href="/pricing" className="font-semibold text-pink-400">
+                    No More Token Limits! Demo our API today!{' '}
+                    <a href="/mymeru" className="font-semibold text-pink-400">
                       <span className="absolute inset-0" aria-hidden="true" />
                       View Pricing <span aria-hidden="true">&rarr;</span>
                     </a>
@@ -344,6 +344,9 @@ export default function Example() {
         <div className="mt-10 flex justify-center space-x-10">
           
         </div>
+        <p className="mt-10 text-center text-xs leading-5 text-gray-500">
+          Built in San Francisco, CA. Backed by YCombinator.
+        </p>
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           &copy; 2023 Meru Productions, Inc. All rights reserved.
         </p>
