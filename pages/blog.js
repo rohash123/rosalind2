@@ -8,7 +8,9 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Models & Pricing', href: '/pricing' },
   { name: 'Docs', href: 'https://docs.usemeru.com' },
-  { name: 'Blog', href: '/blog'}
+  { name: 'Blog', href: '/blog'},
+  { name: 'Demo', href: '/mymeru'}
+
 ]
 const posts = [
     {

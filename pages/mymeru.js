@@ -6,20 +6,34 @@ import { CheckIcon, Square3Stack3DIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import {Auth, Amplify, Storage } from 'aws-amplify';
+import {Auth, Amplify} from 'aws-amplify';
 import awsconfig from '../src/aws-exports.js';
 import { Hub } from 'aws-amplify';
 import { useEffect } from 'react';
 import { ThemeProvider } from '@aws-amplify/ui-react';
 import { Authenticator } from '@aws-amplify/ui-react';
-import { ConnectContactLens } from 'aws-sdk';
+import { ConnectContactLens, S3 } from 'aws-sdk';
+import { useS3Upload } from "next-s3-upload";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { waitUntilSymbol } from 'next/dist/server/web/spec-extension/fetch-event';
 
 
+
+
+export const config ={
+    api : {
+        bodyParser :{
+            sizeLimit : "8mb",
+        },
+    },
+};
 const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Models & Pricing', href: '/pricing' },
     { name: 'Docs', href: 'https://docs.usemeru.com' },
-    { name: 'Blog', href: '/blog'}
+    { name: 'Blog', href: '/blog'},
+    { name: 'Demo', href: '/mymeru'}
+
   ]
   const components = {
     SignIn: {
@@ -45,25 +59,89 @@ const navigation = [
     }}
   }
   export default  function MyMeru(){
-        const[key, setKey] = useState(null)
+        let { FileInput, openFileDialog, uploadToS3 } = useS3Upload()
+        const[indexed, setIndexed] = useState(false)
+        const[gettingkey, setGettingKey] = useState(false)
+        const[docID, setDocID] = useState('')
+        const [indexingStatus, setIndexingStatus] = useState(false)
+        const[key, setKey] = useState('')
         const [file, setFile] = useState(null);
         const [uploadingStatus, setUploadingStatus] = useState(false);
+        const [prompt, setPrompt] = useState('');
+        const [response, setResponse] = useState('')
+
+  const handlePromptChange = event => {
+    // 👇️ access textarea value
+    setPrompt(event.target.value);
+    console.log(prompt)
+  };
+        async function getfile(q,key){
+            console.log(q.id)
+            let getOptions = {
+                method: 'GET',
+                headers: { 
+                    'x-api-key': key
+                }
+            }
+            let s = await fetch('https://api.usemeru.com/refine/v2/files/' + q.id, getOptions)
+            let p = await s.json()
+            console.log(p.status_code)
+            if (p.status_code != 0 ){                
+                setTimeout(function() { getfile(q,key); },3000)
+            }
+            else{
+                setIndexed(true)
+                setDocID(q.id)
+                return(p)
+            }
+        }
+        async function query(event){
+          event.target.disabled = true
+            console.log(prompt)
+            let queryOptions = 
+            {
+                body: JSON.stringify({model_id:"context-text-davinci-003", inputs :{ file_id : docID, prompt : prompt}}),
+                
+                headers: {
+                  "Content-Type": "application/json",
+                  "X-Api-Key": key
+                },
+                method: "POST"
+              }
+            let p = await fetch("https://api.usemeru.com/refine/v2/predict-context", queryOptions)
+            console.log('hello')
+            let s = await p.json()
+            console.log(s.outputs.choices)
+            setResponse(s.outputs.choices[0].text)
+            console.log(response)
+            event.target.disabled = false
+            
+        }
         async function index(){
-            console.log(key)
-            const url = URL.createObjectURL(file)
-            console.log(url)
+          console.log(key)
+          console.log(file)
+            setIndexingStatus(true)                       
+            const formData = new FormData();
+            formData.append("document",file)
+            
             let requestOptions = {
                 method: 'POST',
                 headers: { 
-                    'X-Api-Key': 'meru_95d6b5d7338a4200bf0919093ff357650bfc582470a748f58d3614a5c3fbd3d9', 
-                    'Content-Type': 'application/json',
+                    'x-api-key': key
                 },
-                body: '{"file" :' + url + '}'
-            };
+                body: formData
+            }
             try{
-                var f = await fetch('https://7pruqaxt6f.execute-api.us-west-2.amazonaws.com/production/refine/v2/files', requestOptions)
+                var f = await fetch('https://api.usemeru.com/refine/v2/files-multipart', requestOptions)
+                console.log(f)
                 var q = await f.json()
                 console.log(q)
+                var t = await getfile(q,key)
+                
+                return
+                
+                
+
             }
             catch (error){
                 console.log(error)
@@ -73,11 +151,13 @@ const navigation = [
             }
 
         async function handleChange(event) {
+            setGettingKey(true)
             console.log(key)
                if (event.target.files && event.target.files[0]) {
                 console.log(key)
                 if(key){
                     console.log(key)
+                    setUploadingStatus(true)
                     return(key)
                 }
                 else {
@@ -91,9 +171,11 @@ const navigation = [
                   };
                   var response = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/', requestOptions)
                   var data = await response.json()
+                  console.log(data)
                   setKey(data.apikey)
+                  setFile(event.target.files[0])
                 })}
-                setFile(event.target.files[0])
+                
             };
         }
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -116,9 +198,17 @@ const navigation = [
         //     console.log('the Auth module is configured');
       }
     });
+    function f(){
+      setUploadingStatus(true)
+    }
     useEffect(() => {
+      console.log(key)
+      if(key !=''){
+        setTimeout(f,15000)
+        console.log(key)
+      }
       Auth.currentUserInfo().then((response) => setHello(response));
-    }, []);
+    }, [key]);
     if (hello){
         return (
           <>
@@ -226,7 +316,7 @@ const navigation = [
                       Chat with Your Content
                     </h1>
                     <p className="mt-6 text-lg leading-8 text-gray-600">
-                      Gain insights faster by having a conversation with your content. Just upload a PDF, start asking questions, and get natural language responses. 
+                      Gain insights faster by having a conversation with your content. Just upload a PDF or TXT file, start asking questions, and get natural language responses. 
                     </p>
                     <div className="mt-10 flex items-center gap-x-6">
                       <a href="/densedataretrieval" className="text-base font-semibold leading-7 text-gray-900">
@@ -242,10 +332,10 @@ const navigation = [
                   <div class="flex justify-center">
       
                   <div class="flex justify-center mt-8">
-        <div class="max-w-2xl rounded-lg shadow-xl bg-gray-50">
+        {!indexed && (<div class="max-w-2xl rounded-lg shadow-xl bg-gray-50">
             <div class="m-4">
-                <label class="inline-block mb-2 text-gray-500">Upload a PDF Document </label>
-                <div class="flex items-center justify-center w-full">
+                <label class="inline-block mb-2 text-gray-500">Upload a Document </label>
+                {!gettingkey && !uploadingStatus  && (<div class="flex items-center justify-center w-full">
                     <label
                         class="flex flex-col w-full h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
                         <div class="flex flex-col items-center justify-center pt-7">
@@ -257,16 +347,83 @@ const navigation = [
                             <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
                                 Attach a file</p>
                         </div>
-                        <input onChange={handleChange} accept="" type="file" class="opacity-0" />
+                        <input onChange={handleChange} accept=".txt,.pdf" type="file" class="opacity-0" />
                     </label>
+                </div>)}
+                {uploadingStatus  && !indexingStatus &&(
+                    <>
+                <p className="mt-6 text-lg leading-8 text-gray-600">
+                <p className="mt-6 text-lg leading-8 text-gray-800"> {file.name}</p> Your file is ready for indexing. Click the button below.
+              </p>
+              <div class="flex justify-center p-2">
+              <button class="w-full px-4 py-2 text-white bg-pink-600 rounded shadow-xl" onClick={index}>Index</button>         
+               </div>
+</>
+                )}
+                {gettingkey && !uploadingStatus && (
+                    <>
+                <p className="mt-6 text-lg leading-8 text-gray-600">
+                <p className="mt-6 text-lg leading-8 text-gray-800"> </p> Loading File... ~15s
+              </p>
+</>
+                )}
+                {indexingStatus  && !indexed && (
+                    <>
+                    
+                    <div class="flex items-center justify-center w-full">
+                    <p className="mt-6 text-lg leading-8 text-gray-800 pr-10">Your file is being indexed. Please do not navigate away from this page. Please be patient. Once indexing is complete, you will be able to query your document. </p>
+              
+                    
+                    <div role="status">
+                    <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                    </svg>
+                    <span class="sr-only">Loading...</span>
+                    </div>
+                    
                 </div>
+                </>
+                )}
+                
             </div>
-            <div class="flex justify-center p-2">
-                <button class="w-full px-4 py-2 text-white bg-pink-600 rounded shadow-xl" onClick={index}>Index</button>         
-                 </div>
-        </div>
+            
+      
+        </div>)}
+        {indexed && (
+                    <>
+                    <div className="max-w-lg">
+                    <p> Your Document is Ready! </p>
+                    <textarea id="message" onChange = {handlePromptChange}rows="12" class="mt-5 block p-2.5 w-200 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ask a question about your document and click submit query"></textarea>
+                    <div className="mt-5 flex items-center gap-x-6">
+                    <button onClick={query}>
+                      <p className="text-base font-semibold leading-7 text-pink-600 ">
+                      Submit Query <span aria-hidden="true">→</span>
+                      </p>
+                      </button>
+                    </div>
+                  </div>
+                  <div className="max-w-lg">
+                    <textarea id="message" rows="12" class="block mt-11 mx-5 p-2.5 w-200 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Response will appear here" value={response}></textarea>
+                    <div className="mt-5 flex items-center gap-x-6">
+                      <a href = "https://usemeru.com/mymeru" className="text-base font-semibold leading-7 text-pink-600 ">
+                      New Document <span aria-hidden="true">→</span>
+                      </a>
+                      </div>
+                  </div>
+    
+      
+      
+    
+    
+                    </>
+                )
+                }
+        
     </div> 
+    
     </div>
+    
     
               </div>
             </div>

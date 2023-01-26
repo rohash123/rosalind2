@@ -8,7 +8,9 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Models & Pricing', href: '/pricing' },
   { name: 'Docs', href: 'https://docs.usemeru.com' },
-  { name: 'Blog', href: '/blog'}
+  { name: 'Blog', href: '/blog'},
+  { name: 'Demo', href: '/mymeru'}
+
 ]
 
 const features = [
@@ -260,10 +262,10 @@ export default function Example() {
                     </span>
                   </a>
                   <a
-                    href="https://docs.usemeru.com"
+                    href="https://usemeru.com/mymeru"
                     className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                   >
-                    Read the Docs{' '}
+                    Try the Demo{' '}
                     <span className="text-gray-400" aria-hidden="true">
                       &rarr;
                     </span>
