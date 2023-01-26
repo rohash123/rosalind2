@@ -6,7 +6,7 @@ import { AdjustmentsVerticalIcon, ArrowDownRightIcon, PhotoIcon, UserPlusIcon, F
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Models & Pricing', href: '/pricing' },
+  { name: 'Models', href: '/pricing' },
   { name: 'Docs', href: 'https://docs.usemeru.com' },
   { name: 'Blog', href: '/blog'},
   { name: 'Demo', href: '/mymeru'}
