@@ -19,7 +19,7 @@ import { Hub } from 'aws-amplify';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Models', href: '/pricing' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'Docs', href: 'https://docs.usemeru.com' },
   { name: 'Blog', href: '/blog'},
   { name: 'Demo', href: '/mymeru'}

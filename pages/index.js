@@ -6,7 +6,7 @@ import { AdjustmentsVerticalIcon, ArrowDownRightIcon, PhotoIcon, UserPlusIcon, F
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Models', href: '/pricing' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'Docs', href: 'https://docs.usemeru.com' },
   { name: 'Blog', href: '/blog'},
   { name: 'Demo', href: '/mymeru'}
@@ -174,7 +174,7 @@ export default function Example() {
                     No More Token Limits! Demo our API today!{' '}
                     <a href="/mymeru" className="font-semibold text-pink-400">
                       <span className="absolute inset-0" aria-hidden="true" />
-                      View Pricing <span aria-hidden="true">&rarr;</span>
+                      View Demo <span aria-hidden="true">&rarr;</span>
                     </a>
                   </span>
                 </div>

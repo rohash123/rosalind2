@@ -6,7 +6,7 @@ import { AdjustmentsVerticalIcon, ArrowDownRightIcon, PhotoIcon, UserPlusIcon, F
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Models', href: '/pricing' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'Docs', href: 'https://docs.usemeru.com' },
   { name: 'Blog', href: '/blog'},
   { name: 'Demo', href: '/mymeru'}
@@ -20,7 +20,7 @@ const posts = [
       description:
         'New API endpoints that make querying documents in the style of Chat-GPT hallucination-free & effortless.',
       date: 'Mar 16, 2020',
-      datetime: '2020-03-16',
+      datetime: '2020-01-15',
       author: {
         name: 'Rohan Arora',
         href: 'https://linkedin.com/in/meetrohanarora',
