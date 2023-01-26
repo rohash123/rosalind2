@@ -161,20 +161,21 @@ const navigation = [
                     return(key)
                 }
                 else {
-                const t  =  Auth.currentUserInfo().then(async function(data){
-                    let u = data['attributes']['sub']
+                const t  =  await Auth.currentUserInfo()
+                    let u = t['attributes']['sub']
                     console.log(u)
                     let requestOptions = {
                       method: 'POST',
-                      headers: { 'mysub': u },
+                      headers: { 'mysub': u, 'content-type' : 'application/json' },
                       body: JSON.stringify({ title: 'API key Retrieval' })
                   };
+                  
                   var response = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/', requestOptions)
                   var data = await response.json()
                   console.log(data)
                   setKey(data.apikey)
                   setFile(event.target.files[0])
-                })}
+                }
                 
             };
         }
@@ -199,12 +200,13 @@ const navigation = [
       }
     });
     function f(){
+      console.log('running')
       setUploadingStatus(true)
     }
     useEffect(() => {
       console.log(key)
       if(key !=''){
-        setTimeout(f,15000)
+        setTimeout(f,20000)
         console.log(key)
       }
       Auth.currentUserInfo().then((response) => setHello(response));
@@ -363,7 +365,7 @@ const navigation = [
                 {gettingkey && !uploadingStatus && (
                     <>
                 <p className="mt-6 text-lg leading-8 text-gray-600">
-                <p className="mt-6 text-lg leading-8 text-gray-800"> </p> Loading File... ~15s
+                <p className="mt-6 text-lg leading-8 text-gray-800"> </p> Checking File... ~15s
               </p>
 </>
                 )}
