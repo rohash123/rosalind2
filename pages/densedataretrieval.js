@@ -9,9 +9,11 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Models & Pricing', href: '/pricing' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'Docs', href: 'https://docs.usemeru.com' },
-  { name: 'Blog', href: '/blog'}
+  { name: 'Blog', href: '/blog'},
+  { name: 'Demo', href: '/mymeru'}
+
 ]
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
