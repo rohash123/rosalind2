@@ -50,24 +50,33 @@ const navigation = [
     return classes.filter(Boolean).join(' ')
   }
   export async function getServerSideProps(context) {
-    const { Auth } = withSSRContext(context)
+    const { Auth, API } = withSSRContext(context)
     console.log(process.env.DBX_REFRESH_TOKEN)
     let user = null
     let response = null
+    let f = 'null'
   
     try {
       user = await Auth.currentUserInfo()
       let sub = user['attributes']['sub']
-    const key = process.env.ADMIN_KEY
-    let requestOptions = {
-        method: 'POST',
-        headers: { 'mysub': sub, 'x-api-key' : key, 'Content-Type' : 'application/json'},
-        body: JSON.stringify({ title: 'API key Retrieval' })
-    };
-    let is = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/get-key', requestOptions)
-    response = await is.json()
-    console.log('user is authenticated');
-    console.log(response)
+    // const key = process.env.ADMIN_KEY
+    // let requestOptions = {
+    //     method: 'POST',
+    //     headers: { 'mysub': sub, 'x-api-key' : key, 'Content-Type' : 'application/json'},
+    //     body: JSON.stringify({ title: 'API key Retrieval' })
+    // };
+    // let is = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/get-key', requestOptions)
+    // response = await is.json()
+    // console.log(response)
+    let data  = await API.graphql({
+        authMode: 'API_KEY',
+        query: getMeruApiSub,
+        variables: {
+            owner_id: sub,
+        }
+      });
+    f = await data.json()
+    console.log(f)
     } catch (error) {
       // Usually "not authenticated
       response = error
@@ -75,7 +84,7 @@ const navigation = [
     
     return {
         props: {
-          token: JSON.parse(JSON.stringify(response)),
+          token: JSON.parse(JSON.stringify(f)),
         },
       }
   
@@ -284,7 +293,7 @@ async function addtoDB(f,state,response){
                 }
                 setPlan(data.getMeruApiSub.plan)
                 setQueries(data.getMeruApiSub.queries)
-                setIndicies(data.getMeruApiSub.indicies)
+                setIndicies(data.getMeruApiSub.indices)
                 setApiKey(data.getMeruApiSub.meru)
               } catch (errors) {
                 console.log(errors);
@@ -301,9 +310,9 @@ async function addtoDB(f,state,response){
         }
     }
         console.log(token)
-        if(token.apikey){
-            setApiKey(token.apikey)
-        }
+        // if(token.meru){
+        //     setApiKey(token.meru)
+        // }
         
     }) 
     function loadPage(name){
@@ -324,7 +333,7 @@ async function addtoDB(f,state,response){
             await Auth.signOut({ global: true });
             window.location.reload();
         } catch (error) {
-            console.log('error signing out: ', error);
+            Auth.signOut()
         }
     }
     return(
@@ -592,8 +601,8 @@ async function addtoDB(f,state,response){
             <dt className="text-sm font-medium text-gray-500">Your Meru API Key</dt>
             {!apiKey && (
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <button onClick={createkey} className="font-medium text-pink-400 hover:text-pink-600">
-            Create Your API Key
-          </button> </dd>)}
+            Create Your New API Key 
+          </button> (old API Keys made with Meru will continue to work, but won't be viewable here.)</dd>)}
             {apiKey && (<dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               <ul role="list" className="divide-y divide-gray-200 rounded-md border border-gray-200">
                 {!show && (<li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
