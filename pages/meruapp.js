@@ -51,7 +51,6 @@ const navigation = [
   }
   export async function getServerSideProps(context) {
     const { Auth, API } = withSSRContext(context)
-    console.log(process.env.DBX_REFRESH_TOKEN)
     let user = null
     let response = null
     let f = 'null'
