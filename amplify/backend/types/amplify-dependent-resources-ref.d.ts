@@ -1,8 +1,9 @@
 export type AmplifyDependentResourcesAttributes = {
-    "storage": {
-        "s307ed987d": {
-            "BucketName": "string",
-            "Region": "string"
+    "api": {
+        "meruv2": {
+            "GraphQLAPIKeyOutput": "string",
+            "GraphQLAPIIdOutput": "string",
+            "GraphQLAPIEndpointOutput": "string"
         }
     }
 }

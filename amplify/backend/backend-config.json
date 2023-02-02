@@ -9,10 +9,30 @@
     }
   },
   "storage": {
-    "s307ed987d": {
-      "service": "S3",
+    "meruapisub": {
+      "service": "DynamoDB",
+      "serviceType": "imported",
       "providerPlugin": "awscloudformation",
       "dependsOn": []
     }
-  }
+  },
+  "api": {
+    "meruv2": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      }
+    }
+  },
+  "function": {}
 }
