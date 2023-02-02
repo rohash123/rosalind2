@@ -33,7 +33,7 @@ const { Auth } = withSSRContext()
 
 const navigation = [
     
-    { name: 'Indexed Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
+    { name: 'Indexes', href: '#', icon: DocumentDuplicateIcon, current: false },
     { name: 'Create an Index', href: '#', icon: CircleStackIcon, current: false },
     { name: 'Query History', href: '#', icon: MagnifyingGlassIcon, current: false },
     { name: 'Account', href: '#account', icon: UserIcon, current: true },
@@ -516,7 +516,7 @@ async function addtoDB(f,state,response){
             </div>
           </div>
           {/* Indexed Documents */}
-          {(active == 'Indexed Documents') &&(<div className="relative z-0 flex flex-1 overflow-hidden">
+          {(active == 'Indexes') &&(<div className="relative z-0 flex flex-1 overflow-hidden">
             <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
               {/* Start main area*/}
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
@@ -552,7 +552,7 @@ async function addtoDB(f,state,response){
                 cancel={() => this.onCancel()}
                 multiselect={true}
                 extensions={['.pdf','.txt']} >
-                <div className="className= dropbox-button cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Upload Files from Dropbox</div> 
+                <div className="className= dropbox-button cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Add Files from Dropbox</div> 
             </DropboxChooser>
                 <div className="h-full border-gray-200" />
               </div>
