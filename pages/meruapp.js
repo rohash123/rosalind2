@@ -12,6 +12,8 @@ import { createMeruApiSub } from "../src/graphql/mutations";
 import { updateMeruApiSub } from "../src/graphql/mutations";
 import { getMeruApiSub } from "../src/graphql/queries";
 import DropboxChooser from 'react-dropbox-chooser';
+import Query from "../components/Query";
+import QueryHistory from "../components/QueryHistory";
 
 import {
     DocumentDuplicateIcon,
@@ -24,6 +26,7 @@ import {
     EllipsisVerticalIcon,
     XMarkIcon,
   } from "@heroicons/react/24/outline";
+import { handleClientScriptLoad } from "next/script";
 
 
 Amplify.configure(awsExports)
@@ -85,8 +88,7 @@ const navigation = [
         props: {
           token: JSON.parse(JSON.stringify(f)),
         },
-      }
-  
+    }
     
   }
 //   let user;
@@ -114,6 +116,9 @@ const navigation = [
 export default function MeruApp({token}){
     const router = useRouter();
     const [loggedIn, setLoggedIn] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [fileList, setFileList] = useState(false)
+    const [dbfiles, setdbFiles] = useState(false)
     const [user, setUser] = useState(false)
     const [queries,setQueries] = useState('')
     const [indicies,setIndicies] = useState()
@@ -123,6 +128,7 @@ export default function MeruApp({token}){
     const [active, setActive] = useState('Account')
     const [show, setShow] = useState(false)
     const [resetDisabled, setResetDisabled] = useState(false)
+    const [query, setQuery] = useState(false)
     const [code, setCode] = useState('')
     Hub.listen('auth', (data) => {
         switch (data.payload.event) {
@@ -226,6 +232,24 @@ async function addtoDB(f,state,response){
         return
     }
     }
+    async function getfiles(){
+        console.log(apiKey)
+        let requestOptions = {
+            method: 'GET',
+            headers: { 'x-api-key' : apiKey, 'Content-Type' : 'application/json'}
+        };
+        let tempfilelist = await fetch('https://api.usemeru.com/refine/v3/files', requestOptions)
+        let filelistjson = await tempfilelist.json()
+        console.log(filelistjson)
+        setFileList(filelistjson.indices)
+    }
+    async function setupquery(index){
+        setQuery(index)
+    }
+    async function prepfiles(files){
+        
+
+    }
     useEffect(() => {
         async function createUser(){
             const response = await Auth.currentAuthenticatedUser()
@@ -271,7 +295,6 @@ async function addtoDB(f,state,response){
 
         }
 
-
         async function getstuff(){
             try { 
                 let p = user['attributes']['sub']
@@ -314,8 +337,10 @@ async function addtoDB(f,state,response){
         // }
         
     }) 
-    function loadPage(name){
-        
+    async function handleIndexload(){
+        await getfiles()
+    }
+    async function loadPage(name){
         for(var i in navigation){
         console.log(navigation[i].name)
         navigation[i].current = false
@@ -323,10 +348,15 @@ async function addtoDB(f,state,response){
             navigation[i].current = true
             ; // If you want to break out of the loop once you've found a match
         }
+        setLoading(true)
+        if(name == 'Indexes'){
+            handleIndexload(name)
+        }
+        
     }
     setActive(name)
-
     }
+    
     async function signOut() {
         try {
             await Auth.signOut({ global: true });
@@ -518,15 +548,47 @@ async function addtoDB(f,state,response){
           {(active == 'Indexes') &&(<div className="relative z-0 flex flex-1 overflow-hidden">
             <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
               {/* Start main area*/}
-              <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                You Are Stupid
+              {!query &&(<div className="absolute font-bold inset-0 py-6 px-4 sm:px-6 lg:px-8">
+                Select and Index to Query It
                 <div className="h-full border-gray-200" />
-              </div>
+              </div>)}
+              {query && (<div className="inset-0 py-6 px-4 sm:px-6 lg:px-8">
+              <Query props={query} apikey={apiKey}/>
+              </div>)
+               
+              }
+              
               {/* End main area */}
             </main>
             <aside className="relative hidden w-96 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
               {/* Start secondary column (hidden on smaller screens) */}
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
+                {!fileList[0] &&( <p>Loading Your Indexes...</p>)}
+                {fileList && (
+                    <div>
+                {fileList.map((integration) => (
+          <li key={integration.id} className="col-span-1 flex mt-3 rounded-md shadow-sm">      
+        {(integration.status_code == 0) && (<div className = 'bg-green-600 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
+        {(integration.status_code == 1) && (<div className = 'bg-yellow-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
+        {(integration.status_code == 2) && (<div className = 'bg-red-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
+                
+            <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
+              <div className="flex-1 truncate px-4 py-2 text-sm">
+                <button onClick={()=>{setupquery(integration)}} className="font-medium text-gray-900 hover:text-gray-600">
+                  <div>
+                  {integration.id}
+                  {integration.name && (<p className=" text-left font-medium text-gray-900 hover:text-gray-600">Name: {integration.name}</p>)}
+                  </div>
+                  
+                </button>
+                <p className="text-gray-500">{integration.text}</p>
+              </div>
+              <div className="flex-shrink-0 pr-2">
+              </div>
+            </div>
+          </li>
+        ))}
+        </div>)}
                 <div className="h-full border-gray-200" />
               </div>
               {/* End secondary column */}
@@ -547,35 +609,48 @@ async function addtoDB(f,state,response){
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
               <DropboxChooser 
                 appKey={'rqiucchpvi1uywj'}
-                success={files => this.onSuccess(files)}
+                success={files => setdbFiles(files)}
                 cancel={() => this.onCancel()}
                 multiselect={true}
                 extensions={['.pdf','.txt']} >
-                <div className="className= dropbox-button cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Add Files from Dropbox</div> 
+                <div className="className= dropbox-button cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Add Files</div> 
             </DropboxChooser>
-                <div className="h-full border-gray-200" />
+            {/* {!dbfiles[0] &&( <p>Select a file to begin</p>)} */}
+                {dbfiles && (
+                    <div>
+                {dbfiles.map((integration) => (
+          <li key={integration.id} className="col-span-1 flex mt-3 rounded-md shadow-sm">      
+        {(integration.status_code == 0) && (<div className = 'bg-green-600 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
+        {(integration.status_code == 1) && (<div className = 'bg-yellow-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
+        {(integration.status_code == 2) && (<div className = 'bg-red-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
+                
+            <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
+              <div className="flex-1 truncate px-4 py-2 text-sm">
+                <button onClick={()=>{setupquery(integration)}} className="font-medium text-gray-900 hover:text-gray-600">
+                  <div>
+                  {integration.id}
+                  {integration.name && (<p className=" text-left font-medium text-gray-900 hover:text-gray-600">Name: {integration.name}</p>)}
+                  </div>
+                  
+                </button>
+                <p className="text-gray-500">{integration.text}</p>
+              </div>
+              <div className="flex-shrink-0 pr-2">
+              </div>
+            </div>
+          </li>
+        ))}
+        </div>)}
+       
+            <div className="h-full border-gray-200" />
               </div>
               {/* End secondary column */}
             </aside>
           </div>)}
           {/* Query History */}
-          {(active == 'Query History') &&(<div className="relative z-0 flex flex-1 overflow-hidden">
-            <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
-              {/* Start main area*/}
-              <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                You Are Stupid
-                <div className="h-full border-gray-200" />
-              </div>
-              {/* End main area */}
-            </main>
-            <aside className="relative hidden w-96 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
-              {/* Start secondary column (hidden on smaller screens) */}
-              <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                <div className="h-full border-gray-200" />
-              </div>
-              {/* End secondary column */}
-            </aside>
-          </div>)}
+          {(active == 'Query History') &&(
+            <QueryHistory apikey={apiKey}/>
+        )}
           {/* Account Details */}
          {(active == 'Account') &&(<div className="relative z-0 flex flex-1 overflow-hidden">
             <main className="relative z-0 flex-1 focus:outline-none xl:order-last">
