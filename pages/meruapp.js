@@ -116,6 +116,7 @@ const navigation = [
 export default function MeruApp({token}){
     const router = useRouter();
     const [loggedIn, setLoggedIn] = useState(false)
+    const [indexName, setIndexName] = useState(false)
     const [loading, setLoading] = useState(false)
     const [fileList, setFileList] = useState(false)
     const [dbfiles, setdbFiles] = useState(false)
@@ -246,9 +247,19 @@ async function addtoDB(f,state,response){
     async function setupquery(index){
         setQuery(index)
     }
-    async function prepfiles(files){
-        
-
+    async function createIndex(){
+        var result= dbfiles.map( function(item) { return item.link })
+        let requestOptions = {
+            method: 'POST',
+            headers: {'x-api-key' : apiKey,'Content-Type' : 'application/json'},
+            body: JSON.stringify({ 
+                dropbox: result,
+                index_name: indexName
+            })
+        }
+        let response = await fetch('https://api.usemeru.com/refine/v3/files-internal',requestOptions)
+        let data = await response.json()
+        console.log(data)
     }
     useEffect(() => {
         async function createUser(){
@@ -613,27 +624,25 @@ async function addtoDB(f,state,response){
                 cancel={() => this.onCancel()}
                 multiselect={true}
                 extensions={['.pdf','.txt']} >
-                <div className="className= dropbox-button cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Add Files</div> 
+                <div className=" dropbox-button w-full cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">{!dbfiles && ('Add Files')}{dbfiles && ('Replace Files')}</div> 
             </DropboxChooser>
+            
+            
             {/* {!dbfiles[0] &&( <p>Select a file to begin</p>)} */}
                 {dbfiles && (
                     <div>
                 {dbfiles.map((integration) => (
           <li key={integration.id} className="col-span-1 flex mt-3 rounded-md shadow-sm">      
-        {(integration.status_code == 0) && (<div className = 'bg-green-600 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
-        {(integration.status_code == 1) && (<div className = 'bg-yellow-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
-        {(integration.status_code == 2) && (<div className = 'bg-red-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
+        <div className = 'bg-indigo-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>
                 
             <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
               <div className="flex-1 truncate px-4 py-2 text-sm">
-                <button onClick={()=>{setupquery(integration)}} className="font-medium text-gray-900 hover:text-gray-600">
+                <button className="font-medium text-gray-900 hover:text-gray-600">
                   <div>
-                  {integration.id}
-                  {integration.name && (<p className=" text-left font-medium text-gray-900 hover:text-gray-600">Name: {integration.name}</p>)}
+                  {integration.name && (<p className=" text-left font-medium text-gray-900 hover:text-gray-600"> {integration.name}</p>)}
                   </div>
                   
                 </button>
-                <p className="text-gray-500">{integration.text}</p>
               </div>
               <div className="flex-shrink-0 pr-2">
               </div>
@@ -641,7 +650,29 @@ async function addtoDB(f,state,response){
           </li>
         ))}
         </div>)}
-       
+        {dbfiles && (
+            <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Name Your Index
+            </label>
+            <div className="mt-1">
+              <input
+                type="text"
+                name="indexname"
+                id="indexname"
+                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                onChange = {e => setIndexName(e.target.value)}
+                value = {indexName}
+                placeholder="Jerry Seinfield"
+                aria-describedby="index-description"
+              />
+            </div>
+            <p className="mt-2 text-sm text-gray-500" id="email-description">
+              This is optional, but will help you find your index later.
+            </p>
+          </div>
+        )}
+        {dbfiles && (<div className="cursor-pointer w-full mt-4 inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2" onClick = {createIndex} disabled = {false}>Create Index</div> )}
             <div className="h-full border-gray-200" />
               </div>
               {/* End secondary column */}
