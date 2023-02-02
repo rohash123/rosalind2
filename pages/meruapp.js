@@ -291,7 +291,7 @@ async function addtoDB(f,state,response){
                     integrations.dropbox.text = 'Connected'
                     console.log(data.getMeruApiSub.dropbox)
                 }
-                setPlan(data.getMeruApiSub.plan)
+                setPlan(data.getMeruApiSub.subscription_plan)
                 setQueries(data.getMeruApiSub.queries)
                 setIndicies(data.getMeruApiSub.indices)
                 setApiKey(data.getMeruApiSub.meru)
@@ -543,17 +543,17 @@ async function addtoDB(f,state,response){
               </div>
               {/* End main area */}
             </main>
-            <aside className="relative hidden w-96 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
+            <aside className="relative hidden w-80 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
               {/* Start secondary column (hidden on smaller screens) */}
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
               <DropboxChooser 
-    appKey={'rqiucchpvi1uywj'}
-    success={files => this.onSuccess(files)}
-    cancel={() => this.onCancel()}
-    multiselect={true}
-    extensions={['.mp4']} >
-    <div className="dropbox-button">Click me!</div>        
-</DropboxChooser>
+                appKey={'rqiucchpvi1uywj'}
+                success={files => this.onSuccess(files)}
+                cancel={() => this.onCancel()}
+                multiselect={true}
+                extensions={['.pdf','.txt']} >
+                <div className="className= dropbox-button cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Upload Files from Dropbox</div> 
+            </DropboxChooser>
                 <div className="h-full border-gray-200" />
               </div>
               {/* End secondary column */}
@@ -674,7 +674,7 @@ async function addtoDB(f,state,response){
                 <p className="font-medium text-gray-900 hover:text-gray-600">
                   {indicies}
                 </p>
-                <p className="text-gray-500">Documents Indexed this Month</p>
+                <p className="text-gray-500">Indexes Left this Month</p>
               </div>
               <div className="flex-shrink-0 pr-2">
               </div>
@@ -686,7 +686,7 @@ async function addtoDB(f,state,response){
                 <p className="font-medium text-gray-900 hover:text-gray-600">
                   {queries}
                 </p>
-                <p className="text-gray-500">Queries Submitted this Month</p>
+                <p className="text-gray-500">Queries Left this Month</p>
               </div>
               <div className="flex-shrink-0 pr-2">
               </div>
