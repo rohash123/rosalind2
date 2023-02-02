@@ -78,7 +78,7 @@ const navigation = [
     f = await data.json()
     console.log(f)
     } catch (error) {
-      // Usually "not authenticated
+      console.log(error)
       response = error
     }
     
