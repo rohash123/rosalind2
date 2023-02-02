@@ -8,14 +8,7 @@
       "customAuth": false
     }
   },
-  "storage": {
-    "meruapisub": {
-      "service": "DynamoDB",
-      "serviceType": "imported",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": []
-    }
-  },
+  "storage": {},
   "api": {
     "meruv2": {
       "service": "AppSync",
