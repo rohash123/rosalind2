@@ -33,10 +33,10 @@ const { Auth } = withSSRContext()
 
 const navigation = [
     
-    { name: 'Indexed Documents', href: '#', icon: DocumentDuplicateIcon, current: true },
+    { name: 'Indexed Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
     { name: 'Create an Index', href: '#', icon: CircleStackIcon, current: false },
     { name: 'Query History', href: '#', icon: MagnifyingGlassIcon, current: false },
-    { name: 'Account', href: '#account', icon: UserIcon, current: false },
+    { name: 'Account', href: '#account', icon: UserIcon, current: true },
     { name: 'Upgrade Plan', href: '#', icon: SquaresPlusIcon , current: false },
   ]
   const integrations = {
@@ -112,7 +112,7 @@ export default function MeruApp({token}){
     const [plan, setPlan] = useState('')
     const [apiKey, setApiKey]= useState(false)
     const [sidebarOpen, setSidebarOpen] = useState(false)
-    const [active, setActive] = useState('')
+    const [active, setActive] = useState('Account')
     const [show, setShow] = useState(false)
     const [resetDisabled, setResetDisabled] = useState(false)
     const [code, setCode] = useState('')
