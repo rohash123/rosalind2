@@ -56,7 +56,7 @@ const navigation = [
     let response = null
   
     try {
-      user = await Auth.currentAuthenticatedUser()
+      user = await Auth.currentUserInfo()
       let sub = user['attributes']['sub']
     const key = process.env.ADMIN_KEY
     let requestOptions = {
@@ -120,6 +120,7 @@ export default function MeruApp({token}){
         switch (data.payload.event) {
           case 'signIn':
               setLoggedIn(true)
+              refreshData()
         }
     })
     const refreshData = () => {
@@ -284,6 +285,7 @@ async function addtoDB(f,state,response){
                 setPlan(data.getMeruApiSub.plan)
                 setQueries(data.getMeruApiSub.queries)
                 setIndicies(data.getMeruApiSub.indicies)
+                setApiKey(data.getMeruApiSub.meru)
               } catch (errors) {
                 console.log(errors);
               }
@@ -294,8 +296,11 @@ async function addtoDB(f,state,response){
             createUser()
         }
         if(user){
+            if(queries == ''){
             getstuff()
         }
+    }
+        console.log(token)
         if(token.apikey){
             setApiKey(token.apikey)
         }
