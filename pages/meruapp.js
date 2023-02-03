@@ -28,8 +28,7 @@ import {
     XMarkIcon,
   } from "@heroicons/react/24/outline";
 
-Amplify.configure(awsExports)
-const { Auth } = withSSRContext()
+Amplify.configure({ ...awsExports, ssr: true });
 
 
 
@@ -56,8 +55,10 @@ const navigation = [
     // const { Auth, API } = withSSRContext(context)
     let f = 'null'
     let user = await SSR.Auth.currentUserInfo()
+    console.log(user)
     try {
         let sub = user['attributes']['sub']
+        console.log(sub)
     // const key = process.env.ADMIN_KEY
     // let requestOptions = {
     //     method: 'POST',
@@ -362,12 +363,11 @@ async function addtoDB(f,state,response){
             navigation[i].current = true
             ; // If you want to break out of the loop once you've found a match
         }
-        setLoading(true)
+    }
+    setLoading(true)
         if(name == 'Indexes'){
             handleIndexload(name)
         }
-        
-    }
     setActive(name)
     }
     
@@ -574,7 +574,7 @@ async function addtoDB(f,state,response){
               
               {/* End main area */}
             </main>
-            <aside className="absolute hidden w-96 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
+            <aside className="relative hidden w-96 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
               {/* Start secondary column (hidden on smaller screens) */}
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
                 {!fileList &&( <p>Loading Your Indexes...</p>)}
