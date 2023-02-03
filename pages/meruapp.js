@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from '@headlessui/react'
-import {API, Auth, Hub, Amplify, withServerContext, withSSRContext } from 'aws-amplify'
+import {API, Auth, Hub, Amplify} from 'aws-amplify'
 import AuthComponent from "../components/AuthComponent";
 import Banner from "../components/Banner"
 import awsExports from '../src/aws-exports'
@@ -28,7 +28,7 @@ import {
     XMarkIcon,
   } from "@heroicons/react/24/outline";
 
-Amplify.configure(awsExports);
+Amplify.configure({...awsExports, ssr: false});
 
 
 
@@ -140,7 +140,6 @@ export default function MeruApp(){
         switch (data.payload.event) {
           case 'signIn':
               setLoggedIn(true)
-              refreshData()
         }
     })
     
@@ -262,6 +261,7 @@ async function addtoDB(f,state,response){
         return
     }
     useEffect(() => {
+        console.log(user)
         async function createUser(){
             const response = await Auth.currentAuthenticatedUser()
             setUser(response)
@@ -324,6 +324,7 @@ async function addtoDB(f,state,response){
                 setQueries(data.getMeruApiSub.queries)
                 setIndicies(data.getMeruApiSub.indices)
                 setApiKey(data.getMeruApiSub.meru)
+                console.log(apiKey)
               } catch (errors) {
                 console.log(errors);
               }
@@ -331,10 +332,12 @@ async function addtoDB(f,state,response){
 
 
         if(loggedIn && !user){
+            console.log('creating user')
             createUser()
             getstuff()
         }
         if(loggedIn && user){
+            console.log('hi')
             getstuff()
     }
         
@@ -371,14 +374,21 @@ async function addtoDB(f,state,response){
         
         <div className="px-6 pt-6 lg:px-8">
         <Navbar/>
-        
+        <button className="group block w-full flex-shrink-0" onClick={signOut}>
+                  <div className="flex items-center">
+                    <div className="ml-3">
+                        {/* Logout */}
+                    <p className="text-sm font-bold text-red-500 group-hover:text-red-700">Log Out</p>                     
+                    </div>
+                  </div>
+                </button>
         {/* APP CODE */}
        {!user && (
         <div className="mt-10">
         <AuthComponent/>
         </div>
        )} 
-       {user && (<div className="mt-10 flex h-[80vh]">
+       {loggedIn && user && (<div className="mt-10 flex h-[80vh]">
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog as="div" className="relative z-40 lg:hidden" onClose={setSidebarOpen}>
             <Transition.Child
