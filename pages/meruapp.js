@@ -51,15 +51,14 @@ const navigation = [
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
-  export async function getServerSideProps(context) {
-    const { Auth, API } = withSSRContext(context)
-    let user = null
-    let response = null
+  export async function getServerSideProps({ req }) {
+    const SSR = withSSRContext({ req })
+    // const { Auth, API } = withSSRContext(context)
     let f = 'null'
-  
+    let data = {}
+    let user = await SSR.Auth.currentUserInfo()
     try {
-      user = await Auth.currentUserInfo()
-      let sub = user['attributes']['sub']
+        let sub = user['attributes']['sub']
     // const key = process.env.ADMIN_KEY
     // let requestOptions = {
     //     method: 'POST',
@@ -69,18 +68,17 @@ const navigation = [
     // let is = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/get-key', requestOptions)
     // response = await is.json()
     // console.log(response)
-    let data  = await API.graphql({
+    data  = await SSR.API.graphql({
         authMode: 'API_KEY',
         query: getMeruApiSub,
         variables: {
             owner_id: sub,
         }
-      });
+      });    
     f = await data.json()
-    console.log(f)
+    
     } catch (error) {
       console.log(error)
-      response = error
     }
     
     return {
@@ -131,11 +129,12 @@ export default function MeruApp({token}){
     const [resetDisabled, setResetDisabled] = useState(false)
     const [query, setQuery] = useState(false)
     const [code, setCode] = useState('')
+
     Hub.listen('auth', (data) => {
         switch (data.payload.event) {
           case 'signIn':
               setLoggedIn(true)
-              window.location.reload()
+              refreshData()
         }
     })
     const refreshData = () => {
@@ -378,7 +377,6 @@ async function addtoDB(f,state,response){
             window.location.reload()
         } catch (error) {
             await Auth.signOut();
-            window.location.reload()
         }
     }
     return(
