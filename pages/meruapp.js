@@ -337,10 +337,6 @@ async function addtoDB(f,state,response){
         if(loggedIn && user){
             getstuff()
     }
-        console.log(token)
-        // if(token.meru){
-        //     setApiKey(token.meru)
-        // }
         
     }) 
     async function handleIndexload(){
