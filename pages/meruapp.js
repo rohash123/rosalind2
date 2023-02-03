@@ -55,7 +55,6 @@ const navigation = [
     const SSR = withSSRContext({ req })
     // const { Auth, API } = withSSRContext(context)
     let f = 'null'
-    let data = {}
     let user = await SSR.Auth.currentUserInfo()
     try {
         let sub = user['attributes']['sub']
@@ -68,7 +67,7 @@ const navigation = [
     // let is = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/get-key', requestOptions)
     // response = await is.json()
     // console.log(response)
-    data  = await SSR.API.graphql({
+    let data  = await SSR.API.graphql({
         authMode: 'API_KEY',
         query: getMeruApiSub,
         variables: {
