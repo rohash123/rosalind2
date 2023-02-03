@@ -131,6 +131,7 @@ export default function MeruApp(){
     const [resetDisabled, setResetDisabled] = useState(false)
     const [query, setQuery] = useState(false)
     const [code, setCode] = useState('')
+    const [DBAccessToken, setDBAccessToken] = useState(false)
     
     const refreshData = () => {
         router.replace(router.asPath);
@@ -243,12 +244,24 @@ async function addtoDB(f,state,response){
         setQuery(index)
     }
     async function createIndex(){
-        var result= dbfiles.map( function(item) {return item.link.replace('dl=0','raw=1')})
+        var result= dbfiles.map( function(item) {return item.id})
+        let dropboxOptions = {
+            method : 'POST',
+            headers : {'Authorization' : 'Bearer ' + DBAccessToken, 'Content-Type' : 'application/json'},
+            body : JSON.stringify(
+                {
+                    "actions": [],
+                    "files": result
+                }
+            )
+
+        }
+        let passfiles = await fetch('https://api.dropboxapi.com/2/sharing/get_file_metadata/batch',dropboxOptions)
         let requestOptions = {
             method: 'POST',
             headers: {'x-api-key' : apiKey,'Content-Type' : 'application/json'},
             body: JSON.stringify({ 
-                dropbox: result,
+                dropbox: passfiles,
                 index_name: indexName
             })
         }
@@ -350,6 +363,22 @@ async function addtoDB(f,state,response){
     async function handleIndexload(){
         await getfiles()
     }
+
+    async function handleCreateIndexLoad(){
+        let refresh = integrations.dropbox.accessToken
+        let requestOptions = {
+            method: 'POST',
+            body : JSON.stringify({
+                refresh_token : refresh,
+                grant_type : 'refresh_token',
+                clientId: 'rqiucchpvi1uywj',
+                clientSecret : 'umpym6xp5r5pj11',
+            }),
+    }
+    let accessToken = await fetch('https://api.dropbox.com/oauth2/token',requestOptions)
+    setDBAccessToken(accessToken)
+    return 
+}
     async function loadPage(name){
         for(var i in navigation){
         console.log(navigation[i].name)
@@ -362,6 +391,9 @@ async function addtoDB(f,state,response){
     setLoading(true)
         if(name == 'Indexes'){
             handleIndexload(name)
+        }
+        if(name == 'Create an Index'){
+            handleCreateIndexLoad(name)
         }
     setActive(name)
     }
