@@ -42,7 +42,7 @@ const navigation = [
     { name: 'Upgrade Plan', href: '#', icon: SquaresPlusIcon , current: false },
   ]
   const integrations = {
-    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://test.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: '', bgColor: 'bg-pink-600' },
+    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=http://localhost:3000/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: '', bgColor: 'bg-pink-600' },
     box : { name: 'Box', initials: 'B', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     googledrive : { name: 'Google Drive', initials: 'GD', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     github : { name: 'Github', initials: 'G', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
@@ -134,6 +134,7 @@ export default function MeruApp(){
     const [query, setQuery] = useState(false)
     const [code, setCode] = useState('')
     const [DBAccessToken, setDBAccessToken] = useState(false)
+    const [done, setDone] = useState(false)
     
     const refreshData = () => {
         router.replace(router.asPath);
@@ -271,8 +272,14 @@ async function addtoDB(f,state,response){
             })
         }
         let response = await fetch('https://api.usemeru.com/refine/v3/files-internal',requestOptions)
+        
         let data = await response.json()
-        console.log('Your Fileset has been submited for indexing', data)
+        if(data.error_code == 0){
+            setDone('Your fileset has been submitted for indexing. Please monitor the Indexes page to see when your index is ready.')
+        }
+        if(data.error_code != 0){
+            setDone('There was an error processing your request. This may mean that you are out of credits. View your account information to see your remaining credits.')
+        }
         setOpen(false)
     }
     function previewdb(link){
@@ -282,10 +289,12 @@ async function addtoDB(f,state,response){
     useEffect(() => {
         async function createUser(){
             if(user){
+                setLoggedIn(true)
                 return
             }
             const response = await Auth.currentAuthenticatedUser()
             setUser(response)
+            setLoggedIn(true)
             console.log(response)
             try{
                 let authcode = window.location.search.slice(1).split("&")[0].split("=")[1]
@@ -601,7 +610,7 @@ async function addtoDB(f,state,response){
             </div>
           </div>
           {/* Indexed Documents */}
-          {(active == 'Indexes') &&(<div className="relative z-0 flex flex-1 overflow-hidden">
+          {(active == 'Indexes') &&(<><h1 className="text-xl ml-10 font-semibold text-gray-900">Your Indexes</h1><div className="relative z-0 flex flex-1 overflow-hidden">
             <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
               {/* Start main area*/}
               {!query &&(<div className="absolute font-bold inset-0 py-6 px-4 sm:px-6 lg:px-8">
@@ -649,9 +658,9 @@ async function addtoDB(f,state,response){
               </div>
               {/* End secondary column */}
             </aside>
-          </div>)}
+          </div></>)}
           {/* Create an Index */}
-          {(active == 'Create an Index') &&(<div className=" w-full relative z-0 flex flex-1 overflow-hidden">
+          {(active == 'Create an Index') &&(<><h1 className="text-xl ml-10 font-semibold text-gray-900">Create a New Index</h1><div className=" w-full relative z-0 flex flex-1 overflow-hidden">
           <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
@@ -679,7 +688,7 @@ async function addtoDB(f,state,response){
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
                 <div>
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
+                  {!done && <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
                   <div role="status">
         <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-100 fill-pink-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -687,16 +696,23 @@ async function addtoDB(f,state,response){
         </svg>
         <span class="sr-only">Loading...</span>
     </div>
-                  </div>
+                  </div>}
                   <div className="mt-3 text-center sm:mt-5">
                     <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
-                      Your Index is being queued. Please wait one moment.
+                      {done || 'Your Index is being queued. Please wait one moment.'}
                     </Dialog.Title>
                     <div className="mt-2">
                     </div>
                   </div>
                 </div>
                 <div className="mt-5 sm:mt-6">
+                {done&&(<button
+                    type="button"
+                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
+                    onClick={() => setOpen(false)}
+                  >
+                    Go back to dashboard
+                  </button>)}
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -709,7 +725,7 @@ async function addtoDB(f,state,response){
               <DropboxChooser 
                 appKey={'rqiucchpvi1uywj'}
                 success={files => setdbFiles(files)}
-                cancel={() => this.onCancel()}
+                cancel={() => console.log('closed')}
                 multiselect={true}
                 extensions={['.pdf','.txt']} >
                 <div className=" dropbox-button w-60 cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">{!dbfiles && ('Add Files')}{dbfiles && ('Replace Files')}</div> 
@@ -777,7 +793,7 @@ async function addtoDB(f,state,response){
               </div>
               {/* End main area */}
             </aside>
-          </div>)}
+          </div></>)}
           {/* Query History */}
           {(active == 'Query History') &&(
             <QueryHistory apikey={apiKey}/>
