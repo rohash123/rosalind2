@@ -118,7 +118,7 @@ export default function MeruApp({token}){
     const router = useRouter();
     const [loggedIn, setLoggedIn] = useState(false)
     const [preview,setpreview] = useState(false)
-    const [indexName, setIndexName] = useState(false)
+    const [indexName, setIndexName] = useState('')
     const [loading, setLoading] = useState(false)
     const [fileList, setFileList] = useState(false)
     const [dbfiles, setdbFiles] = useState(false)
@@ -612,9 +612,9 @@ async function addtoDB(f,state,response){
             </aside>
           </div>)}
           {/* Create an Index */}
-          {(active == 'Create an Index') &&(<div className="relative z-0 flex flex-1 overflow-hidden">
+          {(active == 'Create an Index') &&(<div className=" w-full relative z-0 flex flex-1 overflow-hidden">
             <main className="relative z-0 flex-auto overflow-y-auto focus:outline-none xl:order-first">
-              <div className="relative w-10 inset-0 py-6 px-4 sm:px-6 lg:px-8">
+              <div className="relative w-full inset-0 py-6 px-4 sm:px-6 lg:px-8">
               <DropboxChooser 
                 appKey={'rqiucchpvi1uywj'}
                 success={files => setdbFiles(files)}
@@ -649,7 +649,7 @@ async function addtoDB(f,state,response){
         </div>)}
         {dbfiles && (
             <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="mt-10 block text-sm font-medium text-gray-700">
               Name Your Index
             </label>
             <div className="mt-1">
@@ -669,7 +669,7 @@ async function addtoDB(f,state,response){
             </p>
           </div>
         )}
-        {dbfiles && (<div className="cursor-pointer w-full mt-4 inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2" onClick = {createIndex} disabled = {false}>Create Index</div> )}
+        {dbfiles && (<div className=" w-60 cursor-pointer w-full mt-4 inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2" onClick = {createIndex} disabled = {false}>Create Index</div> )}
             <div className="h-full border-gray-200" />
               </div>
 
@@ -677,6 +677,9 @@ async function addtoDB(f,state,response){
             </main>
             <aside className="relative hidden w-96 flex-auto overflow-y-auto border-l border-gray-200 xl:order-last xl:flex xl:flex-col">
               {/* Start main area*/}
+              <p className="ml-7 text-sm text-gray-500" id="email-description">
+              Select a file to preview it here.
+            </p>
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
               <Document file={preview} />
                 <div className="h-full border-gray-200" />
