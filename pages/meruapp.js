@@ -28,7 +28,7 @@ import {
     XMarkIcon,
   } from "@heroicons/react/24/outline";
 
-Amplify.configure({ ...awsExports, ssr: true });
+Amplify.configure(awsExports);
 
 
 
@@ -112,8 +112,7 @@ const navigation = [
     
     // Props returned will be passed to the page component
     
-export default function MeruApp({token}){
-    console.log(token)
+export default function MeruApp(){
     const router = useRouter();
     const [loggedIn, setLoggedIn] = useState(false)
     const [preview,setpreview] = useState(false)
@@ -132,6 +131,7 @@ export default function MeruApp({token}){
     const [resetDisabled, setResetDisabled] = useState(false)
     const [query, setQuery] = useState(false)
     const [code, setCode] = useState('')
+    
     const refreshData = () => {
         router.replace(router.asPath);
       };
