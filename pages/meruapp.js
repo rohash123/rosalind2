@@ -331,7 +331,7 @@ async function addtoDB(f,state,response){
                 });
                 console.log('success', data)
                 if(data.getMeruApiSub.dropbox){
-                    integrations.dropbox.accessToken = data.dropbox
+                    integrations.dropbox.accessToken = data.getMeruApiSub.dropbox
                     integrations.dropbox.bgColor = 'bg-green-600'
                     integrations.dropbox.text = 'Connected'
                     console.log(data.getMeruApiSub.dropbox)
