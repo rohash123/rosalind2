@@ -14,6 +14,7 @@ import { getMeruApiSub } from "../src/graphql/queries";
 import DropboxChooser from 'react-dropbox-chooser';
 import Query from "../components/Query";
 import QueryHistory from "../components/QueryHistory";
+import { Document } from 'react-pdf'
 
 import {
     DocumentDuplicateIcon,
@@ -116,6 +117,7 @@ const navigation = [
 export default function MeruApp({token}){
     const router = useRouter();
     const [loggedIn, setLoggedIn] = useState(false)
+    const [preview,setpreview] = useState(false)
     const [indexName, setIndexName] = useState(false)
     const [loading, setLoading] = useState(false)
     const [fileList, setFileList] = useState(false)
@@ -261,8 +263,11 @@ async function addtoDB(f,state,response){
         let data = await response.json()
         console.log(data)
     }
+    function previewdb(link){
+        setpreview(link)
+        return
+    }
     useEffect(() => {
-        Dropbox.embed(options, document.getElementById("dropbox-embed"));
         async function createUser(){
             const response = await Auth.currentAuthenticatedUser()
             setUser(response)
@@ -629,7 +634,7 @@ async function addtoDB(f,state,response){
                 
             <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
               <div className="flex-1 truncate px-4 py-2 text-sm">
-                <button className="font-medium text-gray-900 hover:text-gray-600">
+                <button onClick = {()=> previewdb(integration.link.replace('dl=0','raw=1'))}className="font-medium text-gray-900 hover:text-gray-600">
                   <div>
                   {integration.name && (<p className=" text-left font-medium text-gray-900 hover:text-gray-600"> {integration.name}</p>)}
                   </div>
@@ -673,7 +678,7 @@ async function addtoDB(f,state,response){
             <aside className="relative hidden w-96 flex-auto overflow-y-auto border-l border-gray-200 xl:order-last xl:flex xl:flex-col">
               {/* Start main area*/}
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-              <div id="dropbox-embed"/>
+              <Document file={preview} />
                 <div className="h-full border-gray-200" />
               </div>
               {/* End main area */}
