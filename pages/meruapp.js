@@ -14,7 +14,7 @@ import { getMeruApiSub } from "../src/graphql/queries";
 import DropboxChooser from 'react-dropbox-chooser';
 import Query from "../components/Query";
 import QueryHistory from "../components/QueryHistory";
-import { Document } from 'react-pdf'
+import { Document } from 'react-pdf/dist/esm/entry.webpack5'
 
 import {
     DocumentDuplicateIcon,
