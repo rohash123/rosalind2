@@ -169,7 +169,6 @@ export default function MeruApp(){
         let response = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/update-key', requestOptions)
         console.log('op')
         setResetDisabled(false)
-        refreshData()
 }
 async function createkey(event){
     console.log('hi')
@@ -262,10 +261,13 @@ async function addtoDB(f,state,response){
         return
     }
     useEffect(() => {
-        console.log(user)
         async function createUser(){
+            if(user){
+                return
+            }
             const response = await Auth.currentAuthenticatedUser()
             setUser(response)
+            console.log(response)
             try{
                 let authcode = window.location.search.slice(1).split("&")[0].split("=")[1]
                 let state = window.location.search.slice(1).split("&")[1].split('=')[1]
@@ -331,16 +333,18 @@ async function addtoDB(f,state,response){
               }
         }
 
-
-        if(loggedIn && !user){
-            console.log('creating user')
-            createUser()
-            getstuff()
-        }
-        if(loggedIn && user){
-            console.log('hi')
-            getstuff()
-    }
+        createUser()
+        getstuff()
+    //     if(loggedIn && !user){
+    //         console.log('creating user')
+    //         createUser()
+    //         getstuff()
+    //     }
+    //     if(loggedIn && user){
+    //         console.log('hi')
+    //         createUser()
+    //         getstuff()
+    // }
         
     }) 
     async function handleIndexload(){
@@ -389,7 +393,7 @@ async function addtoDB(f,state,response){
         <AuthComponent/>
         </div>
        )} 
-       {loggedIn && user && (<div className="mt-10 flex h-[80vh]">
+       {user && (<div className="mt-10 flex h-[80vh]">
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog as="div" className="relative z-40 lg:hidden" onClose={setSidebarOpen}>
             <Transition.Child
