@@ -50,14 +50,15 @@ const navigation = [
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
-  export async function getServerSideProps({ req }) {
-    const SSR = withSSRContext({ req })
+  export async function getServerSideProps(context) {
+    const { Auth } = withSSRContext(context)
+    const { API } = withSSRContext(context)
     // const { Auth, API } = withSSRContext(context)
     let f = 'null'
-    let user = await SSR.Auth.currentUserInfo()
-    console.log(user)
     try {
+        let user = await Auth.currentAuthenticatedUser()
         let sub = user['attributes']['sub']
+        console.log(user)
         console.log(sub)
     // const key = process.env.ADMIN_KEY
     // let requestOptions = {
@@ -68,7 +69,7 @@ const navigation = [
     // let is = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/get-key', requestOptions)
     // response = await is.json()
     // console.log(response)
-    let data  = await SSR.API.graphql({
+    let data  = await API.graphql({
         authMode: 'API_KEY',
         query: getMeruApiSub,
         variables: {
@@ -79,7 +80,7 @@ const navigation = [
     console.log(data.data.getMeruApiSub.meru)
     f = data.data.getMeruApiSub
     } catch (error) {
-      console.log(error)
+      console.log('user',error)
     }
     
     return {
@@ -112,6 +113,7 @@ const navigation = [
     // Props returned will be passed to the page component
     
 export default function MeruApp({token}){
+    console.log(token)
     const router = useRouter();
     const [loggedIn, setLoggedIn] = useState(false)
     const [preview,setpreview] = useState(false)
@@ -166,7 +168,6 @@ export default function MeruApp({token}){
         };
         let response = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/update-key', requestOptions)
         console.log('op')
-        await response.json()
         setResetDisabled(false)
         refreshData()
 }
@@ -261,6 +262,9 @@ async function addtoDB(f,state,response){
         return
     }
     useEffect(() => {
+        if(token.meru){
+            setApiKey(token.meru)
+        }
         async function createUser(){
             const response = await Auth.currentAuthenticatedUser()
             setUser(response)
