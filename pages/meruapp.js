@@ -50,46 +50,46 @@ const navigation = [
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
-  export async function getServerSideProps(context) {
-    const { Auth } = withSSRContext(context)
-    const { API } = withSSRContext(context)
-    // const { Auth, API } = withSSRContext(context)
-    let f = 'null'
-    try {
-        let user = await Auth.currentAuthenticatedUser()
-        let sub = user['attributes']['sub']
-        console.log(user)
-        console.log(sub)
-    // const key = process.env.ADMIN_KEY
-    // let requestOptions = {
-    //     method: 'POST',
-    //     headers: { 'mysub': sub, 'x-api-key' : key, 'Content-Type' : 'application/json'},
-    //     body: JSON.stringify({ title: 'API key Retrieval' })
-    // };
-    // let is = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/get-key', requestOptions)
-    // response = await is.json()
-    // console.log(response)
-    let data  = await API.graphql({
-        authMode: 'API_KEY',
-        query: getMeruApiSub,
-        variables: {
-            owner_id: sub,
-        }
-      });    
-    console.log(data)
-    console.log(data.data.getMeruApiSub.meru)
-    f = data.data.getMeruApiSub
-    } catch (error) {
-      console.log('user',error)
-    }
+//   export async function getServerSideProps(context) {
+//     const { Auth } = withSSRContext(context)
+//     const { API } = withSSRContext(context)
+//     // const { Auth, API } = withSSRContext(context)
+//     let f = 'null'
+//     try {
+//         let user = await Auth.currentAuthenticatedUser()
+//         let sub = user['attributes']['sub']
+//         console.log(user)
+//         console.log(sub)
+//     // const key = process.env.ADMIN_KEY
+//     // let requestOptions = {
+//     //     method: 'POST',
+//     //     headers: { 'mysub': sub, 'x-api-key' : key, 'Content-Type' : 'application/json'},
+//     //     body: JSON.stringify({ title: 'API key Retrieval' })
+//     // };
+//     // let is = await fetch('https://7y7omy1g1a.execute-api.us-west-2.amazonaws.com/test/get-key', requestOptions)
+//     // response = await is.json()
+//     // console.log(response)
+//     let data  = await API.graphql({
+//         authMode: 'API_KEY',
+//         query: getMeruApiSub,
+//         variables: {
+//             owner_id: sub,
+//         }
+//       });    
+//     console.log(data)
+//     console.log(data.data.getMeruApiSub.meru)
+//     f = data.data.getMeruApiSub
+//     } catch (error) {
+//       console.log('user',error)
+//     }
     
-    return {
-        props: {
-          token: f,
-        },
-    }
+//     return {
+//         props: {
+//           token: f,
+//         },
+//     }
     
-  }
+//   }
 //   let user;
 //   try {
 //     user = await Auth.currentAuthenticatedUser();
@@ -262,9 +262,6 @@ async function addtoDB(f,state,response){
         return
     }
     useEffect(() => {
-        if(token.meru){
-            setApiKey(token.meru)
-        }
         async function createUser(){
             const response = await Auth.currentAuthenticatedUser()
             setUser(response)
@@ -302,10 +299,6 @@ async function addtoDB(f,state,response){
             catch(error){
                 return
             }
-            
-            
-            console.log(user)
-            console.log(active)
 
         }
 
@@ -337,13 +330,12 @@ async function addtoDB(f,state,response){
         }
 
 
-        if(!user){
+        if(loggedIn && !user){
             createUser()
-        }
-        if(user){
-            if(queries == ''){
             getstuff()
         }
+        if(loggedIn && user){
+            getstuff()
     }
         console.log(token)
         // if(token.meru){
