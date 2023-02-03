@@ -243,7 +243,7 @@ async function addtoDB(f,state,response){
         setQuery(index)
     }
     async function createIndex(){
-        var result= dbfiles.map( function(item) { return item.link})
+        var result= dbfiles.map( function(item) {return item.link.replace('dl=0','raw=1')})
         let requestOptions = {
             method: 'POST',
             headers: {'x-api-key' : apiKey,'Content-Type' : 'application/json'},
@@ -254,7 +254,7 @@ async function addtoDB(f,state,response){
         }
         let response = await fetch('https://api.usemeru.com/refine/v3/files-internal',requestOptions)
         let data = await response.json()
-        console.log(data)
+        console.log('Your Fileset has been submited for indexing', data)
     }
     function previewdb(link){
         setpreview(link)
