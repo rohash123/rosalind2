@@ -24,6 +24,10 @@ export default function Query({props,apikey}) {
         let t = await fetch('https://api.usemeru.com/refine/v3/predict ', requestOptions)
         console.log(t)
         let f = await t.json()
+        if (f.error_code !=0 ){
+            setResponse('Your query could not be processed. This may mean you are out of credits. Please view your account to see your remaining credits.')
+            return
+        }
         setResponse(f.outputs.choices[0].text)
         setSource(String(f.outputs.source))
         setLoading(false)
