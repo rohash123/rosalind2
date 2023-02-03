@@ -371,8 +371,8 @@ async function addtoDB(f,state,response){
             body : JSON.stringify({
                 refresh_token : refresh,
                 grant_type : 'refresh_token',
-                clientId: 'rqiucchpvi1uywj',
-                clientSecret : 'umpym6xp5r5pj11',
+                client_id: 'rqiucchpvi1uywj',
+                client_secret : 'umpym6xp5r5pj11',
             }),
     }
     let accessToken = await fetch('https://api.dropbox.com/oauth2/token',requestOptions)
