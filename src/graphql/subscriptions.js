@@ -9,6 +9,7 @@ export const onCreateMeruApiSub = /* GraphQL */ `
       owner_id
       dropbox
       indicies
+      indices
       meru
       queries
       subscription_plan
@@ -25,6 +26,7 @@ export const onUpdateMeruApiSub = /* GraphQL */ `
       owner_id
       dropbox
       indicies
+      indices
       meru
       queries
       subscription_plan
@@ -41,6 +43,7 @@ export const onDeleteMeruApiSub = /* GraphQL */ `
       owner_id
       dropbox
       indicies
+      indices
       meru
       queries
       subscription_plan

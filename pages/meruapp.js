@@ -14,7 +14,8 @@ import { getMeruApiSub } from "../src/graphql/queries";
 import DropboxChooser from 'react-dropbox-chooser';
 import Query from "../components/Query";
 import QueryHistory from "../components/QueryHistory";
-import { Document } from 'react-pdf/dist/esm/entry.webpack5'
+import { Document } from 'react-pdf'
+import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api';
 
 import {
     DocumentDuplicateIcon,
@@ -27,8 +28,6 @@ import {
     EllipsisVerticalIcon,
     XMarkIcon,
   } from "@heroicons/react/24/outline";
-import { handleClientScriptLoad } from "next/script";
-
 
 Amplify.configure(awsExports)
 const { Auth } = withSSRContext()
@@ -216,7 +215,7 @@ async function addtoDB(f,state,response){
         console.log('adding')
         try { 
           const { data } = await API.graphql({
-            authMode: 'API_KEY',
+            authMode: 'AMAZON_COGNITO_USER_POOLS',
             query: updateMeruApiSub,
             variables: {
               input: {

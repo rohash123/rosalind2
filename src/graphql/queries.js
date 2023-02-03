@@ -11,6 +11,8 @@ export const getMeruApiSub = /* GraphQL */ `
       meru
       queries
       subscription_plan
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -33,6 +35,7 @@ export const listMeruApiSubs = /* GraphQL */ `
         owner_id
         dropbox
         indicies
+        indices
         meru
         queries
         subscription_plan
