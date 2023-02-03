@@ -140,6 +140,7 @@ export default function MeruApp(){
         switch (data.payload.event) {
           case 'signIn':
               setLoggedIn(true)
+              
         }
     })
     
@@ -209,7 +210,7 @@ async function addtoDB(f,state,response){
         console.log('adding')
         try { 
           const { data } = await API.graphql({
-            authMode: 'AMAZON_COGNITO_USER_POOLS',
+            authMode: 'API_KEY',
             query: updateMeruApiSub,
             variables: {
               input: {
