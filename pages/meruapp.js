@@ -250,7 +250,7 @@ async function addtoDB(f,state,response){
         setQuery(index)
     }
     async function createIndex(){
-        var result= dbfiles.map( function(item) { return item.link.text.replace('dl=0','raw=1') })
+        var result= dbfiles.map( function(item) { return item.link})
         let requestOptions = {
             method: 'POST',
             headers: {'x-api-key' : apiKey,'Content-Type' : 'application/json'},
