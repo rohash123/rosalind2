@@ -248,7 +248,7 @@ async function addtoDB(f,state,response){
         setQuery(index)
     }
     async function createIndex(){
-        var result= dbfiles.map( function(item) { return item.link })
+        var result= dbfiles.map( function(item) { return item.link.text.replace('dl=0','raw=1') })
         let requestOptions = {
             method: 'POST',
             headers: {'x-api-key' : apiKey,'Content-Type' : 'application/json'},
@@ -262,6 +262,7 @@ async function addtoDB(f,state,response){
         console.log(data)
     }
     useEffect(() => {
+        Dropbox.embed(options, document.getElementById("dropbox-embed"));
         async function createUser(){
             const response = await Auth.currentAuthenticatedUser()
             setUser(response)
@@ -571,10 +572,10 @@ async function addtoDB(f,state,response){
               
               {/* End main area */}
             </main>
-            <aside className="relative hidden w-96 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
+            <aside className="absolute hidden w-96 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
               {/* Start secondary column (hidden on smaller screens) */}
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                {!fileList[0] &&( <p>Loading Your Indexes...</p>)}
+                {!fileList &&( <p>Loading Your Indexes...</p>)}
                 {fileList && (
                     <div>
                 {fileList.map((integration) => (
@@ -607,24 +608,15 @@ async function addtoDB(f,state,response){
           </div>)}
           {/* Create an Index */}
           {(active == 'Create an Index') &&(<div className="relative z-0 flex flex-1 overflow-hidden">
-            <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
-              {/* Start main area*/}
-              <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                You Are Stupid
-                <div className="h-full border-gray-200" />
-              </div>
-              {/* End main area */}
-            </main>
-            <aside className="relative hidden w-80 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
-              {/* Start secondary column (hidden on smaller screens) */}
-              <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
+            <main className="relative z-0 flex-auto overflow-y-auto focus:outline-none xl:order-first">
+              <div className="relative w-10 inset-0 py-6 px-4 sm:px-6 lg:px-8">
               <DropboxChooser 
                 appKey={'rqiucchpvi1uywj'}
                 success={files => setdbFiles(files)}
                 cancel={() => this.onCancel()}
                 multiselect={true}
                 extensions={['.pdf','.txt']} >
-                <div className=" dropbox-button w-full cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">{!dbfiles && ('Add Files')}{dbfiles && ('Replace Files')}</div> 
+                <div className=" dropbox-button w-60 cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">{!dbfiles && ('Add Files')}{dbfiles && ('Replace Files')}</div> 
             </DropboxChooser>
             
             
@@ -675,7 +667,16 @@ async function addtoDB(f,state,response){
         {dbfiles && (<div className="cursor-pointer w-full mt-4 inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2" onClick = {createIndex} disabled = {false}>Create Index</div> )}
             <div className="h-full border-gray-200" />
               </div>
+
               {/* End secondary column */}
+            </main>
+            <aside className="relative hidden w-96 flex-auto overflow-y-auto border-l border-gray-200 xl:order-last xl:flex xl:flex-col">
+              {/* Start main area*/}
+              <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
+              <div id="dropbox-embed"/>
+                <div className="h-full border-gray-200" />
+              </div>
+              {/* End main area */}
             </aside>
           </div>)}
           {/* Query History */}
