@@ -1,6 +1,6 @@
 projects:
   meruv2:
-    schemaPath: src/graphql/schema.json
+    schemaPath: amplify/backend/api/meruv2/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:
