@@ -366,6 +366,7 @@ async function addtoDB(f,state,response){
 
     async function handleCreateIndexLoad(){
         let refresh = integrations.dropbox.accessToken
+        console.log(refresh)
         let requestOptions = {
             method: 'POST',
             body : JSON.stringify({
