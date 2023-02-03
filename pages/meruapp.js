@@ -42,7 +42,7 @@ const navigation = [
     { name: 'Upgrade Plan', href: '#', icon: SquaresPlusIcon , current: false },
   ]
   const integrations = {
-    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=http://localhost:3000/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: '', bgColor: 'bg-pink-600' },
+    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=http://localhost:3000/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: '', bgColor: 'bg-pink-600', target : "_blank" },
     box : { name: 'Box', initials: 'B', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     googledrive : { name: 'Google Drive', initials: 'GD', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     github : { name: 'Github', initials: 'G', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
@@ -348,6 +348,8 @@ async function addtoDB(f,state,response){
                 if(data.getMeruApiSub.dropbox){
                     integrations.dropbox.accessToken = data.getMeruApiSub.dropbox
                     integrations.dropbox.bgColor = 'bg-green-600'
+                    integrations.dropbox.href = '#'
+                    integrations.dropbox.target = ''
                     integrations.dropbox.text = 'Connected'
                     console.log(data.getMeruApiSub.dropbox)
                 }
@@ -788,7 +790,7 @@ async function addtoDB(f,state,response){
               Select a file to preview it here.
             </p>
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-              <Document file={preview} />
+              <Document file={preview} options={{ workerSrc: "/pdf.worker.js" }}/>
                 <div className="h-full border-gray-200" />
               </div>
               {/* End main area */}
@@ -875,7 +877,7 @@ async function addtoDB(f,state,response){
             </dd>)}
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Connected Accounts</dt>
+            <dt className="text-sm font-medium text-gray-500">Connected Accounts<p className="text-sm font-light text-gray-500">If you just linked your account and don't see it reflected it here, please reload the page.</p></dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
             <ul role="list" className="mt-1 grid grid-cols-1 gap-5 sm:grid-cols-1 sm:gap-6 lg:grid-cols-2">
         {Object.values(integrations).map((integration) => (
@@ -890,7 +892,7 @@ async function addtoDB(f,state,response){
             </div>
             <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
               <div className="flex-1 truncate px-4 py-2 text-sm">
-                <a href={integration.href} className="font-medium text-gray-900 hover:text-gray-600">
+                <a href={integration.href} className="font-medium text-gray-900 hover:text-gray-600" target={integration.target}>
                   {integration.name}
                 </a>
                 <p className="text-gray-500">{integration.text}</p>
