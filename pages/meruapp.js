@@ -15,7 +15,6 @@ import DropboxChooser from 'react-dropbox-chooser';
 import Query from "../components/Query";
 import QueryHistory from "../components/QueryHistory";
 import { Document } from 'react-pdf'
-import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api';
 
 import {
     DocumentDuplicateIcon,
@@ -136,7 +135,7 @@ export default function MeruApp({token}){
         switch (data.payload.event) {
           case 'signIn':
               setLoggedIn(true)
-              refreshData()
+              window.location.reload()
         }
     })
     const refreshData = () => {
@@ -376,9 +375,10 @@ async function addtoDB(f,state,response){
     async function signOut() {
         try {
             await Auth.signOut({ global: true });
-            window.location.reload();
+            window.location.reload()
         } catch (error) {
-            Auth.signOut()
+            await Auth.signOut();
+            window.location.reload()
         }
     }
     return(

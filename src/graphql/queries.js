@@ -11,8 +11,6 @@ export const getMeruApiSub = /* GraphQL */ `
       meru
       queries
       subscription_plan
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -39,8 +37,6 @@ export const listMeruApiSubs = /* GraphQL */ `
         meru
         queries
         subscription_plan
-        createdAt
-        updatedAt
       }
       nextToken
     }
