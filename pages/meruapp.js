@@ -75,15 +75,16 @@ const navigation = [
             owner_id: sub,
         }
       });    
-    f = await data.json()
-    
+    console.log(data)
+    console.log(data.data.getMeruApiSub.meru)
+    f = data.data.getMeruApiSub
     } catch (error) {
       console.log(error)
     }
     
     return {
         props: {
-          token: JSON.parse(JSON.stringify(f)),
+          token: f,
         },
     }
     
