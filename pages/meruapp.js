@@ -376,9 +376,8 @@ async function addtoDB(f,state,response){
             }),
     }
     let accessToken = await fetch('https://api.dropbox.com/oauth2/token',requestOptions)
-    let accessTokenjson = await accessToken.json()
-    console.log(accessTokenjson)
-    setDBAccessToken(accessTokenjson.access_token)
+    console.log(accessToken)
+    setDBAccessToken(accessToken.access_token)
     return 
 }
     async function loadPage(name){
