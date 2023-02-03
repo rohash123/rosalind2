@@ -257,11 +257,13 @@ async function addtoDB(f,state,response){
 
         }
         let passfiles = await fetch('https://api.dropboxapi.com/2/sharing/get_file_metadata/batch',dropboxOptions)
+        let passfilesjson = await passfiles.json()
+        let fr = pathfilesjson.map(function(item){return item.result.path_display})
         let requestOptions = {
             method: 'POST',
             headers: {'x-api-key' : apiKey,'Content-Type' : 'application/json'},
             body: JSON.stringify({ 
-                dropbox: passfiles,
+                dropbox: fr,
                 index_name: indexName
             })
         }
