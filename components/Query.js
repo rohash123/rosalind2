@@ -42,7 +42,7 @@ export default function Query({props,apikey}) {
         <dl className="sm:divide-y sm:divide-gray-200">
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Name</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{props.name || 'not assigned'}</dd>
+            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{props.index_name || 'not assigned'}</dd>
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">File Identifier</dt>
@@ -50,7 +50,9 @@ export default function Query({props,apikey}) {
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Files In Index </dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{'not available'}</dd>
+            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{props.files}</dd>
+            <dt className="text-sm font-medium text-gray-500">Creation Source </dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{props.creation_source}</dd>
           </div>        
         </dl>
       </div>

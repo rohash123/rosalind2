@@ -640,10 +640,10 @@ async function addtoDB(f,state,response){
                 
             <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
               <div className="flex-1 truncate px-4 py-2 text-sm">
-                <button onClick={()=>{setupquery(integration)}} className="font-medium text-gray-900 hover:text-gray-600">
+                <button onClick={()=>{setupquery(integration)}} className="font-light text-gray-900 hover:text-gray-600">
                   <div>
+                  {integration.index_name && (<p className=" text-left font-medium text-gray-900 hover:text-gray-600">Index Name: {integration.index_name}</p>)}
                   {integration.id}
-                  {integration.name && (<p className=" text-left font-medium text-gray-900 hover:text-gray-600">Name: {integration.name}</p>)}
                   </div>
                   
                 </button>
