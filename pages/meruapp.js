@@ -681,7 +681,7 @@ async function addtoDB(f,state,response){
           {/* Create an Index */}
           {(active == 'Create an Index') &&(<><h1 className="mt-2 text-xl sm:ml-7 xl:ml-10 font-semibold text-gray-900">Create a New Index</h1><div className=" w-full relative z-0 flex flex-1 overflow-hidden">
           <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10">
+      <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
