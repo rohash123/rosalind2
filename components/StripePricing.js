@@ -41,16 +41,16 @@ export default function StripePricing({myplan}){
     const[loaded,setLoaded] = useState(false)
     console.log(myplan)
     useEffect(() => {
-        if(myplan == 'basic'){
+        if(myplan == 'basic' || myplan == 'basic'){
             hallucinations[0].active = true
         }
-        if(myplan == 'team'){
+        if(myplan == 'team' || myplan == 'Team'){
             hallucinations[1].active = true
         }
-        if(myplan == 'agency'){
+        if(myplan == 'agency' || myplan == 'Agency'){
             hallucinations[2].active = true
         }
-        if(myplan == 'enterprise'){
+        if(myplan == 'enterprise' || myplan == 'Enterprise'){
             hallucinations[3].active = true
         }
         setLoaded(true)
