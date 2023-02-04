@@ -655,7 +655,7 @@ async function addtoDB(f,state,response){
               </div>
               </div>
             </div>
-            <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
+            <main className="relative h-full z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
               {/* Start main area*/}
               <div className="overflow-auto h-full py-6 px-4 sm:px-6 lg:px-8">
                 {/* Start main area*/}
