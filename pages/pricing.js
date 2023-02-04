@@ -14,30 +14,30 @@ const hallucination =[
   {
     name: 'Personal',
     href: 'https://docs.usemeru.com/densedata',
-    priceMonthly: '0',
+    priceMonthly: '$0',
     description: 'Free plan for individuals looking to index and query personal documents', 
-    includedFeatures: ['Build 2 Indexes per Month', 'Submit up to 20 Queries', 'API Access', 'Sync with Dropbox'],
+    includedFeatures: ['Build 2 Indexes per Month', 'Submit up to 500 Queries', 'API Access', 'Sync with Dropbox', 'Community Support via Discord'],
   },
   {
     name: 'Team',
     href: 'https://docs.usemeru.com/densedata',
-    priceMonthly: '99',
+    priceMonthly: '$99',
     description: 'Priced for small teams and developers. Sync to with Dropbox and additional services',
-    includedFeatures: ['Build 15 indexes per month', 'Submit up to 250 Queries', 'Sync 4+ File Storage Services', 'API Access'],
+    includedFeatures: ['Build 15 indexes per month', 'Submit up to 4000 Queries', 'Sync 4+ File Storage Services', 'API Access', 'Team Support with 24hr response'],
   },
   {
     name: 'Agency',
     href: 'https://docs.usemeru.com/densedata',
-    priceMonthly: '599',
-    description: 'For larger teams and developers building 150+ indexes per month. Indexes updated automatically.',
-    includedFeatures: ['Build 150 Indexes per Month', 'Query Indexes 3500 times', 'Sync 4+ File Storage Services', 'API Access', 'Update Indexes Automatically (coming soon)'],
+    priceMonthly: '$599',
+    description: 'For larger teams and developers building 150 indexes per month. Indexes updated automatically.',
+    includedFeatures: ['Build 150 Indexes per Month', 'Query Indexes 30000 times', 'Sync 4+ File Storage Services', 'API Access', 'Update Indexes Automatically (coming soon)', 'Premium Support with 3hr response'],
   },
   {
     name: 'Enterprise',
     href: 'https://docs.usemeru.com/densedata',
-    priceMonthly: '$$',
+    priceMonthly: 'Custom',
     description: 'Custom prices, integrations, and account management for enterprise teams', 
-    includedFeatures: ['Build 150+ Indexes per month', 'Query Indexes 3500+ times', 'Custom file storage + DB integration', 'Automated Index Updates', 'Team Account Sharing', 'API Access'],
+    includedFeatures: ['Custom index limits', 'Custom query limits', 'Custom file storage + DB integration', 'Automated Index Updates', 'Team Account Sharing', 'API Access', 'Dedicated Account Manager'],
   },
 ]
 const language = [
@@ -150,7 +150,8 @@ export default function Pricing() {
                 <h2 className="text-lg font-medium leading-6 text-gray-900">{image.name}</h2>
                 <p className="mt-4 text-sm text-gray-500">{image.description}</p>
                 <p className="mt-8">
-                  <span className="text-xl font-bold tracking-tight text-gray-900">${image.priceMonthly}</span>{' '}
+                  <span className="text-xl font-bold tracking-tight text-gray-900">
+                    {image.priceMonthly}</span>{' '}
                   <span className="text-base font-medium text-gray-500">/month</span>
                 </p>
                  <a

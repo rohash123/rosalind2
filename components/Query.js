@@ -22,10 +22,10 @@ export default function Query({props,apikey}) {
             })
         }
         let t = await fetch('https://api.usemeru.com/refine/v3/predict ', requestOptions)
-        console.log(t)
         let f = await t.json()
-        if (f.error_code !=0 ){
+        if (f.err_code != 0 ){
             setResponse('Your query could not be processed. This may mean you are out of credits. Please view your account to see your remaining credits.')
+            setLoading(false)
             return
         }
         setResponse(f.outputs.choices[0].text)
@@ -34,7 +34,7 @@ export default function Query({props,apikey}) {
         return
     }
   return (
-    <div className="overflow-hidden bg-white shadow sm:rounded-lg">
+    <div className="bg-white shadow sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
         <h3 className="text-lg font-medium leading-6 text-gray-900">Index Information</h3>
       </div>

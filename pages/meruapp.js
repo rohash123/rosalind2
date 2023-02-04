@@ -15,6 +15,8 @@ import DropboxChooser from 'react-dropbox-chooser';
 import Query from "../components/Query";
 import QueryHistory from "../components/QueryHistory";
 import { Document } from 'react-pdf'
+import StripePricing from "../components/StripePricing";
+
 
 import {
     DocumentDuplicateIcon,
@@ -30,8 +32,6 @@ import {
   } from "@heroicons/react/24/outline";
 
 Amplify.configure({...awsExports, ssr: false});
-
-
 
 const navigation = [
     
@@ -174,10 +174,8 @@ export default function MeruApp(){
         console.log('op')
         setResetDisabled(false)
 }
-async function createkey(event){
-    console.log('hi')
-    event.currentTarget.disabled = true;
-    let sub = user['attributes']['sub']
+async function createkey(sub){
+    // let sub = user['attributes']['sub']
     let requestOptions = {
         method: 'POST',
         headers: { 'mysub': sub},
@@ -356,7 +354,12 @@ async function addtoDB(f,state,response){
                 setPlan(data.getMeruApiSub.subscription_plan)
                 setQueries(data.getMeruApiSub.queries)
                 setIndicies(data.getMeruApiSub.indices)
-                setApiKey(data.getMeruApiSub.meru)
+                if(data.getMeruApiSub.meru){
+                    setApiKey(data.getMeruApiSub.meru)
+                }
+                else{
+                    createkey(p)
+                }
                 console.log(apiKey)
               } catch (errors) {
                 console.log(errors);
@@ -612,24 +615,15 @@ async function addtoDB(f,state,response){
             </div>
           </div>
           {/* Indexed Documents */}
-          {(active == 'Indexes') &&(<><h1 className="text-xl ml-10 font-semibold text-gray-900">Your Indexes</h1><div className="relative z-0 flex flex-1 overflow-hidden">
-            <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
-              {/* Start main area*/}
-              {!query &&(<div className="absolute font-bold inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                Select and Index to Query It
-                <div className="h-full border-gray-200" />
-              </div>)}
-              {query && (<div className="inset-0 py-6 px-4 sm:px-6 lg:px-8">
-              <Query props={query} apikey={apiKey}/>
-              </div>)
-               
-              }
-              
-              {/* End main area */}
-            </main>
-            <aside className="relative hidden w-96 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
-              {/* Start secondary column (hidden on smaller screens) */}
-              <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
+          {(active == 'Indexes') &&(<>
+            <div className="mx-auto w-full max-w-7xl flex-grow lg:flex xl:px-8">
+          {/* Left sidebar & main wrapper */}
+          <div className="min-w-0 flex-1 bg-white xl:flex">
+            <div className="border-b border-gray-200 bg-white xl:w-64 xl:flex-shrink-0 xl:border-b-0 xl:border-r xl:border-gray-200">
+              <div className="overflow-auto h-full py-6 pl-4 pr-6 sm:pl-6 lg:pl-8 xl:pl-0">
+                {/* Start left column area */}
+                <div className="relative h-20 xl:h-full l:h-full overflow-auto" >
+                {/* <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8"> */}
                 {!fileList &&( <p>Loading Your Indexes...</p>)}
                 {fileList && (
                     <div>
@@ -658,11 +652,32 @@ async function addtoDB(f,state,response){
         </div>)}
                 <div className="h-full border-gray-200" />
               </div>
-              {/* End secondary column */}
-            </aside>
+              </div>
+            </div>
+
+            <div className=" overflow-auto bg-white lg:min-w-0 lg:flex-1">
+              <div className="overflow-auto h-full py-6 px-4 sm:px-6 lg:px-8">
+                {/* Start main area*/}
+                <div className="relative h-full">
+                {!query &&(<div className="absolute font-bold inset-0 py-6 px-4 sm:px-6 lg:px-8">
+                Select and Index to Query It
+                <div className="h-full border-gray-200" />
+              </div>)}
+              {query && (<div className="absolute overflow-auto inset-0 py-6 px-4 sm:px-6 lg:px-8">
+              <Query props={query} apikey={apiKey}/>
+              </div>)
+               
+              }
+                </div>
+                {/* End main area */}
+              </div>
+            </div>
+          </div>
+          
+          
           </div></>)}
           {/* Create an Index */}
-          {(active == 'Create an Index') &&(<><h1 className="text-xl ml-10 font-semibold text-gray-900">Create a New Index</h1><div className=" w-full relative z-0 flex flex-1 overflow-hidden">
+          {(active == 'Create an Index') &&(<><h1 className="mt-2 text-xl sm:ml-7 xl:ml-10 font-semibold text-gray-900">Create a New Index</h1><div className=" w-full relative z-0 flex flex-1 overflow-hidden">
           <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
@@ -950,18 +965,11 @@ async function addtoDB(f,state,response){
             <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
               {/* Start main area*/}
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                You Are Stupid
+              <StripePricing data={user}/>
                 <div className="h-full border-gray-200" />
               </div>
               {/* End main area */}
             </main>
-            <aside className="relative hidden w-96 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
-              {/* Start secondary column (hidden on smaller screens) */}
-              <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                <div className="h-full border-gray-200" />
-              </div>
-              {/* End secondary column */}
-            </aside>
           </div>)}
         </div>
         </div>)}
