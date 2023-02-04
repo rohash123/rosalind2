@@ -29,6 +29,7 @@ import {
     PaperClipIcon,
     EllipsisVerticalIcon,
     XMarkIcon,
+    ChevronDoubleRightIcon,
   } from "@heroicons/react/24/outline";
 
 Amplify.configure({...awsExports, ssr: false});
@@ -274,6 +275,7 @@ async function addtoDB(f,state,response){
         let response = await fetch('https://api.usemeru.com/refine/v3/files-internal',requestOptions)
         
         let data = await response.json()
+        console.log(data)
         if(data.error_code == 0){
             setDone('Your fileset has been submitted for indexing. Please monitor the Indexes page to see when your index is ready.')
         }
@@ -728,7 +730,7 @@ async function addtoDB(f,state,response){
                 {done&&(<button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md border border-transparent bg-pink-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
-                    onClick={refreshData}
+                    onClick={() => {setOpen(false); setDone(false); refreshData()}}
                   >
                     Go back to dashboard
                   </button>)}
@@ -969,7 +971,7 @@ async function addtoDB(f,state,response){
             <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
               {/* Start main area*/}
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-              <StripePricing data={plan}/>
+              <StripePricing myplan={plan}/>
                 <div className="h-full border-gray-200" />
               </div>
               {/* End main area */}

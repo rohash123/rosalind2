@@ -37,7 +37,7 @@ const hallucinations =[
       active : false
     },
   ]
-export default function StripePricing({data}){
+export default function StripePricing({myplan}){
     const[loaded,setLoaded] = useState(false)
     console.log(data)
     useEffect(() => {
