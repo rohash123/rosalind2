@@ -277,12 +277,14 @@ async function addtoDB(f,state,response){
         let data = await response.json()
         console.log(data)
         if(data.err_code == 0){
+            setpreview(false)
             setdbFiles(false)
             setDone('Your fileset has been submitted for indexing. Please monitor the Indexes page to see when your index is ready.')
             
             
         }
         if(data.err_code != 0){
+            setpreview(false)
             setdbFiles(false)
             setDone('There was an error processing your request. This may mean that you are out of credits. View your account information to see your remaining credits.')
             
