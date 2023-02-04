@@ -42,7 +42,7 @@ const navigation = [
     { name: 'Upgrade Plan', href: '#', icon: SquaresPlusIcon , current: false },
   ]
   const integrations = {
-    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=http://test.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
+    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://test.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
     box : { name: 'Box', initials: 'B', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     googledrive : { name: 'Google Drive', initials: 'GD', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     github : { name: 'Github', initials: 'G', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
@@ -661,7 +661,7 @@ async function addtoDB(f,state,response){
                 {/* Start main area*/}
                 <div className="relative h-full">
                 {!query &&(<div className="absolute font-bold inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                Select and Index to Query It
+                Select and Index to Query It. If you do not have an Index, create One.
                 <div className="h-full border-gray-200" />
               </div>)}
               {query && (<div className="absolute overflow-auto inset-0 py-6 px-4 sm:px-6 lg:px-8">
@@ -728,7 +728,7 @@ async function addtoDB(f,state,response){
                 {done&&(<button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md border border-transparent bg-pink-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
-                    onClick={() => setOpen(false)}
+                    onClick={refreshData}
                   >
                     Go back to dashboard
                   </button>)}
@@ -741,7 +741,7 @@ async function addtoDB(f,state,response){
     </Transition.Root>
             <main className="relative z-0 flex-auto overflow-y-auto focus:outline-none xl:order-first">
               <div className="relative w-full inset-0 py-6 px-4 sm:px-6 lg:px-8">
-              {integrations.dropbox.accessToken && (<DropboxChooser 
+              {(integrations.dropbox.accessToken != null) && (<DropboxChooser 
                 appKey={'rqiucchpvi1uywj'}
                 success={files => setdbFiles(files)}
                 cancel={() => console.log('closed')}
