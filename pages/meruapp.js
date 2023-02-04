@@ -845,9 +845,8 @@ async function addtoDB(f,state,response){
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Your Meru API Key</dt>
             {!apiKey && (
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <button onClick={createkey} className="font-medium text-pink-400 hover:text-pink-600">
-            Create Your New API Key 
-          </button> (old API Keys made with Meru will continue to work, but won't be viewable here.)</dd>)}
+            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> 
+            Your API Key is Loading. Please refresh the page.</dd>)}
             {apiKey && (<dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               <ul role="list" className="divide-y divide-gray-200 rounded-md border border-gray-200">
                 {!show && (<li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">

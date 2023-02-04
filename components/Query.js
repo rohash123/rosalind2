@@ -50,7 +50,8 @@ export default function Query({props,apikey}) {
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Files In Index </dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{props.files.toString()}</dd>
+            {props.files &&(<dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{props.files.toString()}</dd>)}
+            {!props.files &&(<dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{'None Available'}</dd>)}
             <dt className="text-sm font-medium text-gray-500">Creation Source </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{props.creation_source}</dd>
           </div>        
