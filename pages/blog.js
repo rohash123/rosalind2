@@ -19,8 +19,8 @@ const posts = [
       category: { name: 'Article', href: '#', color: 'bg-indigo-100 text-indigo-800' },
       description:
         'New API endpoints that make querying documents in the style of Chat-GPT hallucination-free & effortless.',
-      date: 'Mar 16, 2020',
-      datetime: '2020-01-15',
+      date: 'Jan 16, 2023',
+      datetime: '2023-01-16',
       author: {
         name: 'Rohan Arora',
         href: 'https://linkedin.com/in/meetrohanarora',
