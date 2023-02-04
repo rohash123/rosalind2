@@ -278,7 +278,7 @@ async function addtoDB(f,state,response){
         if(data.error_code != 0){
             setDone('There was an error processing your request. This may mean that you are out of credits. View your account information to see your remaining credits.')
         }
-        setOpen(false)
+        
     }
     function previewdb(link){
         setpreview(link)
@@ -725,7 +725,7 @@ async function addtoDB(f,state,response){
                 <div className="mt-5 sm:mt-6">
                 {done&&(<button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
+                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-pink-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
                     onClick={() => setOpen(false)}
                   >
                     Go back to dashboard
@@ -802,7 +802,7 @@ async function addtoDB(f,state,response){
             <aside className="relative hidden w-96 flex-auto overflow-y-auto border-l border-gray-200 xl:order-last xl:flex xl:flex-col">
               {/* Start main area*/}
               <p className="ml-7 text-sm text-gray-500" id="email-description">
-              Select a file to preview it here.
+              Click a file to preview it here.
             </p>
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
   <iframe className = "w-full h-full" src={preview} title="title">
