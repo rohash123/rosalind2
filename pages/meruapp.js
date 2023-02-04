@@ -385,7 +385,7 @@ async function addtoDB(f,state,response){
     //         getstuff()
     // }
         
-    },[dbfiles]) 
+    }) 
     async function handleIndexload(){
         await getfiles()
     }
