@@ -745,7 +745,7 @@ async function addtoDB(f,state,response){
                 extensions={['.pdf','.txt']} >
                 <div className=" dropbox-button w-60 cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">{!dbfiles && ('Add Files')}{dbfiles && ('Replace Files')}</div> 
             </DropboxChooser>)}
-            {!integrations.dropbox.accessToken && (<div className=" dropbox-button w-80 cursor-pointer inline-flex items-center rounded border border-pink-400 bg-transparent px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Please Connect Your Dropox Account in 'Account' or use the API</div>)}
+            {!integrations.dropbox.accessToken && (<div className=" dropbox-button w-80 cursor-pointer inline-flex items-center rounded border border-pink-400 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-800 shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Please Connect Your Dropox Account in 'Account' or use the API</div>)}
             
             {/* {!dbfiles[0] &&( <p>Select a file to begin</p>)} */}
                 {dbfiles && (
@@ -961,9 +961,14 @@ async function addtoDB(f,state,response){
             </main>
           </div>)}
           {/* Upgrade Plan */}
-         {(active == 'Upgrade Plan') &&(<div className="relative z-0 flex flex-1 overflow-hidden">
+         {(active == 'Upgrade Plan') &&(<div className="relative z-0 flex flex-1 overflow-auto">
             <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
-              {/* Start main area*/}
+            <div className="flex-1  px-4 py-2 text-sm">
+                <p className="px-5 font-medium text-gray-900 hover:text-gray-600">
+                To Cancle a subscription please contact rohan@usemeru.com. We will get back to you immediately. If you upgrade your plan, your existing subscription will be cancelled automatically. 
+                </p>            
+              </div>
+              
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
               <StripePricing myplan={plan}/>
                 <div className="h-full border-gray-200" />

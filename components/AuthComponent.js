@@ -7,7 +7,7 @@ const components = {
         return (
           <>
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your Account</h2>
-          <p className="mt-2 text-center text-sm text-gray-600">Access Your API Key and Track Your Usage</p>
+          <p className="mt-2 text-center text-sm text-gray-600">Access Your Meru Dashboard</p>
           </>
         );
       },
@@ -19,7 +19,7 @@ const components = {
       return (
         <>
         <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign Up for Meru</h2>
-        <p className="mt-2 text-center text-sm text-gray-600">Access Your API Key and Track Your Usage</p>
+        <p className="mt-2 text-center text-sm text-gray-600">Access Your Meru Dashboard</p>
         </>
       );
     }}

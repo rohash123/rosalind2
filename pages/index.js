@@ -17,31 +17,25 @@ const features = [
   {
     name: 'Dense Data Retrieval',
     description:
-      'Our newest endpoint builds on top of GPT-3 to allow you to query large documents without eating up your tokens',
+      'Meru is an assistant that understands your data and explains it to you like it was human. ',
     icon: FlagIcon,
   },
   {
-    name: 'LLM Prompt Condensation',
-    description: 'Meru transforms your prompts so they are shorter, but map to the same GPT-3 outputs. This means you could immediately start saving 10% on your GPT-3 costs, with no change in your current quality',
+    name: 'Integrate Everything',
+    description: 'Meru integrates directly with your existing filestores, like Dropbox, Box, and Google Drive. Integrations with other services are coming soon!', 
     icon: ArrowDownRightIcon,
   },
   {
-    name: 'LLM Autoscaling',
+    name: 'Developer Friendly',
     description:
-      'Meru tracks your usage proactively and increases your GPT-3 limits accordingly, so you can ensure your application is always online.',
+      'Meru supports a flexible, developer-friendly API that allows you to integrate with your existing applications.',
     icon: UserPlusIcon,
   },
   {
-    name: 'Image Generation Support',
+    name: 'Simple Pricing',
     description:
-      'Meru allows you to embed Stable Diffusion image generation into your applications with low latency, variable sizing, and automatic resolution upscaling.',
+      'Stop counting tokens! Meru has a simple, flat pricing model that so you can pay for what you use.',
     icon: PhotoIcon,
-  },
-  {
-    name: 'Teach SD New Concepts',
-    description:
-      'Want to generate images of people, products, or styles unknown to standard stable diffusion? Use our managed dreambooth API to teach SD new concepts, for only $2.75 per concept.',
-    icon: AdjustmentsVerticalIcon,
   },
 ]
 
@@ -98,7 +92,7 @@ export default function Example() {
               </div>
               <div>
                 <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-5xl">
-                  We are Disrupting Reading. 
+                  Data that Speaks to You, Literally. 
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
                   Start having conversations with your documents. Uncanny natural language search that synthesizes responses like a human being. 
@@ -155,6 +149,27 @@ export default function Example() {
           </div>
         </div>
         <div className="overflow-hidden bg-white">
+        <div className="relative mx-auto max-w-7xl py-24 px-6 sm:py-32 lg:px-8 lg:py-40">
+      
+      <div className="relative lg:grid lg:grid-cols-3 lg:gap-x-12 xl:gap-x-16">
+        <div className="lg:col-span-1">
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">Experts on your data, made available in seconds.</h2>
+        </div>
+        <dl className="mt-20 grid grid-cols-1 gap-16 sm:grid-cols-2 sm:gap-x-12 lg:col-span-2 lg:mt-0">
+          {features.map((feature) => (
+            <div key={feature.name}>
+              <dt>
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-400 text-white">
+                  <feature.icon className="h-8 w-8" aria-hidden="true" />
+                </div>
+                <p className="mt-6 text-lg font-semibold leading-8 text-gray-900">{feature.name}</p>
+              </dt>
+              <dd className="mt-2 text-base text-gray-600">{feature.description}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
     <div className="relative overflow-hidden bg-white pt-16 pb-32">
       <div className="relative">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
@@ -179,10 +194,10 @@ export default function Example() {
                     </span>
                   </a>
                   <a
-                    href="https://usemeru.com/mymeru"
+                    href="https://usemeru.com/meruapp"
                     className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                   >
-                    Try the Demo{' '}
+                    Try it Online{' '}
                     <span className="text-gray-400" aria-hidden="true">
                       &rarr;
                     </span>
@@ -225,27 +240,6 @@ export default function Example() {
         </div>
       </div>
     </div>
-      <div className="relative mx-auto max-w-7xl py-24 px-6 sm:py-32 lg:px-8 lg:py-40">
-      
-        <div className="relative lg:grid lg:grid-cols-3 lg:gap-x-12 xl:gap-x-16">
-          <div className="lg:col-span-1">
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">A better way to deploy Generative AI</h2>
-          </div>
-          <dl className="mt-20 grid grid-cols-1 gap-16 sm:grid-cols-2 sm:gap-x-12 lg:col-span-2 lg:mt-0">
-            {features.map((feature) => (
-              <div key={feature.name}>
-                <dt>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-400 text-white">
-                    <feature.icon className="h-8 w-8" aria-hidden="true" />
-                  </div>
-                  <p className="mt-6 text-lg font-semibold leading-8 text-gray-900">{feature.name}</p>
-                </dt>
-                <dd className="mt-2 text-base text-gray-600">{feature.description}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </div>
     </div>
 <Footer/>
       </main>

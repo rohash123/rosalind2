@@ -6,7 +6,7 @@ import { useState } from 'react';
 const hallucinations =[
     {
         name: 'Basic',
-        price: '',
+        price: 'mailto:rohan@usemeru.com',
         priceMonthly: '$0',
         description: 'Free plan for individuals looking to index and query personal documents', 
         includedFeatures: ['Build 2 Indexes per Month', 'Submit up to 500 Queries', 'API Access', 'Sync with Dropbox', 'Community Support via Discord'],
@@ -98,7 +98,7 @@ export default function StripePricing({myplan}){
                   className="mt-8 block w-full rounded-md border border-pink-400 bg-pink-400 py-2 text-center text-sm font-semibold text-white hover:bg-pink-600"
                   onClick={() => handlepurchase(image.price)}
                 >
-                    Upgrade to {image.name}
+                    Change to {image.name}
                 </button>)}
                 {image.active && (<button
                   className="mt-8 block w-full rounded-md border border-gray-800 bg-gray-800 py-2 text-center text-sm font-semibold text-white hover:bg-gray-900"
