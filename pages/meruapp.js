@@ -278,11 +278,11 @@ async function addtoDB(f,state,response){
         console.log(data)
         if(data.err_code == 0){
             setDone('Your fileset has been submitted for indexing. Please monitor the Indexes page to see when your index is ready.')
-            refreshData()
+            window.location.reload()
         }
         if(data.err_code != 0){
             setDone('There was an error processing your request. This may mean that you are out of credits. View your account information to see your remaining credits.')
-            refreshData()
+            window.location.reload()
         }
         
     }
