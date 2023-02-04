@@ -71,7 +71,7 @@ export default function StripePricing({data}){
                     quantity: 1                 
                   }
                 ],
-                mode: 'payment',
+                mode: 'subscription',
                 customerEmail: email,
                 successUrl: 'https://usemeru.com/meruapp',
                 cancelUrl: 'https://usemeru.com/meruapp'
