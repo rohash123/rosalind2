@@ -278,10 +278,12 @@ async function addtoDB(f,state,response){
         console.log(data)
         if(data.err_code == 0){
             setDone('Your fileset has been submitted for indexing. Please monitor the Indexes page to see when your index is ready.')
+            setdbFiles(false)
             
         }
         if(data.err_code != 0){
             setDone('There was an error processing your request. This may mean that you are out of credits. View your account information to see your remaining credits.')
+            setdbFiles(false)
             
         }
         
@@ -677,7 +679,7 @@ async function addtoDB(f,state,response){
           {/* Create an Index */}
           {(active == 'Create an Index') &&(<><h1 className="mt-2 text-xl sm:ml-7 xl:ml-10 font-semibold text-gray-900">Create a New Index</h1><div className=" w-full relative z-0 flex flex-1 overflow-hidden">
           <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+      <Dialog as="div" className="relative z-10">
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
