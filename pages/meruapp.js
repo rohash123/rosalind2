@@ -147,6 +147,7 @@ export default function MeruApp(){
               setLoggedIn(true)
             case 'signUp':
                 setLoggedIn(true)
+                refreshData()
               
         }
     })
@@ -743,7 +744,7 @@ async function addtoDB(f,state,response){
     </Transition.Root>
             <main className="relative z-0 flex-auto overflow-y-auto focus:outline-none xl:order-first">
               <div className="relative w-full inset-0 py-6 px-4 sm:px-6 lg:px-8">
-              {(integrations.dropbox.accessToken != null) && (<DropboxChooser 
+              {(integrations.dropbox.accessToken != '') && (<DropboxChooser 
                 appKey={'rqiucchpvi1uywj'}
                 success={files => setdbFiles(files)}
                 cancel={() => console.log('closed')}
@@ -751,7 +752,7 @@ async function addtoDB(f,state,response){
                 extensions={['.pdf','.txt']} >
                 <div className=" dropbox-button w-60 cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">{!dbfiles && ('Add Files')}{dbfiles && ('Replace Files')}</div> 
             </DropboxChooser>)}
-            {!integrations.dropbox.accessToken && (<div className=" dropbox-button w-80 cursor-pointer inline-flex items-center rounded border border-pink-400 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-800 shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Please Connect Your Dropox Account in 'Account' or use the API</div>)}
+            {!integrations.dropbox.accessToken && (<div className=" dropbox-button w-80 inline-flex items-center rounded border border-pink-400 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Please Connect Your Dropox Account in 'Account' or use the API</div>)}
             
             {/* {!dbfiles[0] &&( <p>Select a file to begin</p>)} */}
                 {dbfiles && (
