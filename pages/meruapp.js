@@ -42,7 +42,7 @@ const navigation = [
     { name: 'Upgrade Plan', href: '#', icon: SquaresPlusIcon , current: false },
   ]
   const integrations = {
-    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=http://localhost:3000/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
+    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=http://test.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
     box : { name: 'Box', initials: 'B', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     googledrive : { name: 'Google Drive', initials: 'GD', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     github : { name: 'Github', initials: 'G', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
@@ -142,8 +142,10 @@ export default function MeruApp(){
 
     Hub.listen('auth', (data) => {
         switch (data.payload.event) {
-          case 'signIn':
+            case 'signIn':
               setLoggedIn(true)
+            case 'signUp':
+                setLoggedIn(true)
               
         }
     })
