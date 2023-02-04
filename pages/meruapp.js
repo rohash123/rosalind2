@@ -439,14 +439,6 @@ async function addtoDB(f,state,response){
         
         <div className="px-6 pt-6 lg:px-8">
         <Navbar/>
-        <button className="group block w-full flex-shrink-0" onClick={signOut}>
-                  <div className="flex items-center">
-                    <div className="ml-3">
-                        {/* Logout */}
-                    <p className="text-sm font-bold text-red-500 group-hover:text-red-700">Log Out</p>                     
-                    </div>
-                  </div>
-                </button>
         {/* APP CODE */}
        {!user && (
         <div className="mt-10">
