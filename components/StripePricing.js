@@ -32,7 +32,7 @@ const hallucinations =[
       name: 'Enterprise',
       price: 'mailto:rohan@usemeru.com',
       priceMonthly: 'Custom',
-      description: 'Custom prices, integrations, and account management for enterprise teams', 
+      description: 'Custom prices, integrations, and account management for enterprise teams',
       includedFeatures: ['Custom index limits', 'Custom query limits', 'Custom file storage + DB integration', 'Automated Index Updates', 'Team Account Sharing', 'API Access', 'Dedicated Account Manager'],
       active : false
     },

@@ -276,11 +276,13 @@ async function addtoDB(f,state,response){
         
         let data = await response.json()
         console.log(data)
-        if(data.error_code == 0){
+        if(data.err_code == 0){
             setDone('Your fileset has been submitted for indexing. Please monitor the Indexes page to see when your index is ready.')
+            refreshData()
         }
-        if(data.error_code != 0){
+        if(data.err_code != 0){
             setDone('There was an error processing your request. This may mean that you are out of credits. View your account information to see your remaining credits.')
+            refreshData()
         }
         
     }
@@ -730,7 +732,7 @@ async function addtoDB(f,state,response){
                 {done&&(<button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md border border-transparent bg-pink-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
-                    onClick={() => {setOpen(false); setDone(false); refreshData()}}
+                    onClick={() => {setOpen(false)}}
                   >
                     Go back to dashboard
                   </button>)}
