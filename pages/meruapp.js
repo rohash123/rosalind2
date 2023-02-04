@@ -805,7 +805,9 @@ async function addtoDB(f,state,response){
               Select a file to preview it here.
             </p>
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-              <Document file={preview} options={{ workerSrc: "/pdf.worker.js" }}/>
+  <iframe className = "w-full h-full" src={preview} title="title">
+     Presss me: <a href="http://africau.edu/images/default/sample.pdf">Download PDF</a>
+</iframe>
                 <div className="h-full border-gray-200" />
               </div>
               {/* End main area */}
