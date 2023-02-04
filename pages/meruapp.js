@@ -965,7 +965,7 @@ async function addtoDB(f,state,response){
             <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
               {/* Start main area*/}
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-              <StripePricing data={user}/>
+              <StripePricing data={plan}/>
                 <div className="h-full border-gray-200" />
               </div>
               {/* End main area */}

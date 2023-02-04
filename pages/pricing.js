@@ -12,11 +12,12 @@ import Footer from '../components/Footer';
 
 const hallucination =[
   {
-    name: 'Personal',
+    name: 'Basic',
     href: 'https://docs.usemeru.com/densedata',
     priceMonthly: '$0',
     description: 'Free plan for individuals looking to index and query personal documents', 
     includedFeatures: ['Build 2 Indexes per Month', 'Submit up to 500 Queries', 'API Access', 'Sync with Dropbox', 'Community Support via Discord'],
+    active : false
   },
   {
     name: 'Team',
@@ -24,6 +25,7 @@ const hallucination =[
     priceMonthly: '$99',
     description: 'Priced for small teams and developers. Sync to with Dropbox and additional services',
     includedFeatures: ['Build 15 indexes per month', 'Submit up to 4000 Queries', 'Sync 4+ File Storage Services', 'API Access', 'Team Support with 24hr response'],
+    active : false
   },
   {
     name: 'Agency',
@@ -31,6 +33,7 @@ const hallucination =[
     priceMonthly: '$599',
     description: 'For larger teams and developers building 150 indexes per month. Indexes updated automatically.',
     includedFeatures: ['Build 150 Indexes per Month', 'Query Indexes 30000 times', 'Sync 4+ File Storage Services', 'API Access', 'Update Indexes Automatically (coming soon)', 'Premium Support with 3hr response'],
+    active : false
   },
   {
     name: 'Enterprise',
@@ -38,6 +41,7 @@ const hallucination =[
     priceMonthly: 'Custom',
     description: 'Custom prices, integrations, and account management for enterprise teams', 
     includedFeatures: ['Custom index limits', 'Custom query limits', 'Custom file storage + DB integration', 'Automated Index Updates', 'Team Account Sharing', 'API Access', 'Dedicated Account Manager'],
+    active : false
   },
 ]
 const language = [
