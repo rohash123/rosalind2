@@ -5,6 +5,28 @@ export default function QueryHistory({apikey}){
     const [history, setHistory] = useState(false)
     const [inputs, setInputs] = useState(false)
     const [output,setOutputs] = useState(false)
+    function source(person){
+        let f = null
+        try{
+            f = person.outputs.source
+            
+        } 
+        catch(error){
+            f = 'undefined'
+        }
+        return(f)
+    }
+    function trying(person){
+        let f = null
+        try{
+            f = person.outputs.choices[0].text
+            
+        } 
+        catch(error){
+            f = 'undefined'
+        }
+        return(f)
+    }
     async function getHistory(){
         console.log(apikey)
         setLoading(true)
@@ -20,6 +42,7 @@ export default function QueryHistory({apikey}){
     }
     useEffect(() => {
         getHistory()
+        console.log(history)
     }, [])
     
     return(
@@ -79,8 +102,8 @@ export default function QueryHistory({apikey}){
                         {person.id}
                       </td>
                       <td className="px-3 py-4 text-sm font-medium text-gray-800">{person.inputs.prompt}</td>
-                      <td className="px-3 py-4 text-sm text-gray-500">{person.name|| 'undefined'}</td>
-                      <td className="px-3 py-4 text-sm text-gray-500">{person.inputs.file_id}</td>
+                      <td className="px-3 py-4 text-sm text-gray-500">{trying(person)}</td>
+                      <td className="px-3 py-4 text-sm text-gray-500">{source(person)}</td>
                       <td className="py-4 pl-3 pr-4 text-gray-500 text-sm sm:pr-6">
                       {person.inputs.file_id}
                       </td>

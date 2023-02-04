@@ -747,7 +747,7 @@ async function addtoDB(f,state,response){
                 extensions={['.pdf','.txt']} >
                 <div className=" dropbox-button w-60 cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">{!dbfiles && ('Add Files')}{dbfiles && ('Replace Files')}</div> 
             </DropboxChooser>)}
-            {!integrations.dropbox.accessToken && (<div className=" dropbox-button w-60 cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Please Connect Your Dropox Account in 'Account' or use the API</div>)}
+            {!integrations.dropbox.accessToken && (<div className=" dropbox-button w-full cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Please Connect Your Dropox Account in 'Account' or use the API</div>)}
             
             {/* {!dbfiles[0] &&( <p>Select a file to begin</p>)} */}
                 {dbfiles && (
