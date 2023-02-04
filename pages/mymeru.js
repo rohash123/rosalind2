@@ -87,7 +87,7 @@ const navigation = [
             let p = await s.json()
             console.log(p.status_code)
             if (p.status_code != 0 ){                
-                setTimeout(function() { getfile(q,key); },3000)
+                setTimeout(function() { getfile(q,key); },2000)
             }
             else{
                 setIndexed(true)

@@ -8,11 +8,26 @@
       "customAuth": false
     }
   },
-  "storage": {
-    "s307ed987d": {
-      "service": "S3",
+  "storage": {},
+  "api": {
+    "meruv2": {
+      "service": "AppSync",
       "providerPlugin": "awscloudformation",
-      "dependsOn": []
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "apiKeyExpirationDate": "2024-02-03T07:32:15.876Z",
+              "description": ""
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      }
     }
-  }
+  },
+  "function": {}
 }

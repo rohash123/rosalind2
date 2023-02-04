@@ -28,8 +28,8 @@
           "unauthRoleName": "amplify-usemeru-dev-185146-unauthRole"
         }
       },
-      "storage": {
-        "s307ed987d": {}
+      "api": {
+        "meruv2": {}
       }
     }
   }
