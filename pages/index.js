@@ -99,7 +99,7 @@ export default function Example() {
                 </p>
                 <div className="mt-8 flex gap-x-4 sm:justify-center">
                   <a
-                    href="/develop"
+                    href="/meruapp"
                     className="inline-block rounded-lg bg-pink-400 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-400 hover:bg-pink-600 hover:ring-pink-600"
                   >
                     Get started{' '}
