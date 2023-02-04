@@ -13,7 +13,7 @@ import Footer from '../components/Footer';
 const hallucination =[
   {
     name: 'Basic',
-    href: 'https://docs.usemeru.com/densedata',
+    href: 'https://usemeru.com/meruapp',
     priceMonthly: '$0',
     description: 'Free plan for individuals looking to index and query personal documents', 
     includedFeatures: ['Build 2 Indexes per Month', 'Submit up to 500 Queries', 'API Access', 'Sync with Dropbox', 'Community Support via Discord'],
@@ -21,7 +21,7 @@ const hallucination =[
   },
   {
     name: 'Team',
-    href: 'https://docs.usemeru.com/densedata',
+    href: 'https://usemeru.com/meruapp',
     priceMonthly: '$99',
     description: 'Priced for small teams and developers. Sync to with Dropbox and additional services',
     includedFeatures: ['Build 15 indexes per month', 'Submit up to 4000 Queries', 'Sync 4+ File Storage Services', 'API Access', 'Team Support with 24hr response'],
@@ -29,7 +29,7 @@ const hallucination =[
   },
   {
     name: 'Agency',
-    href: 'https://docs.usemeru.com/densedata',
+    href: 'https://usemeru.com/meruapp',
     priceMonthly: '$599',
     description: 'For larger teams and developers building 150 indexes per month. Indexes updated automatically.',
     includedFeatures: ['Build 150 Indexes per Month', 'Query Indexes 30000 times', 'Sync 4+ File Storage Services', 'API Access', 'Update Indexes Automatically (coming soon)', 'Premium Support with 3hr response'],
@@ -37,99 +37,99 @@ const hallucination =[
   },
   {
     name: 'Enterprise',
-    href: 'https://docs.usemeru.com/densedata',
+    href: 'https://usemeru.com/meruapp',
     priceMonthly: 'Custom',
     description: 'Custom prices, integrations, and account management for enterprise teams', 
     includedFeatures: ['Custom index limits', 'Custom query limits', 'Custom file storage + DB integration', 'Automated Index Updates', 'Team Account Sharing', 'API Access', 'Dedicated Account Manager'],
     active : false
   },
 ]
-const language = [
-  {
-    name: 'OpenAI DaVinci',
-    href: 'https://docs.usemeru.com/models',
-    priceMonthly: 0.018,
-    description: 'Most powerful language model with complex output.',
-    includedFeatures: [
-      'Prompt Completion',
-      'Text Editing',
-      'Fine-tuning (Coming Soon)'
-    ],
-  },
-  {
-    name: 'OpenAI Curie',
-    href: 'https://docs.usemeru.com/models',
-    priceMonthly: 0.0018,
-    description: 'Language model. More powerful  Babbage',
-    includedFeatures: [
-      'Prompt Completion',
-      'Text Editing',
-      'Fine-tuning (Coming Soon)'
-    ],
-  },
-  {
-    name: 'OpenAI Babbage',
-    href: 'https://docs.usemeru.com/models',
-    priceMonthly: 0.00045,
-    description: 'Language model. More powerful than Ada.',
-    includedFeatures: [
-      'Prompt Completion ',
-      'Editing',
-      'Fine-tuning (Coming Soon)',
-    ],
-  },
-  {
-    name: 'OpenAI Ada',
-    href: 'https://docs.usemeru.com/models',
-    priceMonthly: 0.00036,
-    description: 'Fastest language completion model. Least complex output.',
-    includedFeatures: ['Prompt Completion',
-    'Text editing',
-     'Fine-tuning (coming-soon)'],
-  }
+// const language = [
+//   {
+//     name: 'OpenAI DaVinci',
+//     href: 'https://usemeru.com/meruapp',
+//     priceMonthly: 0.018,
+//     description: 'Most powerful language model with complex output.',
+//     includedFeatures: [
+//       'Prompt Completion',
+//       'Text Editing',
+//       'Fine-tuning (Coming Soon)'
+//     ],
+//   },
+//   {
+//     name: 'OpenAI Curie',
+//     href: 'https://docs.usemeru.com/models',
+//     priceMonthly: 0.0018,
+//     description: 'Language model. More powerful  Babbage',
+//     includedFeatures: [
+//       'Prompt Completion',
+//       'Text Editing',
+//       'Fine-tuning (Coming Soon)'
+//     ],
+//   },
+//   {
+//     name: 'OpenAI Babbage',
+//     href: 'https://docs.usemeru.com/models',
+//     priceMonthly: 0.00045,
+//     description: 'Language model. More powerful than Ada.',
+//     includedFeatures: [
+//       'Prompt Completion ',
+//       'Editing',
+//       'Fine-tuning (Coming Soon)',
+//     ],
+//   },
+//   {
+//     name: 'OpenAI Ada',
+//     href: 'https://docs.usemeru.com/models',
+//     priceMonthly: 0.00036,
+//     description: 'Fastest language completion model. Least complex output.',
+//     includedFeatures: ['Prompt Completion',
+//     'Text editing',
+//      'Fine-tuning (coming-soon)'],
+//   }
   
-]
+// ]
 
-const image = [
-  {
-    name: 'Stable Diffusion v1.5',
-    href: 'https://docs.usemeru.com/models',
-    priceMonthly: '$0.0004 /s',
-    description: 'Use the latest version of stable diffusion from Stability.AI',
-    includedFeatures: ['Average image is generated in 5-7s'],
-  },
-  {
-    name: 'Custom Fine-Tune',
-    href: 'https://docs.usemeru.com/dreambooth',
-    priceMonthly: 'Variable',
-    description: 'Host and run inference on your own image model with Meru',
-    includedFeatures: [' Teach Stable Diffusion new concepts', 'Fully Managed service', 'No need to worry about deploying your own compute'
-    ],
-  }
+// const image = [
+//   {
+//     name: 'Stable Diffusion v1.5',
+//     href: 'https://docs.usemeru.com/models',
+//     priceMonthly: '$0.0004 /s',
+//     description: 'Use the latest version of stable diffusion from Stability.AI',
+//     includedFeatures: ['Average image is generated in 5-7s'],
+//   },
+//   {
+//     name: 'Custom Fine-Tune',
+//     href: 'https://docs.usemeru.com/dreambooth',
+//     priceMonthly: 'Variable',
+//     description: 'Host and run inference on your own image model with Meru',
+//     includedFeatures: [' Teach Stable Diffusion new concepts', 'Fully Managed service', 'No need to worry about deploying your own compute'
+//     ],
+//   }
   
-]
+// ]
 
-const code = [
-  {
-    name: 'Codex Davinci 001',
-    href: 'https://docs.usemeru.com/models',
-    priceMonthly: 0,
-    description: 'Use the latest version of stable diffusion from Stability.AI',
-    includedFeatures: ['Code Completion', 'Code Editing', 'Fine-tuning (Coming Soon)'],
-  },
-  {
-    name: 'Codex Cushman 001 ',
-    href: 'https://docs.usemeru.com/models',
-    priceMonthly: 0,
-    description: 'Host and run inference on your own image model with Meru',
-    includedFeatures: [
-      'Code Completion',
-      'Code Editing',
-      'Fine-tuning (Coming Soon)',
-    ],
-  }
+// const code = [
+//   {
+//     name: 'Codex Davinci 001',
+//     href: 'https://docs.usemeru.com/models',
+//     priceMonthly: 0,
+//     description: 'Use the latest version of stable diffusion from Stability.AI',
+//     includedFeatures: ['Code Completion', 'Code Editing', 'Fine-tuning (Coming Soon)'],
+//   },
+//   {
+//     name: 'Codex Cushman 001 ',
+//     href: 'https://docs.usemeru.com/models',
+//     priceMonthly: 0,
+//     description: 'Host and run inference on your own image model with Meru',
+//     includedFeatures: [
+//       'Code Completion',
+//       'Code Editing',
+//       'Fine-tuning (Coming Soon)',
+//     ],
+//   }
   
-]
+// ]
 export default function Pricing() {
 
   return (
