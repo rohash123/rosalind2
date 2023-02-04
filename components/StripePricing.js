@@ -39,18 +39,18 @@ const hallucinations =[
   ]
 export default function StripePricing({myplan}){
     const[loaded,setLoaded] = useState(false)
-    console.log(data)
+    console.log(myplan)
     useEffect(() => {
-        if(data == 'basic'){
+        if(myplan == 'basic'){
             hallucinations[0].active = true
         }
-        if(data == 'team'){
+        if(myplan == 'team'){
             hallucinations[1].active = true
         }
-        if(data == 'agency'){
+        if(myplan == 'agency'){
             hallucinations[2].active = true
         }
-        if(data == 'enterprise'){
+        if(myplan == 'enterprise'){
             hallucinations[3].active = true
         }
         setLoaded(true)
@@ -61,8 +61,8 @@ export default function StripePricing({myplan}){
             return
         }
         const stripe = await loadStripe('pk_live_51LqieCA4nXj35YFngboHcSmWj68wwBIlxNAB8HmZEWEQsL3jzGaTF8wNOBDpJWnXkmPOnr2X2NBTXVzpPkhaAAwz00L35Z9Ziw')
-        const t  =  Auth.currentAuthenticatedUser().then(async function(data){
-        let email = data['attributes']['email']
+        const t  =  Auth.currentAuthenticatedUser().then(async function(myplan){
+        let email = myplan['attributes']['email']
          await stripe.redirectToCheckout({
                 lineItems: [
                   {
