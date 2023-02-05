@@ -749,7 +749,7 @@ async function addtoDB(f,state,response){
                 success={files => setdbFiles(files)}
                 cancel={() => console.log('closed')}
                 multiselect={true}
-                extensions={['.pdf','.txt']} >
+                extensions={['.pdf','.txt', '.zip']} >
                 <div className=" dropbox-button w-60 cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">{!dbfiles && ('Add Files')}{dbfiles && ('Replace Files')}</div> 
             </DropboxChooser>)}
             {!integrations.dropbox.accessToken && (<div className=" dropbox-button w-80 inline-flex items-center rounded border border-pink-400 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Please Connect Your Dropox Account in 'Account' or use the API</div>)}
