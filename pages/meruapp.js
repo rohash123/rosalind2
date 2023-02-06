@@ -327,13 +327,12 @@ async function addtoDB(f,state,response){
                     return
                   });
                     } 
-                }
-            return
+                }            
             }
             catch(error){
                 return
             }
-
+            return
         }
 
         async function getstuff(){
