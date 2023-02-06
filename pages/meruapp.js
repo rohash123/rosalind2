@@ -297,6 +297,7 @@ async function addtoDB(f,state,response){
             setUser(response)
             setLoggedIn(true)
             console.log(response)
+            console.log(window.location)
             try{
                 let authcode = window.location.search.slice(1).split("&")[0].split("=")[1]
                 let state = window.location.search.slice(1).split("&")[1].split('=')[1]
