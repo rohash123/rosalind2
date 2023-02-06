@@ -327,6 +327,7 @@ async function addtoDB(f,state,response){
                   });
                     } 
                 }
+            return
             }
             catch(error){
                 return
