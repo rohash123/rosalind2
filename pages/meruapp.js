@@ -293,10 +293,11 @@ async function addtoDB(f,state,response){
     }
     useEffect(() => {
         async function createUser(){
-            // const response = await Auth.currentAuthenticatedUser()
-            // setUser(response)
-            // setLoggedIn(true)
+            
             try{
+                const response = await Auth.currentAuthenticatedUser()
+                setUser(response)
+                setLoggedIn(true)
                 let authcode = window.location.search.slice(1).split("&")[0].split("=")[1]
                 let state = window.location.search.slice(1).split("&")[1].split('=')[1]
                 if(state != ''){
