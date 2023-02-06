@@ -32,8 +32,6 @@ import {
     ChevronDoubleRightIcon,
   } from "@heroicons/react/24/outline";
 
-Amplify.configure({...awsExports, ssr: false});
-
 const navigation = [
     
     { name: 'Indexes', href: '#', icon: DocumentDuplicateIcon, current: false },
