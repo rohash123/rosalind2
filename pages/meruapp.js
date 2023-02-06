@@ -372,6 +372,7 @@ async function addtoDB(f,state,response){
                 console.log(apiKey)
               } catch (errors) {
                 console.log(errors);
+                return
               }
         }
 
