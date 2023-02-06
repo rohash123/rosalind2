@@ -293,15 +293,17 @@ async function addtoDB(f,state,response){
     }
     useEffect(() => {
         async function createUser(){
+            if(user){
+                return    
+            }
             const response = await Auth.currentAuthenticatedUser()
             setUser(response)
             setLoggedIn(true)
-            console.log(response)
-            console.log(window.location)
             try{
                 let authcode = window.location.search.slice(1).split("&")[0].split("=")[1]
                 let state = window.location.search.slice(1).split("&")[1].split('=')[1]
                 if(state != ''){
+                    console.log(state)
                     if(state == 'dropbox'){
                         const config = {
                             clientId: 'rqiucchpvi1uywj',
