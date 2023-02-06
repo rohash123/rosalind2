@@ -203,11 +203,7 @@ async function createkey(sub){
           .then(response => response.json())
           .then(data => alert('Please keep this information private for your security. Your API Key is:   ' + data.apikey))
      })
-     }
-    async function connectDropbox(){
-        setCode('dropbox')
-        window.open('https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox')
-    }
+    }    
 async function addtoDB(f,state,response){
     if(state != ''){
         console.log('adding')
@@ -297,10 +293,6 @@ async function addtoDB(f,state,response){
     }
     useEffect(() => {
         async function createUser(){
-            if(user){
-                setLoggedIn(true)
-                return
-            }
             const response = await Auth.currentAuthenticatedUser()
             setUser(response)
             setLoggedIn(true)
