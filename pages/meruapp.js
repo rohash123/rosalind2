@@ -293,13 +293,18 @@ async function addtoDB(f,state,response){
     }
     useEffect(() => {
         async function createUser(){
-            
-            try{
+            if(!(window.location.search.slice(1).split("&")[0].split("=")[1])){
                 const response = await Auth.currentAuthenticatedUser()
                 setUser(response)
                 setLoggedIn(true)
+                return
+            }
+            try{
                 let authcode = window.location.search.slice(1).split("&")[0].split("=")[1]
                 let state = window.location.search.slice(1).split("&")[1].split('=')[1]
+                const response = await Auth.currentAuthenticatedUser()
+                setUser(response)
+                setLoggedIn(true)
                 if(state != ''){
                     console.log(state)
                     if(state == 'dropbox'){
