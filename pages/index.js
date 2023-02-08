@@ -83,7 +83,7 @@ export default function Example() {
                 <div className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                   <span className="text-gray-600">
                     Explore our community and get help when you need it.{' '}
-                    <a href="https://t.co/ujM1RAVKZE" className="font-semibold text-pink-400">
+                    <a href="https://discord.gg/aW4Ysje3vv" className="font-semibold text-pink-400">
                       <span className="absolute inset-0" aria-hidden="true" />
                       Join the Discord <span aria-hidden="true">&rarr;</span>
                     </a>
@@ -99,7 +99,7 @@ export default function Example() {
                 </p>
                 <div className="mt-8 flex gap-x-4 sm:justify-center">
                   <a
-                    href="/meruapp"
+                    href="/develop"
                     className="inline-block rounded-lg bg-pink-400 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-400 hover:bg-pink-600 hover:ring-pink-600"
                   >
                     Get started{' '}
