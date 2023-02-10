@@ -1,5 +1,9 @@
 import { ThemeProvider } from '@aws-amplify/ui-react';
-import { Authenticator } from '@aws-amplify/ui-react';
+import { Authenticator, GOOGLE_AUTH_URL } from '@aws-amplify/ui-react';
+
+const googleSignInConfig = {
+  googleClientId: 'YOUR_GOOGLE_CLIENT_ID',
+};
 
 const components = {
     SignIn: {
@@ -46,7 +50,7 @@ theme={{
 }}
 >
 <Authenticator.Provider>
-<Authenticator components={components} >
+<Authenticator socialProviders={['google']} components={components} >
 <div className="flex mx-auto min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 <div className="w-full max-w-md space-y-8">
 </div>

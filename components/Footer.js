@@ -13,8 +13,8 @@ const navigation = [
   { name: 'Developers', href: 'https://docs.usemeru.com' },
   { name: 'Blog', href: '/blog'},
   { name: 'Dreambooth', href: 'https://dreambooth.usemeru.com'},
-  { name: 'Terms and Conditions', href: 'https://app.termly.io/document/terms-of-use-for-saas/ee5dbff4-1527-4871-898c-116a306ae74f'},
-  { name: 'Privacy Policy', href: 'https://app.termly.io/document/privacy-policy/921d2c55-6407-4881-8c79-fe848f5bfd35'},
+  { name: 'Terms and Conditions', href: 'https://usemeru.com/terms'},
+  { name: 'Privacy Policy', href: 'https://usemeru.com/privacy'},
 
 ]
 
