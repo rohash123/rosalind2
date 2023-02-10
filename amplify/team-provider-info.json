@@ -13,7 +13,13 @@
     },
     "categories": {
       "auth": {
-        "meruv248e77385": {}
+        "meruv248e77385": {},
+        "meruv29009e86c": {
+          "userPoolId": "us-west-2_BBVCXe0Q9",
+          "userPoolName": "usemeru38a62832_userpool_38a62832-dev",
+          "webClientId": "3jnacorcicdtrlq7jqsrcfisnp",
+          "nativeClientId": "5daekg9cr8njcj3o8gk7ru5ehl"
+        }
       },
       "api": {
         "meruv2": {}

@@ -1,5 +1,13 @@
 {
-  "auth": {},
+  "auth": {
+    "meruv29009e86c": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
   "storage": {},
   "api": {
     "meruv2": {
