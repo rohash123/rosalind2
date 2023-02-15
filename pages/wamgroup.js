@@ -984,8 +984,6 @@ async function addtoDB(f,state,response){
           </div>)}
         </div>
         </div>)}
-       
-        <Footer/>
         </div>
         </>
     )
