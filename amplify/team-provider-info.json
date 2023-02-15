@@ -10,6 +10,24 @@
       "StackName": "amplify-meruv2-dev-111632",
       "StackId": "arn:aws:cloudformation:us-west-2:295758170778:stack/amplify-meruv2-dev-111632/2023ba10-9509-11ed-b4b7-0248e4b1319b",
       "AmplifyAppId": "d3tziqolj1acqn"
+    },
+    "categories": {
+      "auth": {
+        "rosalind23632f956": {
+          "userPoolId": "us-west-2_BBVCXe0Q9",
+          "userPoolName": "usemeru38a62832_userpool_38a62832-dev",
+          "webClientId": "3jnacorcicdtrlq7jqsrcfisnp",
+          "nativeClientId": "3jnacorcicdtrlq7jqsrcfisnp",
+          "identityPoolId": "us-west-2:29708731-e883-4375-9c57-7de62921ba49",
+          "identityPoolName": "usemeru38a62832_identitypool_38a62832__dev",
+          "allowUnauthenticatedIdentities": false,
+          "authRoleArn": "arn:aws:iam::295758170778:role/amplify-usemeru-dev-185146-authRole",
+          "authRoleName": "amplify-usemeru-dev-185146-authRole",
+          "unauthRoleArn": "arn:aws:iam::295758170778:role/amplify-usemeru-dev-185146-unauthRole",
+          "unauthRoleName": "amplify-usemeru-dev-185146-unauthRole",
+          "googleClientId": "255435272260-859cck5kg57n35c7hnl3mjqnhkdkp0iv.apps.googleusercontent.com"
+        }
+      }
     }
   }
 }
