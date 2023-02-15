@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from '@headlessui/react'
 import {API, Auth, Hub, Amplify} from 'aws-amplify'
-import AuthComponent from "../components/AuthComponent";
+import WamAuth from "../components/WamAuth";
 import Banner from "../components/Banner"
 import awsExports from '../src/aws-exports'
 import { useRouter } from 'next/router';
@@ -449,7 +449,7 @@ async function addtoDB(f,state,response){
         {/* APP CODE */}
        {!user && (
         <div className="mt-10">
-        <AuthComponent/>
+        <WamAuth/>
         </div>
        )} 
        {user && (<div className="mt-10 flex h-[80vh]">

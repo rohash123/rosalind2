@@ -28,27 +28,9 @@ const components = {
       );
     }}
   }
-export default function AuthComponent(){
+export default function WamAuth(){
     return(
-        <ThemeProvider
-theme={{
-  tokens: {
-    colors: {
-      brand: {
-        primary: {
-          10: '{colors.pink.10}',
-          20: '#F471B7',
-          40: '#F471B7',
-          60: '#F471B7',
-          80: '#F471B7',
-          90: '{colors.pink.60}',
-          100: '{colors.pink.60}',
-        },
-      },
-    },
-  },
-}}
->
+        <ThemeProvider>
 <Authenticator.Provider>
 <Authenticator components={components} >
 <div className="flex mx-auto min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
