@@ -43,7 +43,7 @@ export default function Footer() {
           
         </div>
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
-          &copy; 2023 Meru Productions, Inc. All rights reserved. Backed by YCombinator. Build in San Francisco, CA 
+          &copy; 2023 Meru Productions, Inc. All rights reserved. Backed by YCombinator. Built in San Francisco, CA 
         </p>
       </div>
     </footer>

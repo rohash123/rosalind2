@@ -10,20 +10,6 @@
       "StackName": "amplify-meruv2-dev-111632",
       "StackId": "arn:aws:cloudformation:us-west-2:295758170778:stack/amplify-meruv2-dev-111632/2023ba10-9509-11ed-b4b7-0248e4b1319b",
       "AmplifyAppId": "d3tziqolj1acqn"
-    },
-    "categories": {
-      "auth": {
-        "meruv248e77385": {},
-        "meruv29009e86c": {
-          "userPoolId": "us-west-2_BBVCXe0Q9",
-          "userPoolName": "usemeru38a62832_userpool_38a62832-dev",
-          "webClientId": "3jnacorcicdtrlq7jqsrcfisnp",
-          "nativeClientId": "5daekg9cr8njcj3o8gk7ru5ehl"
-        }
-      },
-      "api": {
-        "meruv2": {}
-      }
     }
   }
 }

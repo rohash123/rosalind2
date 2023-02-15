@@ -1,33 +1,59 @@
 {
-  "auth": {
-    "meruv29009e86c": {
-      "service": "Cognito",
-      "serviceType": "imported",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false
-    }
-  },
-  "storage": {},
   "api": {
     "meruv2": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "output": {
         "authConfig": {
+          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
-            "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 365,
               "apiKeyExpirationDate": "2024-02-03T07:32:15.876Z",
+              "apiKeyExpirationDays": 365,
               "description": ""
-            }
-          },
-          "additionalAuthenticationProviders": []
+            },
+            "authenticationType": "API_KEY"
+          }
         }
-      }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
     }
   },
-  "function": {}
+  "auth": {},
+  "function": {},
+  "parameters": {
+    "AMPLIFY_auth_meruv29009e86c_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "meruv29009e86c"
+        }
+      ]
+    },
+    "AMPLIFY_auth_meruv29009e86c_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "meruv29009e86c"
+        }
+      ]
+    },
+    "AMPLIFY_auth_meruv29009e86c_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "meruv29009e86c"
+        }
+      ]
+    },
+    "AMPLIFY_auth_meruv29009e86c_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "meruv29009e86c"
+        }
+      ]
+    }
+  },
+  "storage": {}
 }
