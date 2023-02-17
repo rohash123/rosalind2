@@ -16,6 +16,7 @@ import Query from "../components/Query";
 import QueryHistory from "../components/QueryHistory";
 import { Document } from 'react-pdf'
 import StripePricing from "../components/StripePricing";
+import GenQ from "../components/GenQ";
 
 
 import {
@@ -38,7 +39,7 @@ const navigation = [
     { name: 'Create an Index', href: '#', icon: CircleStackIcon, current: false },
     { name: 'Query History', href: '#', icon: MagnifyingGlassIcon, current: false },
     { name: 'Account', href: '#account', icon: UserIcon, current: true },
-    // { name: 'Upgrade Plan', href: '#', icon: SquaresPlusIcon , current: false },
+    { name: 'Quick Questions', href: '#', icon: SquaresPlusIcon , current: false },
   ]
   const integrations = {
     dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://www.usemeru.com/wamgroup&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-blue-800', target : "_blank" },
@@ -967,16 +968,10 @@ async function addtoDB(f,state,response){
             </main>
           </div>)}
           {/* Upgrade Plan */}
-         {(active == 'Upgrade Plan') &&(<div className="relative z-0 flex flex-1 overflow-auto">
-            <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
-            <div className="flex-1  px-4 py-2 text-sm">
-                <p className="px-5 font-medium text-gray-900 hover:text-gray-600">
-                To Cancle a subscription please contact rohan@usemeru.com. We will get back to you immediately. If you upgrade your plan, your existing subscription will be cancelled automatically. 
-                </p>            
-              </div>
-              
+         {(active == 'Quick Questions') &&(<div className="relative z-0 flex flex-1 overflow-auto">
+            <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">            
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-              <StripePricing myplan={plan}/>
+              <GenQ apikey={apiKey}/>
                 <div className="h-full border-gray-200" />
               </div>
               {/* End main area */}
