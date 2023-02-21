@@ -41,7 +41,7 @@ const navigation = [
     { name: 'Upgrade Plan', href: '#', icon: SquaresPlusIcon , current: false },
   ]
   const integrations = {
-    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://www.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
+    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://test.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
     box : { name: 'Box', initials: 'B', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     googledrive : { name: 'Google Drive', initials: 'GD', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     github : { name: 'Github', initials: 'G', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
@@ -234,7 +234,7 @@ async function addtoDB(f,state,response){
             method: 'GET',
             headers: { 'x-api-key' : apiKey, 'Content-Type' : 'application/json'}
         };
-        let tempfilelist = await fetch('https://api.usemeru.com/refine/v3/files', requestOptions)
+        let tempfilelist = await fetch('https://api.usemeru.com/refine/v4/files', requestOptions)
         let filelistjson = await tempfilelist.json()
         console.log(filelistjson)
         setFileList(filelistjson.indices)
@@ -267,7 +267,7 @@ async function addtoDB(f,state,response){
                 index_name: indexName
             })
         }
-        let response = await fetch('https://api.usemeru.com/refine/v3/files-internal',requestOptions)
+        let response = await fetch('https://api.usemeru.com/refine/v4/files-internal',requestOptions)
         
         let data = await response.json()
         console.log(data)
@@ -316,7 +316,7 @@ async function addtoDB(f,state,response){
                             clientSecret : 'umpym6xp5r5pj11'
                           };
                         const dbx = new Dropbox(config)
-                        dbx.auth.getAccessTokenFromCode('https://www.usemeru.com/meruapp', authcode).then((token) => {
+                        dbx.auth.getAccessTokenFromCode('https://test.usemeru.com/meruapp', authcode).then((token) => {
                     console.log('hi!')
                     console.log(`Token Result:${JSON.stringify(token)}`);
                     dbx.auth.setRefreshToken(token.result.refresh_token);
