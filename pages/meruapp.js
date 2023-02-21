@@ -14,7 +14,6 @@ import { getMeruApiSub } from "../src/graphql/queries";
 import DropboxChooser from 'react-dropbox-chooser';
 import Query from "../components/Query";
 import QueryHistory from "../components/QueryHistory";
-import { Document } from 'react-pdf'
 import StripePricing from "../components/StripePricing";
 
 
@@ -110,7 +109,7 @@ const navigation = [
 //     return {props : {token : err}}
 //     }
     
-    // Props returned will be passed to the page component
+    // Props returned will be pass
     
 export default function MeruApp(){
     const router = useRouter();
