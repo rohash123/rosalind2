@@ -9,4 +9,4 @@ type MeruApiSub @model @auth(rules: [{ allow: public }]) {
   meru : String
   queries : String
   subscription_plan : String
-}
+} 

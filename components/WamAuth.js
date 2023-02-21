@@ -11,7 +11,7 @@ const components = {
         return (
           <>
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your Account</h2>
-          <p className="mt-2 text-center text-sm text-gray-600">Access Your Meru Dashboard</p>
+          <p className="mt-2 text-center text-sm text-gray-600">Access Your Dashboard</p>
           </>
         );
       },
@@ -28,29 +28,11 @@ const components = {
       );
     }}
   }
-export default function AuthComponent(){
+export default function WamAuth(){
     return(
-        <ThemeProvider
-theme={{
-  tokens: {
-    colors: {
-      brand: {
-        primary: {
-          10: '{colors.pink.10}',
-          20: '#F471B7',
-          40: '#F471B7',
-          60: '#F471B7',
-          80: '#F471B7',
-          90: '{colors.pink.60}',
-          100: '{colors.pink.60}',
-        },
-      },
-    },
-  },
-}}
->
+        <ThemeProvider>
 <Authenticator.Provider>
-<Authenticator components={components} >
+<Authenticator hideSignUp = {true} components={components} >
 <div className="flex mx-auto min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 <div className="w-full max-w-md space-y-8">
 </div>

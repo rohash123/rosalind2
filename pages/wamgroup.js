@@ -1,9 +1,9 @@
-import Navbar from "../components/Navbar";
+import WamNav from "../components/wamnav";
 import Footer from "../components/Footer";
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from '@headlessui/react'
 import {API, Auth, Hub, Amplify} from 'aws-amplify'
-import AuthComponent from "../components/AuthComponent";
+import WamAuth from "../components/WamAuth";
 import Banner from "../components/Banner"
 import awsExports from '../src/aws-exports'
 import { useRouter } from 'next/router';
@@ -16,6 +16,7 @@ import Query from "../components/Query";
 import QueryHistory from "../components/QueryHistory";
 import { Document } from 'react-pdf'
 import StripePricing from "../components/StripePricing";
+import GenQ from "../components/GenQ";
 
 
 import {
@@ -38,13 +39,13 @@ const navigation = [
     { name: 'Create an Index', href: '#', icon: CircleStackIcon, current: false },
     { name: 'Query History', href: '#', icon: MagnifyingGlassIcon, current: false },
     { name: 'Account', href: '#account', icon: UserIcon, current: true },
-    { name: 'Upgrade Plan', href: '#', icon: SquaresPlusIcon , current: false },
+    { name: 'Quick Questions', href: '#', icon: SquaresPlusIcon , current: false },
   ]
   const integrations = {
-    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://test.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
-    box : { name: 'Box', initials: 'B', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
-    googledrive : { name: 'Google Drive', initials: 'GD', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
-    github : { name: 'Github', initials: 'G', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
+    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://www.usemeru.com/wamgroup&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-blue-800', target : "_blank" },
+    box : { name: 'Box', initials: 'B', href: '#', text: 'Coming Soon', bgColor: 'bg-blue-200' },
+    googledrive : { name: 'Google Drive', initials: 'GD', href: '#', text: 'Coming Soon', bgColor: 'bg-blue-200' },
+    github : { name: 'Github', initials: 'G', href: '#', text: 'Coming Soon', bgColor: 'bg-blue-200' },
   }
   
   function classNames(...classes) {
@@ -112,7 +113,7 @@ const navigation = [
     
     // Props returned will be passed to the page component
     
-export default function MeruApp(){
+export default function WamGroup(){
     const router = useRouter();
     const [loggedIn, setLoggedIn] = useState(false)
     const [preview,setpreview] = useState(false)
@@ -222,7 +223,7 @@ async function addtoDB(f,state,response){
         } catch (errors) {
           console.log(errors);
         }
-        router.push('/meruapp')
+        router.push('/wamgroup')
     }
     else{
         return
@@ -234,7 +235,7 @@ async function addtoDB(f,state,response){
             method: 'GET',
             headers: { 'x-api-key' : apiKey, 'Content-Type' : 'application/json'}
         };
-        let tempfilelist = await fetch('https://api.usemeru.com/refine/v4/files', requestOptions)
+        let tempfilelist = await fetch('https://api.usemeru.com/refine/v3/files', requestOptions)
         let filelistjson = await tempfilelist.json()
         console.log(filelistjson)
         setFileList(filelistjson.indices)
@@ -267,7 +268,7 @@ async function addtoDB(f,state,response){
                 index_name: indexName
             })
         }
-        let response = await fetch('https://api.usemeru.com/refine/v4/files-internal',requestOptions)
+        let response = await fetch('https://api.usemeru.com/refine/v3/files-internal',requestOptions)
         
         let data = await response.json()
         console.log(data)
@@ -316,7 +317,7 @@ async function addtoDB(f,state,response){
                             clientSecret : 'umpym6xp5r5pj11'
                           };
                         const dbx = new Dropbox(config)
-                        dbx.auth.getAccessTokenFromCode('https://test.usemeru.com/meruapp', authcode).then((token) => {
+                        dbx.auth.getAccessTokenFromCode('https://www.usemeru.com/wamgroup', authcode).then((token) => {
                     console.log('hi!')
                     console.log(`Token Result:${JSON.stringify(token)}`);
                     dbx.auth.setRefreshToken(token.result.refresh_token);
@@ -445,11 +446,11 @@ async function addtoDB(f,state,response){
         <>
         
         <div className="px-6 pt-6 lg:px-8">
-        <Navbar/>
+        <WamNav/>
         {/* APP CODE */}
        {!user && (
         <div className="mt-10">
-        <AuthComponent/>
+        <WamAuth/>
         </div>
        )} 
        {user && (<div className="mt-10 flex h-[80vh]">
@@ -712,7 +713,7 @@ async function addtoDB(f,state,response){
                 <div>
                   {!done && <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
                   <div role="status">
-        <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-100 fill-pink-600" viewBox="0 0 100 101" fill="none" xmlns="https://www.w3.org/2000/svg">
+        <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-100 fill-blue-800" viewBox="0 0 100 101" fill="none" xmlns="https://www.w3.org/2000/svg">
             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
             <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
         </svg>
@@ -730,7 +731,7 @@ async function addtoDB(f,state,response){
                 <div className="mt-5 sm:mt-6">
                 {done&&(<button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-pink-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
+                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-800 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
                     onClick={() => {setOpen(false); setDone(false);}}
                   >
                     Go back to dashboard
@@ -750,9 +751,9 @@ async function addtoDB(f,state,response){
                 cancel={() => console.log('closed')}
                 multiselect={true}
                 extensions={['.pdf','.txt', '.zip']} >
-                <div className=" dropbox-button w-60 cursor-pointer inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">{!dbfiles && ('Add Files')}{dbfiles && ('Replace Files')}</div> 
+                <div className=" dropbox-button w-60 cursor-pointer inline-flex items-center rounded border border-transparent bg-blue-800 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2">{!dbfiles && ('Add Files')}{dbfiles && ('Replace Files')}</div> 
             </DropboxChooser>)}
-            {!integrations.dropbox.accessToken && (<div className=" dropbox-button w-80 inline-flex items-center rounded border border-pink-400 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2">Please Connect Your Dropox Account in 'Account' or use the API</div>)}
+            {!integrations.dropbox.accessToken && (<div className=" dropbox-button w-80 inline-flex items-center rounded border border-blue-800 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2">Please Connect Your Dropox Account in 'Account' or use the API</div>)}
             
             {/* {!dbfiles[0] &&( <p>Select a file to begin</p>)} */}
                 {dbfiles && (
@@ -798,7 +799,7 @@ async function addtoDB(f,state,response){
             </p>
           </div>
         )}
-        {dbfiles && (<div className=" w-60 cursor-pointer w-full mt-4 inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2" onClick = {createIndex} disabled = {false}>Create Index</div> )}
+        {dbfiles && (<div className=" w-60 cursor-pointer w-full mt-4 inline-flex items-center rounded border border-transparent bg-blue-800 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2" onClick = {createIndex} disabled = {false}>Create Index</div> )}
             <div className="h-full border-gray-200" />
               </div>
 
@@ -851,10 +852,10 @@ async function addtoDB(f,state,response){
               <ul role="list" className="divide-y divide-gray-200 rounded-md border border-gray-200">
                 {!show && (<li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
                   <div className="flex w-0 flex-1 items-center">
-                  <input class="appearance-none border-1 rounded w-full py-3 px-3 leading-tight border-gray-300 bg-gray-100 focus:outline-none focus:border-pink-600 focus:bg-white text-gray-400 pr-16 font-mono js-password" value = {apiKey} id="apikey" type="password" autocomplete="off"/>
+                  <input class="appearance-none border-1 rounded w-full py-3 px-3 leading-tight border-gray-300 bg-gray-100 focus:outline-none focus:border-blue-800 focus:bg-white text-gray-400 pr-16 font-mono js-password" value = {apiKey} id="apikey" type="password" autocomplete="off"/>
                   </div>
                   <div className="ml-4 flex-shrink-0">
-                    <button onClick={()=>setShow(true)} className="font-medium text-pink-400 hover:text-pink-600">
+                    <button onClick={()=>setShow(true)} className="font-medium text-blue-800 hover:text-blue-800">
                       Show
                     </button>
                     {!resetDisabled && (<button onClick={resetkey} className="ml-3 font-medium text-red-600 hover:text-red-600">
@@ -862,7 +863,7 @@ async function addtoDB(f,state,response){
                     </button>)}
                     {resetDisabled && (<div class="text-right">
     <div role="status">
-        <svg aria-hidden="true" class="w-4 h-4 text-gray-200 animate-spin dark:text-gray-100 fill-pink-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg aria-hidden="true" class="w-4 h-4 text-gray-200 animate-spin dark:text-gray-100 fill-blue-800" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
             <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
         </svg>
@@ -873,10 +874,10 @@ async function addtoDB(f,state,response){
                 </li>)}
                 {show && (<li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
                   <div className="flex w-0 flex-1 items-center">
-                  <input class="appearance-none border-1 rounded w-full py-3 px-3 leading-tight border-gray-300 bg-white focus:outline-none focus:border-pink-600 focus:bg-white text-gray-600 pr-16 font-mono js-password" value = {apiKey} id="apikey" type="text" autocomplete="off"/>
+                  <input class="appearance-none border-1 rounded w-full py-3 px-3 leading-tight border-gray-300 bg-white focus:outline-none focus:border-blue-800 focus:bg-white text-gray-600 pr-16 font-mono js-password" value = {apiKey} id="apikey" type="text" autocomplete="off"/>
                   </div>
                   <div className="ml-4 flex-shrink-0">
-                    <button onClick={()=>setShow(false)} className="font-medium text-pink-400 hover:text-pink-600">
+                    <button onClick={()=>setShow(false)} className="font-medium text-blue-800 hover:text-blue-800">
                       Hide
                     </button>
                     {!resetDisabled && (<button onClick={resetkey} className="ml-3 font-medium text-red-600 hover:text-red-600">
@@ -884,7 +885,7 @@ async function addtoDB(f,state,response){
                     </button>)}
                     {resetDisabled && (<div class="text-right">
     <div role="status">
-        <svg aria-hidden="true" class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-100 fill-pink-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg aria-hidden="true" class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-100 fill-blue-800" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
             <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
         </svg>
@@ -931,7 +932,7 @@ async function addtoDB(f,state,response){
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
             <ul role="list" className="mt-1 grid grid-cols-1 gap-5 sm:grid-cols-1 sm:gap-6 lg:grid-cols-2">
             <li className="col-span-1 flex rounded-md shadow-sm">
-            <div className="flex flex-1 items-center justify-between truncate rounded-md border border-pink-600 bg-white">
+            <div className="flex flex-1 items-center justify-between truncate rounded-md border border-blue-800 bg-white">
               <div className="flex-1 truncate px-4 py-2 text-sm">
                 <p className="font-medium text-gray-900 hover:text-gray-600">
                   {indicies}
@@ -943,7 +944,7 @@ async function addtoDB(f,state,response){
             </div>
           </li>
           <li className="col-span-1 flex rounded-md shadow-sm">
-          <div className="flex flex-1 items-center justify-between truncate rounded-md border border-pink-600 bg-white">
+          <div className="flex flex-1 items-center justify-between truncate rounded-md border border-blue-800 bg-white">
               <div className="flex-1 truncate px-4 py-2 text-sm">
                 <p className="font-medium text-gray-900 hover:text-gray-600">
                   {queries}
@@ -967,16 +968,10 @@ async function addtoDB(f,state,response){
             </main>
           </div>)}
           {/* Upgrade Plan */}
-         {(active == 'Upgrade Plan') &&(<div className="relative z-0 flex flex-1 overflow-auto">
-            <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
-            <div className="flex-1  px-4 py-2 text-sm">
-                <p className="px-5 font-medium text-gray-900 hover:text-gray-600">
-                To Cancle a subscription please contact rohan@usemeru.com. We will get back to you immediately. If you upgrade your plan, your existing subscription will be cancelled automatically. 
-                </p>            
-              </div>
-              
+         {(active == 'Quick Questions') &&(<div className="relative z-0 flex flex-1 overflow-auto">
+            <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">            
               <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-              <StripePricing myplan={plan}/>
+              <GenQ apikey={apiKey}/>
                 <div className="h-full border-gray-200" />
               </div>
               {/* End main area */}
@@ -984,8 +979,6 @@ async function addtoDB(f,state,response){
           </div>)}
         </div>
         </div>)}
-       
-        <Footer/>
         </div>
         </>
     )
