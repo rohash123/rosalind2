@@ -634,7 +634,7 @@ async function addtoDB(f,state,response){
           <li key={integration.id} className="col-span-1 flex mt-3 rounded-md shadow-sm">      
         {(integration.status_code == 0) && (<div className = 'bg-green-600 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
         {(integration.status_code == 1) && (<div className = 'bg-yellow-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
-        {(integration.status_code == 2) && (<div className = 'bg-red-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
+        {(integration.status_code >= 2) && (<div className = 'bg-red-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
                 
             <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
               <div className="flex-1 truncate px-4 py-2 text-sm">
