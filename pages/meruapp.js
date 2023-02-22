@@ -233,7 +233,7 @@ async function addtoDB(f,state,response){
             method: 'GET',
             headers: { 'x-api-key' : apiKey, 'Content-Type' : 'application/json'}
         };
-        let tempfilelist = await fetch('https://api.usemeru.com/refine/v4/files', requestOptions)
+        let tempfilelist = await fetch('https://api.usemeru.com/refine/v3/files', requestOptions)
         let filelistjson = await tempfilelist.json()
         console.log(filelistjson)
         setFileList(filelistjson.indices)
@@ -266,7 +266,7 @@ async function addtoDB(f,state,response){
                 index_name: indexName
             })
         }
-        let response = await fetch('https://api.usemeru.com/refine/v4/files-internal',requestOptions)
+        let response = await fetch('https://api.usemeru.com/refine/v3/files-internal',requestOptions)
         
         let data = await response.json()
         console.log(data)
