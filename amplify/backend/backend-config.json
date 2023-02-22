@@ -20,36 +20,112 @@
     }
   },
   "auth": {
-    "rosalind2138c78b3": {
+    "rosalind23632f956": {
       "customAuth": false,
       "dependsOn": [],
-      "frontendAuthConfig": {
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 8
-        },
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "socialProviders": [
-          "GOOGLE"
-        ],
-        "usernameAttributes": [
-          "EMAIL",
-          "PHONE_NUMBER"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
-      },
       "providerPlugin": "awscloudformation",
-      "service": "Cognito"
+      "service": "Cognito",
+      "serviceType": "imported"
     }
   },
   "function": {},
+  "parameters": {
+    "AMPLIFY_auth_rosalind23632f956_allowUnauthenticatedIdentities": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_authRoleArn": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_authRoleName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_googleClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_identityPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_identityPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_unauthRoleArn": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_unauthRoleName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    },
+    "AMPLIFY_auth_rosalind23632f956_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "rosalind23632f956"
+        }
+      ]
+    }
+  },
   "storage": {}
 }
