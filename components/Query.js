@@ -1,5 +1,6 @@
 import { PaperClipIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
+import { useEffect } from 'react';
 export default function Query({props,apikey}) {
     const [response, setResponse] = useState('')
     const [message, setMessage] = useState('');
@@ -8,7 +9,7 @@ export default function Query({props,apikey}) {
     const creationTime = parseInt(props.creation_time)
     const handleMessageChange = event => {
       setMessage(event.target.value);
-      console.log(props.creation_time)
+      console.log(props)
     };
     async function submitQuery(){
         setLoading(true)
@@ -26,7 +27,8 @@ export default function Query({props,apikey}) {
         let t;
         if (creationTime < 1677040900){
           t= await fetch('https://api.usemeru.com/refine/v3/predict ', requestOptions)
-        }
+        
+      }
         if(creationTime > 1677040900){
           t= await fetch('https://api.usemeru.com/refine/v4/predict ', requestOptions)
         }
