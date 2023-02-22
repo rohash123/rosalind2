@@ -1,12 +1,15 @@
 import { PaperClipIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
+import { useEffect } from 'react';
 export default function Query({props,apikey}) {
     const [response, setResponse] = useState('')
     const [message, setMessage] = useState('');
     const [source, setSource] = useState('');
     const [loading, setLoading] = useState(false)
+    const creationTime = parseInt(props.creation_time)
     const handleMessageChange = event => {
       setMessage(event.target.value);
+      console.log(props)
     };
     async function submitQuery(){
         setLoading(true)
@@ -21,8 +24,16 @@ export default function Query({props,apikey}) {
                     }
             })
         }
-        let t = await fetch('https://api.usemeru.com/refine/v3/predict ', requestOptions)
+        let t;
+        if (creationTime < 1677040900){
+          t= await fetch('https://api.usemeru.com/refine/v3/predict ', requestOptions)
+        
+      }
+        if(creationTime > 1677040900){
+          t= await fetch('https://api.usemeru.com/refine/v4/predict ', requestOptions)
+        }
         let f = await t.json()
+        console.log(f)
         if (f.err_code != 0 ){
             setResponse('Your query could not be processed. This may mean you are out of credits. Please view your account to see your remaining credits.')
             setLoading(false)

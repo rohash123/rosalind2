@@ -16,8 +16,8 @@
         "rosalind23632f956": {
           "userPoolId": "us-west-2_BBVCXe0Q9",
           "userPoolName": "usemeru38a62832_userpool_38a62832-dev",
-          "webClientId": "3jnacorcicdtrlq7jqsrcfisnp",
-          "nativeClientId": "3jnacorcicdtrlq7jqsrcfisnp",
+          "webClientId": "7mua367nslkdca7iva3va8m9t3",
+          "nativeClientId": "7mua367nslkdca7iva3va8m9t3",
           "identityPoolId": "us-west-2:29708731-e883-4375-9c57-7de62921ba49",
           "identityPoolName": "usemeru38a62832_identitypool_38a62832__dev",
           "allowUnauthenticatedIdentities": false,

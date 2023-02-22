@@ -14,7 +14,6 @@ import { getMeruApiSub } from "../src/graphql/queries";
 import DropboxChooser from 'react-dropbox-chooser';
 import Query from "../components/Query";
 import QueryHistory from "../components/QueryHistory";
-import { Document } from 'react-pdf'
 import StripePricing from "../components/StripePricing";
 
 
@@ -41,7 +40,7 @@ const navigation = [
     { name: 'Upgrade Plan', href: '#', icon: SquaresPlusIcon , current: false },
   ]
   const integrations = {
-    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://www.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
+    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://test.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
     box : { name: 'Box', initials: 'B', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     googledrive : { name: 'Google Drive', initials: 'GD', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     github : { name: 'Github', initials: 'G', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
@@ -110,7 +109,7 @@ const navigation = [
 //     return {props : {token : err}}
 //     }
     
-    // Props returned will be passed to the page component
+    // Props returned will be pass
     
 export default function MeruApp(){
     const router = useRouter();
@@ -267,7 +266,7 @@ async function addtoDB(f,state,response){
                 index_name: indexName
             })
         }
-        let response = await fetch('https://api.usemeru.com/refine/v3/files-internal',requestOptions)
+        let response = await fetch('https://api.usemeru.com/refine/v4/files-internal',requestOptions)
         
         let data = await response.json()
         console.log(data)
@@ -316,7 +315,7 @@ async function addtoDB(f,state,response){
                             clientSecret : 'umpym6xp5r5pj11'
                           };
                         const dbx = new Dropbox(config)
-                        dbx.auth.getAccessTokenFromCode('https://www.usemeru.com/meruapp', authcode).then((token) => {
+                        dbx.auth.getAccessTokenFromCode('https://test.usemeru.com/meruapp', authcode).then((token) => {
                     console.log('hi!')
                     console.log(`Token Result:${JSON.stringify(token)}`);
                     dbx.auth.setRefreshToken(token.result.refresh_token);
@@ -635,7 +634,7 @@ async function addtoDB(f,state,response){
           <li key={integration.id} className="col-span-1 flex mt-3 rounded-md shadow-sm">      
         {(integration.status_code == 0) && (<div className = 'bg-green-600 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
         {(integration.status_code == 1) && (<div className = 'bg-yellow-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
-        {(integration.status_code == 2) && (<div className = 'bg-red-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
+        {(integration.status_code >= 2) && (<div className = 'bg-red-400 flex-shrink-0 flex items-center justify-center w-10 text-white text-sm font-medium rounded-l-md'></div>)}
                 
             <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
               <div className="flex-1 truncate px-4 py-2 text-sm">

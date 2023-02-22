@@ -268,7 +268,7 @@ async function addtoDB(f,state,response){
                 index_name: indexName
             })
         }
-        let response = await fetch('https://api.usemeru.com/refine/v3/files-internal',requestOptions)
+        let response = await fetch('https://api.usemeru.com/refine/v4/files-internal',requestOptions)
         
         let data = await response.json()
         console.log(data)
