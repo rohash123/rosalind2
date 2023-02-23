@@ -6,9 +6,14 @@ export default function Query({props,apikey}) {
     const [message, setMessage] = useState('');
     const [source, setSource] = useState('');
     const [loading, setLoading] = useState(false)
+    const [maxTokens, setMaxTokens] = useState(256)
     const creationTime = parseInt(props.creation_time)
     const handleMessageChange = event => {
       setMessage(event.target.value);
+      console.log(props)
+    };
+    const handletokenchange = event => {
+      setMaxTokens(parseInt(event.target.value));
       console.log(props)
     };
     async function submitQuery(){
@@ -20,7 +25,8 @@ export default function Query({props,apikey}) {
                 model_id: 'context-text-davinci-003',
                 inputs: {
                     file_id: props.id,
-                    prompt: message
+                    prompt: message,
+                    max_tokens: maxTokens
                     }
             })
         }
@@ -35,7 +41,7 @@ export default function Query({props,apikey}) {
         let f = await t.json()
         console.log(f)
         if (f.err_code != 0 ){
-            setResponse('Your query could not be processed. This may mean you are out of credits. Please view your account to see your remaining credits.')
+            setResponse('Error: ' + f.err_msg)
             setLoading(false)
             return
         }
@@ -83,6 +89,17 @@ export default function Query({props,apikey}) {
         value = {message}
           className=" w-full text-white bg-gray-600 p-4 rounded-md border-pink-400 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm"
           defaultValue={response}
+        />
+        <dt className="text-sm font-medium text-gray-500">Max Token Output</dt>
+        <p className="text-sm text-gray-500">Number of tokens you want in your output. Please use an integer ranging from 256 - 2048. Our default is 256.</p>
+        <input
+          name="maxTokens"
+          id="maxTokens"
+          type='number'
+          onChange = {handletokenchange}
+          value = {maxTokens}
+          className=" w-full text-white bg-gray-600 p-4 rounded-md border-pink-400 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm"
+          defaultValue={256}
         />
         <div className='text-right'>
 
