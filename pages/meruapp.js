@@ -666,7 +666,7 @@ async function addtoDB(f,state,response){
                 Select and Index to Query It. If you do not have an Index, create One.
                 <div className="h-full border-gray-200" />
               </div>)}
-              {query && (<div className="absolute overflow-auto inset-0 py-6 px-4 sm:px-6 lg:px-8">
+              {query && (<div className="absolute overflow-auto inset-0">
               <Query props={query} apikey={apiKey}/>
               </div>)
                

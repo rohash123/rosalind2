@@ -21,6 +21,8 @@
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "filestack": "^1.0.2",
+    "flowbite": "^1.6.3",
+    "flowbite-react": "^0.4.1",
     "heroicons": "^2.0.13",
     "next": "^13.1.2",
     "next-auth": "^4.19.1",
