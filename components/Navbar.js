@@ -12,7 +12,6 @@ const navigation = [
   { name: 'Construct', href: '/construct' },
   { name: 'Compose', href: '/compose' }, 
   { name: 'Docs', href: 'https://docs.usemeru.com'},
-  { name: 'Blog', href: '/host'}
 ]
 
 

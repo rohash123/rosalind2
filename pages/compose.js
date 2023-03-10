@@ -56,12 +56,15 @@ export default function Example() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-4xl">
                 Bring Your Own _______ 
                 </h1>
-                <p className="mt-4 text-xl max-w-xl leading-8 font-bold">
+                <p className="mt-4 text-xl max-w-xl leading-8 font-semibold">
                   Build pipelines on Meru Compose to connect your models to your documents, data, the internet, calculators, and more. 
+                </p>
+                <p className="mt-4 text-xl max-w-xl leading-8">
+                "This technology gives its best with complicated and long documents" - Alessandro Giordani, Marketing at WAM Group
                 </p>
                 <div className="mt-10 flex gap-x-4 sm:justify-left">
                   <a
-                    href="/develop"
+                    href="https://calendly.com/meruproductions/learn-more-about-meru"
                     className="inline-block rounded-lg  px-4 py-1.5 text-base font-bold leading-7 text-indigo-500 shadow-sm ring-1 ring-indigo-500 hover:bg-indigo-500 hover:ring-indigio-500 hover:text-white"
                   >
                     Get Full Access{' '}
@@ -70,7 +73,7 @@ export default function Example() {
                     </span>
                   </a>
                   <a
-                    href="/host"
+                    href="/meruapp"
                     className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-black hover:ring-white hover:text-white hover:bg-black"
                   >
                     Try a Demo{' '}

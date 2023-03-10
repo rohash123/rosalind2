@@ -50,11 +50,12 @@ export default function Example() {
       <main>
         <div className="relative px-6 lg:px-8">
           <div className="max-w-7xl mx-auto pt-20 pb-32 sm:pt-80 sm:pb-40">
-              <div className="hidden sm:mb-8 sm:flex sm:justify-left">
-              </div>
               <div>
                 <h1 className="text-4xl font-bold tracking-tight sm:text-4xl">
-                Custom Built Models that Actually Work.
+                A Custom Built Model that Actually Works.
+                </h1>
+                <h1 className="text-4xl font-bold tracking-tight sm:text-4xl">
+                Starting at $399. 
                 </h1>
                 <p className="mt-4 text-xl max-w-xl leading-8 font-bold">
                   We supplement your dataset to build you a highly accurate model, then optimize it to make it run faster and cheaper. 
@@ -70,7 +71,7 @@ export default function Example() {
                     </span>
                   </a>
                   <a
-                    href="/host"
+                    href="https://calendly.com/meruproductions/learn-more-about-meru"
                     className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-black hover:ring-white hover:text-white hover:bg-black"
                   >
                     Book a Meeting{' '}
@@ -135,7 +136,7 @@ export default function Example() {
                     href="/densedataretrieval"
                     className="inline-block rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-800 hover:ring-indigo-800"
                   >
-                    Build a Model{' '}
+                    Start by Building a Model{' '}
                     <span className="text-white" aria-hidden="true">
                       &rarr;
                     </span>
