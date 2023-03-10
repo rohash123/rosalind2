@@ -15,23 +15,23 @@ const navigation = [
 
 const features = [
   {
-    name: 'Construct Foundational Models',
+    name: 'No Code Interface',
     href: '/construct',
     description:
-      'Create accurate models owned by you and tuned on your structured or unstructured data.',
+      'Build workflows with a visual interface. Simply drag and drop to insert a model, write prompts, and add data connectors.',
     icon: FlagIcon,
   },
   {
-    name: 'Compose Workflows',
+    name: 'Runs on a CPU, Feels like a GPU',
     href: '/compose',
-    description: 'Chain models, prompts, and agents to create end to end workflows that accomplish any task.', 
+    description: 'Your workflows are can be run on CPU hardware, with speeds comparable to A100s. This means that they can be increasingly complex - containing multiple LLM calls -  while still remaining affordable.', 
     icon: ArrowDownRightIcon,
   },
   {
-    name: 'Scale with CPUs',
+    name: 'Share, Collaborate, and Monitor',
     href: '/construct',
     description:
-      'Run your models on commodity hardware with GPU speeds. No waiting for expensive cloud instances.',
+      'You can share your workflows with others, and monitor their usage. Soon, you will be able to integrate human feedback to make your workflows more powerful as they are used.',
     icon: UserPlusIcon,
   },
 ]
@@ -43,31 +43,6 @@ export default function Example() {
   return (
     <div className="isolate bg-pink-100">
       <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
-        <svg
-          className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
-          viewBox="0 0 1155 678"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill="url(#45de2b6b-92d5-4d68-a6a0-9b9b2abad533)"
-            fillOpacity=".3"
-            d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
-          />
-          <defs>
-            <linearGradient
-              id="45de2b6b-92d5-4d68-a6a0-9b9b2abad533"
-              x1="1155.49"
-              x2="-78.208"
-              y1=".177"
-              y2="474.645"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#9089FC" />
-              <stop offset={1} stopColor="#FF80B5" />
-            </linearGradient>
-          </defs>
-        </svg>
       </div>
       <div className="px-6 pt-6 lg:px-8">
         <Navbar/>
@@ -76,29 +51,20 @@ export default function Example() {
         <div className="relative px-6 lg:px-8">
           <div className="max-w-7xl mx-auto pt-20 pb-32 sm:pt-60 sm:pb-40">
               <div className="hidden sm:mb-8 sm:flex sm:justify-left">
-                <div className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-indigo-500 hover:ring-black s">
-                  <span className="text-black">
-                    Explore our community and get help when you need it.{' '}
-                    <a href="https://discord.gg/aW4Ysje3vv" className="font-bold text-indigo-500">
-                      <span className="absolute inset-0" aria-hidden="true" />
-                      Join the Discord <span aria-hidden="true">&rarr;</span>
-                    </a>
-                  </span>
-                </div>
               </div>
               <div>
-                <h1 className="text-5xl font-bold tracking-tight sm:text-5xl">
-                  Large Language Models You Own. 
+                <h1 className="text-4xl font-bold tracking-tight sm:text-4xl">
+                Bring Your Own _______ 
                 </h1>
-                <p className="mt-8 text-3xl leading-8 font-bold">
-                  Limitless Efficiency, Customizability, and Accuracy.
+                <p className="mt-4 text-xl max-w-xl leading-8 font-bold">
+                  Build pipelines on Meru Compose to connect your models to your documents, data, the internet, calculators, and more. 
                 </p>
                 <div className="mt-10 flex gap-x-4 sm:justify-left">
                   <a
                     href="/develop"
                     className="inline-block rounded-lg  px-4 py-1.5 text-base font-bold leading-7 text-indigo-500 shadow-sm ring-1 ring-indigo-500 hover:bg-indigo-500 hover:ring-indigio-500 hover:text-white"
                   >
-                    Get Your Model {' '}
+                    Get Full Access{' '}
                     <span aria-hidden="true">
                       &rarr;
                     </span>
@@ -107,50 +73,34 @@ export default function Example() {
                     href="/host"
                     className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-black hover:ring-white hover:text-white hover:bg-black"
                   >
-                    Book a Meeting{' '}
+                    Try a Demo{' '}
                     <span aria-hidden="true">
                       &rarr;
                     </span>
                   </a>
                 </div>
+              </div> 
+              <div className="mt-16 flow-root sm:mt-24">
+              <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+                <img
+                  src="compose.png"
+                  alt="App screenshot"
+                  width={2432}
+                  height={1442}
+                  className="rounded-md shadow-2xl ring-1 ring-gray-900/10"
+                />
               </div>
-              <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-               <svg
-                  className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
-                  viewBox="0 0 1155 678"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)"
-                    fillOpacity=".3"
-                    d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
-                  />
-                  <defs>
-                    <linearGradient
-                      id="ecb5b0c9-546c-4772-8c71-4d3f06d544bc"
-                      x1="1155.49"
-                      x2="-78.208"
-                      y1=".177"
-                      y2="474.645"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stopColor="#4f46e5" />
-                      <stop offset={1} stopColor="#4f46e5" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
+            </div>             
           </div>
         </div>
         <div className=" py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Designed by You, Manufactured by Meru. 
+          Address Complexity with Composition.
           </h2>
           <p className="mt-6 text-lg leading-8 text-black">
-            Create task-specific language agents that are cheaper, faster, and more accurate than bloated, one-size-fits-all models. String models together to create workflows. Host everything on CPU hardware for ultimate scalability. 
+            Even the best models need to interact with the world around them. Meru Compose allows you to connect models built on Meru to private sources of data - like databases or documents - or specific APIs - like the google search or weather.com.
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -165,11 +115,6 @@ export default function Example() {
                 </dt>
                 <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
                   <p className="flex-auto">{feature.description}</p>
-                  <p className="mt-6">
-                    <a href={feature.href} className="text-sm font-semibold leading-6 text-indigo-500">
-                      Learn More <span aria-hidden="true">→</span>
-                    </a>
-                  </p>
                 </dd>
               </div>
             ))}
@@ -178,55 +123,34 @@ export default function Example() {
       </div>
     </div>
         <div className="overflow-hidden">
-        <div className="relative transparent max-w-7xl mx-auto py-24 px-6 sm:py-32 lg:px-8 lg:py-40">
-      
-      <div className="relative lg:grid lg:grid-cols-3 lg:gap-x-12 xl:gap-x-16">
-        <div className="lg:col-span-1">
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl"></h2>
-        </div>
-        <dl className="mt-20 grid grid-cols-1 gap-16 sm:grid-cols-2 sm:gap-x-12 lg:col-span-2 lg:mt-0">
-          {features.map((feature) => (
-            <div key={feature.name}>
-              <dt>
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-400 text-white">
-                  <feature.icon className="h-8 w-8" aria-hidden="true" />
-                </div>
-                <p className="mt-6 text-lg font-semibold leading-8 text-gray-900">{feature.name}</p>
-              </dt>
-              <dd className="mt-2 text-base text-gray-600">{feature.description}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </div>
     <div className="relative overflow-hidden bg-white pt-16 pb-32">
       <div className="relative">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
           <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
             <div>
               <div>
-                <h2 className="text-lg font-semibold text-pink-400">Now Introducing</h2>
+                <h2 className="text-lg font-semibold text-indigo-600">Try it Today</h2>
               </div>
-              <div className="mt-6">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900">Add Dense Data Retrieval to Your App</h2>
+              <div className="mt-4">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900">Dense Data Retrieval Workflow</h2>
                 <p className="mt-4 text-lg text-gray-500">
-                Want your users to be able to ask questions about Documents, HTML Files, JSON files in natural language? Use Meru to index your inputs and ensure they receive factual responses with low-latency. Like prompting GPT-3, but better. 
+                Dense data retrieval allows you to connect to documents and use our in-house model to query them. We built it using Meru Compose as an example of how connecting LLMs to the outside world can be powerful. Log in to try it out, or use it through our API. 
                 </p>
                 <div className="mt-8 flex gap-x-4 sm:justify-left">
                   <a
                     href="/densedataretrieval"
-                    className="inline-block rounded-lg bg-pink-400 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-400 hover:bg-pink-600 hover:ring-pink-600"
+                    className="inline-block rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-800 hover:ring-indigo-800"
                   >
-                    Announcement{' '}
+                    Create an Account{' '}
                     <span className="text-white" aria-hidden="true">
                       &rarr;
                     </span>
                   </a>
                   <a
-                    href="https://usemeru.com/meruapp"
+                    href="https://docs.usemeru.com"
                     className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                   >
-                    Try it Online{' '}
+                    Use the API{' '}
                     <span className="text-gray-400" aria-hidden="true">
                       &rarr;
                     </span>

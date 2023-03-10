@@ -9,10 +9,10 @@ import { Dialog } from '@headlessui/react'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Pricing', href: '/pricing' },
-  { name: 'Docs', href: 'https://docs.usemeru.com' },
-  { name: 'Dreambooth', href: 'https://dreambooth.usemeru.com'},
-  { name: 'OnPrem', href: '/host'}
+  { name: 'Construct', href: '/construct' },
+  { name: 'Compose', href: '/compose' }, 
+  { name: 'Docs', href: 'https://docs.usemeru.com'},
+  { name: 'Blog', href: '/host'}
 ]
 
 
