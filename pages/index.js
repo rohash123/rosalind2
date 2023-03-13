@@ -119,7 +119,7 @@ export default function Example() {
               </div>
               <div>
                 <h1 className="text-5xl text-black font-bold tracking-tight sm:text-5xl">
-                  Wicked Fast AI Applications.
+                  Crazy Fast AI Applications.
                 </h1>
                 <p className="mt-8 text-xl leading-8 font-bold xs:text-xl xs:text-3xl">
                   Build, Deploy, and Scale Highly Responsive Apps with Custom Language Models. 
