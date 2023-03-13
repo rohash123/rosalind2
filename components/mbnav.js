@@ -12,7 +12,7 @@ const navigation = [
 ]
 
 
-export default function MBNav() {
+export default function WamNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)  
       
       return(
@@ -21,7 +21,7 @@ export default function MBNav() {
             <div className="flex lg:min-w-0 lg:flex-1" aria-label="Global">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Meru</span>
-                <img className="h-20" src="mindbase.png" alt="logo" />
+                <img className="h-20" src="wamgroup.png" alt="logo" />
               </a>
             </div>
             <div className="flex lg:hidden">
@@ -43,7 +43,7 @@ export default function MBNav() {
             </div>
             <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
               <a
-                href="/mindbase"
+                href="/wamgroup"
                 className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
               >
                 My Portal
@@ -58,7 +58,7 @@ export default function MBNav() {
                     <span className="sr-only">Meru</span>
                     <img
                       className="h-20"
-                      src="mindbase.png"
+                      src="wamgroup.png"
                       alt=""
                     />
                   </a>
