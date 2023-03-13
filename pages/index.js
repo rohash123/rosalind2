@@ -162,13 +162,13 @@ export default function Example() {
             width={158}
             height={80}
           />
-          {/* <img
+          <img
             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
             src="pair.png"
             alt="Reform"
             width={158}
             height={80}
-          /> */}
+          />
           {/* <img
             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
             src="gotit.png"
