@@ -148,13 +148,13 @@ export default function Example() {
                   Used by Enterprise:
                 </p>
                 <div className="mx-auto mt-4 grid max-w-lg grid-cols-6 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 lg:mx-0 lg:max-w-none lg:grid-cols-6">
-          <img
+          {/* <img
             className="col-span-2 max-h-8 w-full object-contain lg:col-span-1"
             src="cgs.png"
             alt="Transistor"
             width={158}
             height={48}
-          />
+          /> */}
           <img
             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
             src="wam.png"
