@@ -24,7 +24,7 @@ export default function Footer() {
       
       return(
         <div>
-    <footer className="bg-white">
+    <footer>
       <div className="mx-auto max-w-7xl overflow-hidden py-20 px-6 sm:py-24 lg:px-8">
       <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           To use the Meru App on Safari, you must be running version 16.0. Having trouble? Get in touch with us at rohan@usemeru.com

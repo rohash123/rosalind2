@@ -44,7 +44,7 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="isolate bg-white">
+    <div className="isolate bg-pink-50">
       <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
       </div>
       <div className="px-6 pt-6 lg:px-8">
@@ -70,10 +70,10 @@ export default function Example() {
                 </p>
                 <div className="mt-8 flex gap-x-4 sm:justify-center">
                   <a
-                    href="https://form.jotform.com/230547669041155"
+                    href="https://calendly.com/meruproductions/learn-more-about-meru"
                     className="inline-block rounded-lg bg-pink-400 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-400 hover:bg-pink-600 hover:ring-pink-600"
                   >
-                    Join the Beta{' '}
+                    Book a Meeting{' '}
                     <span className="text-white" aria-hidden="true">
                       &rarr;
                     </span>

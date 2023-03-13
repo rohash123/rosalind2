@@ -169,10 +169,10 @@ export default function Example() {
             </div> */}
           </div>
           <div className="mt-12 sm:mt-16 lg:mt-0">
-            <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+            <div className="relative h-10">
               <img
-                className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                src="/screenshot.png"
+                className="w-full relative h-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
+                src="graph.png"
                 alt="Inbox user interface"
               />
             </div>

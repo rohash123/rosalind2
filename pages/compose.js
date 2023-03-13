@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { AdjustmentsVerticalIcon, ArrowDownRightIcon, PhotoIcon, UserPlusIcon, FlagIcon, InboxIcon, SparklesIcon } from '@heroicons/react/24/outline'
+import { AdjustmentsVerticalIcon, LinkIcon, ArrowUpRightIcon, UserPlusIcon, FlagIcon, InboxIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 const navigation = [
@@ -25,14 +25,14 @@ const features = [
     name: 'Runs on a CPU, Feels like a GPU',
     href: '/compose',
     description: 'Your workflows are can be run on CPU hardware, with speeds comparable to A100s. This means that they can be increasingly complex - containing multiple LLM calls -  while still remaining affordable.', 
-    icon: ArrowDownRightIcon,
+    icon: LinkIcon,
   },
   {
     name: 'Share, Collaborate, and Monitor',
     href: '/construct',
     description:
       'You can share your workflows with others, and monitor their usage. Soon, you will be able to integrate human feedback to make your workflows more powerful as they are used.',
-    icon: UserPlusIcon,
+    icon: ArrowUpRightIcon,
   },
 ]
 
