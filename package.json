@@ -25,6 +25,7 @@
     "flowbite": "^1.6.3",
     "flowbite-react": "^0.4.1",
     "heroicons": "^2.0.13",
+    "jotform-react": "^1.0.4",
     "next": "^13.1.2",
     "next-auth": "^4.19.1",
     "next-s3-upload": "^0.2.9",

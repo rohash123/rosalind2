@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Fragment, useState, useEffect } from "react";
+import JotFormReact from 'jotform-react';
 import { Dialog, Transition } from '@headlessui/react'
 import {API, Auth, Hub, Amplify} from 'aws-amplify'
 import AuthComponent from "../components/AuthComponent";
@@ -381,17 +382,23 @@ async function addtoDB(f,state,response){
        {user && (<>
         <div>
         <div className="relative px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto pt-20 pb-32 sm:pt-60 sm:pb-40">
+          <div className="max-w-7xl mx-auto pt-20 pb-32 sm:pt-30 sm:pb-30">
               <div className="hidden sm:mb-8 sm:flex sm:justify-left">
               </div>
               <div>
                 <h1 className="text-4xl font-bold tracking-tight sm:text-4xl">
-                You're on the Waitlist.
+                  We'll Take it From Here. 
                 </h1>
                 <p className="mt-4 text-xl max-w-4xl leading-8 font-semibold">
-                  We've had overwhelming demand to use the Meru Platform. We're working hard to get you access as soon as possible. To speed things up, book a call with us so we can get you onboarded. 
+                  The first step to getting started is training a smaller, faster model with Meru, that is designed to be know everything about your dataset. Upload your data and pay a deposit to kick off the building process. Or, book a call with us to learn more. 
                 </p>
-                <div className="mt-10 flex gap-x-4 sm:justify-left">
+                <p className="mt-4 max-w-4xl font-semibold">
+                  Fee: We ask for a $399 deposit that is applied to your hosting costs once your model is built. This deposit is fully refundable if the quality and latency don't meet your needs. 
+                </p>
+                <p className="mt-4 mb-8 max-w-4xl font-semibold">
+                  Timeline:  In most cases, we can provide you an inference endpoint within 48 hours, that you can integrate into existing workflows. We will reach out directly to discuss whether our on-premise, GPU, or CPU hosting options are best for you. 
+                </p>
+                <div className="mt-10 mb-10 flex gap-x-4 sm:justify-left">
                   <a
                     href="https://calendly.com/meruproductions/learn-more-about-meru"
                     className="inline-block rounded-lg  px-4 py-1.5 text-base font-bold leading-7 text-indigo-500 shadow-sm ring-1 ring-indigo-500 hover:bg-indigo-500 hover:ring-indigio-500 hover:text-white"
@@ -411,6 +418,9 @@ async function addtoDB(f,state,response){
                     </span>
                   </a>
                 </div>
+      <JotFormReact
+        formURL="https://form.jotform.com/230741164156047"
+      />
               </div> 
               <div className="mt-16 flow-root sm:mt-24">
               <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
