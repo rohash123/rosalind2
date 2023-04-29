@@ -7,14 +7,7 @@ import styles from '../styles/Home.module.css'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Dialog } from '@headlessui/react'
 
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'OnPrem', href: '/host'},
-  { name: 'Dreambooth', href: 'https://dreambooth.usemeru.com'},
-  { name: 'Search', href: '/meruapp'},
-  { name: 'Docs', href: 'https://docs.usemeru.com'},
-  
-  
+const navigation = [  
 ]
 
 
@@ -52,7 +45,7 @@ export default function Navbar() {
                 href="/create"
                 className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
               >
-                Dashboard
+                Try Now.
               </a>
             </div>
           </nav>

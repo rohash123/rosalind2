@@ -7,25 +7,24 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Pricing', href: '/pricing' },
-  { name: 'Developers', href: 'https://docs.usemeru.com' },
-  { name: 'Blog', href: '/blog'},
+  { name: 'Pricing', href: '/pricing' }
+
 
 ]
 
 const features = [
   {
-    name: 'Scale Your Input Data',
+    name: 'Self Serve. Crazy Fast.',
     href: '/construct',
     description:
-      'Meru takes small datasets and automatically cleans and supplements them so you can generate a robust, application-specific model. Specify adversarial prompts and Meru will even generate examples that are robust to them.',
+      'Meru takes small datasets and automatically cleans and supplements them so you can generate a robust, application-specific model. Go ahead, try us out in the browser.',
     icon: ArrowUpRightIcon,
   },
   {
-    name: '80% Smaller Models',
+    name: 'Save Money. Control Your Compute.',
     href: '/construct',
     description:
-      'Your data is used to train custom, highly-effective that are much smaller than bloated, one-size-fits-all LLMs. Models trained on Meru are owned entirely by you, and can be deployed on commodity CPU hardware.',
+      'Because Meru is deployed on your servers, you control your compute costs and architecture. High-performance GPUs or existing CPU hardware? The choice is yours.',
     icon: FlagIcon,
   },
 ]
@@ -47,22 +46,22 @@ const features2 = [
 ]
 const features3 = [
   {
-    name: 'One-Click Hosting',
+    name: 'Reduce Turnover Costs',
     description:
-      'Once you publish and workflow with Meru, it is automatically hosted on our servers. We provide custom endpoints that can be used to make predictions on your model as part of a larger application.',
+      'Meru helps you capture knowledge from your best employees and makes it accessible to the rest of your team. Onboard new employees efficiently by providing them with an intelligent agent, trained on your company’s best practices.',
     icon: FlagIcon,
   },
   {
-    name: 'On Premise Deployment',
+    name: 'Share with Key Clients',
     href: '/host',
     description:
-      'Since you own the models you train on Meru, you can download a containerized version of your application and run it anywhere you would like. Get in touch with us to unlock this feature as part of an enterprise plan.',
+      'Transfer knowledge to your clients with a click of a button. Upload client-specific knowledge within your private server and create an intelligence agent in seconds. Your agents can be exported and shared with clients via a simple link.',
     icon: ArrowUpRightIcon,
   },
   {
-    name: 'Flexible Hardware Options',
+    name: 'Summarize and Analyze at Lightspeed',
     description:
-      'Applications built on Meru run on smaller models, which means they can deliver fast inference on CPU hardware. So, whether your hosting on premise or with us, save money by running on CPUs.',
+      'Meru parses your proprietary data to help you create reports, summaries, and more. Meru runs up to 40x faster than traditional GPT-based application, allowing you to synthesize knowledge in milliseconds.',
     icon: ArrowUpRightIcon,
   }
 ]
@@ -72,7 +71,8 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="isolate bg-pink-50">
+    <div className="isolate bg-rose-50">
+        
       <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
         <svg
           className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
@@ -94,12 +94,12 @@ export default function Example() {
               y2="474.645"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#9089FC" />
-              <stop offset={1} stopColor="#FF80B5" />
+              <stop stopColor="#367CFF" />
+              <stop offset={1} stopColor="#367CFF" />
             </linearGradient>
           </defs>
         </svg>
-      </div>
+      </div>    
       <div className="px-6 mb-20 pt-6 lg:px-8">
         <Navbar/>
       </div>
@@ -109,27 +109,27 @@ export default function Example() {
               <div className="hidden sm:mb-8 mt-10 sm:flex sm:justify-left">
                 <div className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-indigo-500 hover:ring-black s">
                   <span className="text-black">
-                    Explore our community and get help when you need it.{' '}
+                    Powered by Meru One, our very own, highly efficient LLM.{' '}
                     <a href="https://discord.gg/aW4Ysje3vv" className="font-bold text-indigo-500">
                       <span className="absolute inset-0" aria-hidden="true" />
-                      Join the Discord <span aria-hidden="true">&rarr;</span>
+                      Learn More <span aria-hidden="true">&rarr;</span>
                     </a>
                   </span>
                 </div>
               </div>
               <div>
                 <h1 className="text-5xl text-black font-bold tracking-tight sm:text-5xl">
-                  Crazy Fast AI Applications.
+                  Secure AI, Built for Your Enterprise.
                 </h1>
                 <p className="mt-8 text-xl leading-8 font-bold xs:text-xl xs:text-3xl">
-                  Build, Deploy, and Scale Highly Responsive Apps with Custom Language Models. 
+                  Powerful generative search that you own, deployed on your infrastructure.
                 </p>
                 <div className="mt-10 flex gap-x-4 sm:justify-left">
                   <a
                     href="/create"
                     className="inline-block rounded-lg  px-4 py-1.5 text-base font-bold leading-7 text-indigo-500 shadow-sm ring-1 ring-indigo-500 hover:bg-indigo-500 hover:ring-indigio-500 hover:text-white"
                   >
-                    Start Creating {' '}
+                    Try It Today. {' '}
                     <span aria-hidden="true">
                       &rarr;
                     </span>
@@ -138,7 +138,7 @@ export default function Example() {
                     href="https://calendly.com/meruproductions/learn-more-about-meru"
                     className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-black hover:ring-white hover:text-white hover:bg-black"
                   >
-                    Book a Meeting{' '}
+                    Deploy On Premise{' '}
                     <span aria-hidden="true">
                       &rarr;
                     </span>
@@ -199,23 +199,55 @@ export default function Example() {
                       y2="474.645"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stopColor="#4f46e5" />
-                      <stop offset={1} stopColor="#4f46e5" />
+                      <stop stopColor="#367CFF" />
+                      <stop offset={1} stopColor="#367CFF" />
                     </linearGradient>
                   </defs>
                 </svg>
               </div>
           </div>
         </div>
+        <div className="overflow-hidden py-6 sm:py-6">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <h2 className="text-base font-semibold leading-7 text-indigo-600">A Private Intelligence Agent for Your Organization.</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Efficient Proprietary Knowledge Transfer.
+          </p>
+          <p className="mt-2 text-xl max-w-none text-gray-900 sm:text-xl">
+            Meru helps organize and share your organization's most vital assets. 
+          </p>
+        </div>
+        <div className="mx-auto mt-8 max-w-2xl sm:mt-8 lg:mt-8 lg:max-w-none">
+          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+            {features3.map((feature) => (
+              <div key={feature.name} className="flex flex-col">
+                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+                  <feature.icon className="h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                  {feature.name}
+                </dt>
+                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                  <p className="flex-auto">{feature.description}</p>
+                  <p className="mt-6">
+                    {feature.href && <a href={feature.href} className="text-sm font-semibold leading-6 text-indigo-600">
+                    </a>}
+                  </p>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
         <div className="overflow-hidden py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:pr-8 lg:pt-4">
             <div className="lg:max-w-lg">
-              <h2 className="text-base font-semibold leading-7 text-indigo-600"> Smaller Models, Custom Built. </h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-black sm:text-4xl">10x Faster Responses.</p> 
+              <h2 className="text-base font-semibold leading-7 text-indigo-600"></h2>
+              <p className="mt-2 text-3xl font-bold tracking-tight text-black sm:text-4xl">Communicate with your data.</p> 
               <p className="mt-6 text-lg leading-8 text-black">
-              No matter how you are using LLMs, your latency is tens of seconds longer than it needs to be. Design custom languge models and engineer responsive applications your users will love from the ground up. 
+              Sharing proprietary information across your organization has never been easier. Host a central intelligance interface for your organization with Meru. Your data never leaves your network, and you can control who has access to what. 
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-black lg:max-w-none">
                 {features.map((feature) => (
@@ -230,84 +262,42 @@ export default function Example() {
               </dl>
             </div>
           </div>
-          <img
+          {/* <img
             src="d0.png"
             alt="Product screenshot"
             className="w-[48rem] mt-10 max-w-none rounded-xl shadow-xl ring-1 ring-white/10 md:-ml-4 lg:-ml-0"
             width={2432}
             height={1442}
-          />
+          /> */}
+                      <video controls autoPlay className="w-full">
+  <source src="file1.mp4" type="video/mp4" />
+</video>
         </div>
       </div>
     </div>
-    <div className="overflow-hidden py-12 sm:py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-          <div className="lg:ml-auto lg:pt-4 lg:pl-4">
-            <div className="lg:max-w-lg">
-              <h2 className="text-base font-semibold leading-7 text-indigo-600">Drag and Drop, Connect to Anything.</h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Robust Language Chains.</p>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
-                Because your custom-built models are so fast, you can compose them with APIs, external data sources, embedding stores, and more to create complex, versatile, and robust applications with that don't timeout. 
-              </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
-                {features2.map((feature) => (
-                  <div key={feature.name} className="relative pl-9">
-                    <dt className="inline font-semibold text-gray-900">
-                      <feature.icon className="absolute top-1 left-1 h-5 w-5 text-indigo-600" aria-hidden="true" />
-                      {feature.name}
-                    </dt>{' '}
-                    <dd className="inline">{feature.description}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-          <div className="flex items-start justify-end lg:order-first">
-            <img
-              src="d1.png"
-              alt="Product screenshot"
-              className="w-[49rem] mt-10 max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 "
-            />
-          </div>
+    <div className="bg-gray-900">
+      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:justify-between lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          Say Goodbye to Ctrl + F,
+          <br />
+          Say Hello to Secure Generative Search
+        </h2>
+        <div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0">
+          <a
+            href="#"
+            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Go to the Demo
+          </a>
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
+            Book a Call <span aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
-    </div>
-    <div className="overflow-hidden py-12 sm:py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-base font-semibold leading-7 text-indigo-600">End-to-End Transparency</h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Host With Us (Or Don't).
-          </p>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Flexible deployment options for so that maximize convenience, security, and cost. 
-          </p>
-        </div>
-        <div className="mx-auto mt-5 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-            {features3.map((feature) => (
-              <div key={feature.name} className="flex flex-col">
-                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
-                  <feature.icon className="h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
-                  {feature.name}
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">{feature.description}</p>
-                  <p className="mt-6">
-                    {feature.href && <a href={feature.href} className="text-sm font-semibold leading-6 text-indigo-600">
-                      Learn more <span aria-hidden="true">→</span>
-                    </a>}
-                  </p>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </div>
+      <Footer/>
     </div>
     
-<Footer/>
+
       </main>
       
     </div>
