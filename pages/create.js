@@ -217,6 +217,14 @@ async function addtoDB(f,state,response){
         return
     }
     useEffect(() => {
+        async function pullIndex(){ 
+          let requestOptions = {
+              method: 'GET',
+              headers: { 'x-api-key' : 'meru_2356a260136546f689b998f5abb14e7e6d47918c9fcb4ee6b6330abf18580844', 'Content-Type' : 'application/json'}
+            };
+          let index = await fetch('https://api.usemeru.com/refine/v4/files/2a70c7ac-d287-4543-9aad-536e099a12c2', requestOptions)
+          console.log(index)
+        }
         async function createUser(){
             if(user){
                 return
@@ -304,8 +312,7 @@ async function addtoDB(f,state,response){
               }
         }
 
-        createUser()
-        getstuff()
+        pullIndex()
     //     if(loggedIn && !user){
     //         console.log('creating user')
     //         createUser()
@@ -410,7 +417,7 @@ async function addtoDB(f,state,response){
         </div>
        </>
       </main>
-       
+       <Query props = {indexName} apikey = {'meru_2356a260136546f689b998f5abb14e7e6d47918c9fcb4ee6b6330abf18580844'}/> 
         <Footer/>
         </div>
         </>

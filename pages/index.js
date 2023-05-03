@@ -71,10 +71,10 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="isolate bg-rose-50">
+    <div className="isolate bg-rose-50 ">
         
       <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
-        <svg
+        {/* <svg
           className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
           viewBox="0 0 1155 678"
           fill="none"
@@ -94,11 +94,11 @@ export default function Example() {
               y2="474.645"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#367CFF" />
-              <stop offset={1} stopColor="#367CFF" />
+              <stop stopColor="#FA6687" />
+              <stop offset={1} stopColor="#FA6687" />
             </linearGradient>
           </defs>
-        </svg>
+        </svg> */}
       </div>    
       <div className="px-6 mb-20 pt-6 lg:px-8">
         <Navbar/>
@@ -179,7 +179,7 @@ export default function Example() {
         </div>
               </div>
               <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-               <svg
+               {/* <svg
                   className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
                   viewBox="0 0 1155 678"
                   fill="none"
@@ -199,11 +199,11 @@ export default function Example() {
                       y2="474.645"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stopColor="#367CFF" />
-                      <stop offset={1} stopColor="#367CFF" />
+                      <stop stopColor="#FA6687" />
+                      <stop offset={1} stopColor="#FA6687" />
                     </linearGradient>
                   </defs>
-                </svg>
+                </svg> */}
               </div>
           </div>
         </div>

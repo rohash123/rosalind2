@@ -37,6 +37,7 @@ const navigation = [
     { name: 'Create an Index', href: '#', icon: CircleStackIcon, current: false },
     { name: 'Query History', href: '#', icon: MagnifyingGlassIcon, current: false },
     { name: 'Account', href: '#account', icon: UserIcon, current: true },
+    {name: 'Upgrade Plan', href: '#upgradeplan', icon: SquaresPlusIcon, current: true}
   ]
   const integrations = {
     dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://www.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
