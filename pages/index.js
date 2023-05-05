@@ -56,7 +56,7 @@ const features3 = [
     href: '/host',
     description:
       'Transfer knowledge to your clients with a click of a button. Upload client-specific knowledge within your private server and create an intelligence agent in seconds. Your agents can be exported and shared with clients via a simple link.',
-    icon: ArrowUpRightIcon,
+    icon: UserPlusIcon,
   },
   {
     name: 'Summarize and Analyze at Lightspeed',
