@@ -105,7 +105,7 @@ export default function Example() {
       </div>
       <main>
         <div className="relative px-6 lg:px-8">
-          <div className="max-w-7xl mt-20 mx-auto pt-25 pb-32 sm:pt-20 sm:pb-40">
+          <div className="max-w-7xl mx-auto pb-32 sm:pt-40 sm:pb-40">
               <div className="hidden sm:mb-8 mt-10 sm:flex sm:justify-left">
                 <div className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-indigo-500 hover:ring-black s">
                   <span className="text-black">
@@ -144,9 +144,9 @@ export default function Example() {
                     </span>
                   </a>
                 </div>
-                <p className="mt-12 text-1xl leading-8 font-semibold">
-                  Used by Enterprise:
-                </p>
+                {/* <p className="mt-12 text-1xl leading-8 font-semibold">
+                  100,000+ inferences run, 10,000+ models trained for hundreds of developers. 
+                </p> */}
                 <div className="mx-auto mt-4 grid max-w-lg grid-cols-6 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 lg:mx-0 lg:max-w-none lg:grid-cols-6">
           {/* <img
             className="col-span-2 max-h-8 w-full object-contain lg:col-span-1"
@@ -155,13 +155,14 @@ export default function Example() {
             width={158}
             height={48}
           /> */}
-          <img
+          {/* <img
             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
             src="wam.png"
             alt="Reform"
             width={158}
             height={80}
-          />
+            
+          /> */}
           {/* <img
             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
             src="pair.png"
@@ -210,7 +211,7 @@ export default function Example() {
         <div className="overflow-hidden py-6 sm:py-6">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-base font-semibold leading-7 text-indigo-600">A Private Intelligence Agent for Your Organization.</h2>
+          <h2 className="mt-7 text-base font-semibold leading-7 text-indigo-600">A Private Intelligence Agent for Your Organization.</h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Efficient Proprietary Knowledge Transfer.
           </p>
@@ -241,7 +242,7 @@ export default function Example() {
     </div>
         <div className="overflow-hidden py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div className="mt-10 mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:pr-8 lg:pt-4">
             <div className="lg:max-w-lg">
               <h2 className="text-base font-semibold leading-7 text-indigo-600"></h2>
