@@ -33,8 +33,8 @@ import {
 
 const navigation = [
     
-    { name: 'Indexes', href: '#', icon: DocumentDuplicateIcon, current: false },
-    { name: 'Create an Index', href: '#', icon: CircleStackIcon, current: false },
+    { name: 'Query a Document', href: '#', icon: DocumentDuplicateIcon, current: false },
+    { name: 'Upload a Document', href: '#', icon: CircleStackIcon, current: false },
     { name: 'Query History', href: '#', icon: MagnifyingGlassIcon, current: false },
     { name: 'Account', href: '#account', icon: UserIcon, current: true },
     {name: 'Upgrade Plan', href: '#upgradeplan', icon: SquaresPlusIcon, current: true}
@@ -423,10 +423,10 @@ async function addtoDB(f,state,response){
         }
     }
     setLoading(true)
-        if(name == 'Indexes'){
+        if(name == 'Query a Document'){
             handleIndexload(name)
         }
-        if(name == 'Create an Index'){
+        if(name == 'Upload a Document'){
             handleCreateIndexLoad(name)
         }
     setActive(name)
@@ -619,7 +619,7 @@ async function addtoDB(f,state,response){
             </div>
           </div>
           {/* Indexed Documents */}
-          {(active == 'Indexes') &&(<>
+          {(active == 'Query a Document') &&(<>
           {/* Left sidebar & main wrapper */}
           <div className="min-w-0 px-5 flex-1 bg-white xl:flex overflow-y-auto">
             <div className="border-b border-gray-200 bg-white xl:w-96 xl:flex-shrink-0 xl:border-b-0 xl:border-r xl:border-gray-200">
@@ -627,7 +627,7 @@ async function addtoDB(f,state,response){
                 {/* Start left column area */}
                 <div className="relative h-20 xl:h-full l:h-full" >
                 {/* <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8"> */}
-                {!fileList &&( <p>Loading Your Indexes...</p>)}
+                {!fileList &&( <p>Loading Your Documents...</p>)}
                 {fileList && (
                     <div>
                 {fileList.map((integration) => (
@@ -663,7 +663,7 @@ async function addtoDB(f,state,response){
                 {/* Start main area*/}
                 <div className="relative h-full">
                 {!query &&(<div className="absolute font-bold inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                Select and Index to Query It. If you do not have an Index, create One.
+                Select a Document to Query It. If you do not have an Document, create one.
                 <div className="h-full border-gray-200" />
               </div>)}
               {query && (<div className="absolute overflow-auto inset-0">
@@ -681,7 +681,7 @@ async function addtoDB(f,state,response){
           
           </div></>)}
           {/* Create an Index */}
-          {(active == 'Create an Index') &&(<><h1 className="mt-2 text-xl sm:ml-7 xl:ml-10 font-semibold text-gray-900">Create a New Index</h1><div className=" w-full relative z-0 flex flex-1 overflow-hidden">
+          {(active == 'Upload a Document') &&(<><h1 className="mt-2 text-xl sm:ml-7 xl:ml-10 font-semibold text-gray-900">Create a New Document</h1><p className="mt-2 sm:ml-7 xl:ml-10 font-semibold text-gray-900">You can upload multiple files to form a single document</p><div className=" w-full relative z-0 flex flex-1 overflow-hidden">
           <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={()=>{}}>
         <Transition.Child
@@ -720,7 +720,7 @@ async function addtoDB(f,state,response){
                   </div>}
                   <div className="mt-3 text-center sm:mt-5">
                     <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
-                      {done || 'Your Index is being queued. Please wait one moment. If this persists for longer, please contact support.'}
+                      {done || 'Your Document is being queued. Please wait one moment. If this persists for longer, please contact support.'}
                     </Dialog.Title>
                     <div className="mt-2">
                     </div>
@@ -778,7 +778,7 @@ async function addtoDB(f,state,response){
         {dbfiles && (
             <div>
             <label htmlFor="email" className="mt-10 block text-sm font-medium text-gray-700">
-              Name Your Index
+              Name Your Document
             </label>
             <div className="mt-1">
               <input
@@ -793,11 +793,11 @@ async function addtoDB(f,state,response){
               />
             </div>
             <p className="mt-2 text-sm text-gray-500" id="email-description">
-              This is optional, but will help you find your index later.
+              This is optional, but will help you find your document later.
             </p>
           </div>
         )}
-        {dbfiles && (<div className=" w-60 cursor-pointer w-full mt-4 inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2" onClick = {createIndex} disabled = {false}>Create Index</div> )}
+        {dbfiles && (<div className=" w-60 cursor-pointer w-full mt-4 inline-flex items-center rounded border border-transparent bg-pink-400 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-offset-2" onClick = {createIndex} disabled = {false}>Create Document</div> )}
             <div className="h-full border-gray-200" />
               </div>
 
