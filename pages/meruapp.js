@@ -40,7 +40,7 @@ const navigation = [
     {name: 'Upgrade Plan', href: '#upgradeplan', icon: SquaresPlusIcon, current: true}
   ]
   const integrations = {
-    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=rqiucchpvi1uywj&redirect_uri=https://www.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
+    dropbox : { name: 'Dropbox', initials: 'D', href: 'https://www.dropbox.com/oauth2/authorize?client_id=c1xmkwt7c7iypga&redirect_uri=https://www.usemeru.com/meruapp&token_access_type=offline&response_type=code&state=dropbox', text : 'Not Connected', accessToken: false, bgColor: 'bg-pink-600', target : "_blank" },
     box : { name: 'Box', initials: 'B', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     googledrive : { name: 'Google Drive', initials: 'GD', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
     github : { name: 'Github', initials: 'G', href: '#', text: 'Coming Soon', bgColor: 'bg-pink-200' },
@@ -311,8 +311,8 @@ async function addtoDB(f,state,response){
                     console.log(state)
                     if(state == 'dropbox'){
                         const config = {
-                            clientId: 'rqiucchpvi1uywj',
-                            clientSecret : 'umpym6xp5r5pj11'
+                            clientId: 'c1xmkwt7c7iypga',
+                            clientSecret : 'xqlth1qn8e9nkay'
                           };
                         const dbx = new Dropbox(config)
                         dbx.auth.getAccessTokenFromCode('https://www.usemeru.com/meruapp', authcode).then((token) => {
@@ -404,8 +404,8 @@ async function addtoDB(f,state,response){
             body : new URLSearchParams({
                 'refresh_token' : refresh,
                 'grant_type' : 'refresh_token',
-                'client_id': 'rqiucchpvi1uywj',
-                'client_secret' : 'umpym6xp5r5pj11',
+                'client_id': 'c1xmkwt7c7iypga',
+                'client_secret' : 'xqlth1qn8e9nkay',
             }),
     }
     let accessToken = await fetch('https://api.dropbox.com/oauth2/token',requestOptions)
@@ -744,7 +744,7 @@ async function addtoDB(f,state,response){
             <main className="relative z-0 flex-auto overflow-y-auto focus:outline-none xl:order-first">
               <div className="relative w-full inset-0 py-6 px-4 sm:px-6 lg:px-8">
               {(integrations.dropbox.accessToken != '') && (<DropboxChooser 
-                appKey={'rqiucchpvi1uywj'}
+                appKey={'c1xmkwt7c7iypga'}
                 success={files => setdbFiles(files)}
                 cancel={() => console.log('closed')}
                 multiselect={true}
